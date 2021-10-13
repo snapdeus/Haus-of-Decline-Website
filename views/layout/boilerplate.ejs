@@ -59,7 +59,7 @@
 
 <!-- <body class='d-flex flex-column vh-100'> -->
 
-<body>
+<body class='d-flex flex-column vh-100'>
     <%- include('../partials/navbar') %>
 
         <%- include('../partials/flash') %>
@@ -76,19 +76,7 @@
                         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
                         crossorigin="anonymous"></script>
                     <script src="../js/bootstrap.bundle.min.js"></script>
-                    <script>
-                        $(function () {
-                            $(document).scroll(function () {
-                                var $nav = $("#topkeep");
-                                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-                                var $drop = $("#navbarSupportedContent");
-                                $drop.removeClass('show', $(this).scrollTop() > $nav.height());
-                            })
-                        })
-                        $(".navbar-toggler").click(function () {
-                            $(".navbar").addClass("activated");
-                        });
-                    </script>
+                    <script src="../js/scroller.js"></script>
 </body>
 
 </html>

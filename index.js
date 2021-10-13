@@ -10,19 +10,22 @@ const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 
+const Comic = require('./models/comics')
 
-// mongoose.connect('mongodb://localhost:27017/haus-db', {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useUnifiedTopology: true,
-//     useFindAndModify: false
-// });
+const comicRoutes = require('./routes/comics')
 
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', () => {
-//     console.log('Database connected');
-// });
+mongoose.connect('mongodb://localhost:27017/haus-db', {
+    useNewUrlParser: true,
+    // useCreateIndex: true,
+    useUnifiedTopology: true,
+    // useFindAndModify: false
+});
+
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+    console.log('Database connected');
+});
 
 
 
@@ -36,6 +39,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
+
+app.use('/comics', comicRoutes);
+
 app.get('/', (req, res) => {
     res.render('home')
 });
@@ -44,6 +50,15 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
     res.render('users/login')
 });
+
+
+app.get('/makecomic', async (req, res) => {
+    const comic = new Comic({ title: "my first comic", description: 'good comic' })
+    await comic.save()
+    res.send(comic);
+})
+
+
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found!', 404))

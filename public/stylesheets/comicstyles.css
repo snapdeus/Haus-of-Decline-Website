@@ -1,0 +1,204 @@
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#topkeep {
+    z-index: 1;
+    margin-bottom: 2rem;
+    text-shadow: 0.1em 0.1em 0.1em rgba(158, 158, 158, 0.727), 2px 2px 2px black;
+}
+
+.navbar-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+}
+
+.navbar-brand:hover, .nav-item:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+    transform: translatey(0.1em);
+}
+
+.navbar-nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+}
+
+.navbar-toggler-icon {
+    border-color: white;
+}
+
+.navbar.scrolled {
+    background: rgb(0, 0, 0);
+    transition: background 500ms;
+}
+
+/* 
+.custom{
+    background:rgb(0, 0, 0);
+    opacity: .8;
+} */
+
+.navbar.activated {
+    background: rgb(0, 0, 0);
+    transition: background 500ms;
+    ;
+}
+
+body {
+    background-color: #000 !important;
+    padding-top: 10px;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 1.6rem;
+    margin: 20px 0 0 0;
+}
+
+.img-thumbnail {
+    margin: 12px auto 12px;
+    box-shadow: 2px 2px 4px 5px rgba(0, 0, 0, .7);
+    background-color: #fff;
+    border: 3px double #fff;
+    border-radius: 0px;
+    padding: 0px;
+}
+
+.img-thumbnail:hover {
+    color: white;
+    box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.426);
+    transform: translatey(-0.2em);
+}
+
+footer {
+    color: white;
+}
+
+.sizer {
+    width: 350px;
+    height: 243px;
+    justify-content: center;
+    background-color: #000000;
+    padding: 1em;
+    /* border: 3px double #fff;
+    border-radius: 0px; */
+    background-size: cover;
+}
+
+.specialBorder {
+    background-color: #000;
+}
+
+.sizernb {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    background-color: #000;
+}
+
+.sizernh {
+    width: 100%;
+    justify-content: center;
+    background-color: #000;
+}
+
+@media (max-width:992px) {
+    .sizer {
+        width: 670px;
+        height: 457.5px;
+    }
+}
+
+@media (min-width: 420px) {
+    h1.title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (min-width: 590px) {
+    h1.title {
+        font-size: 2.6rem;
+    }
+}
+
+@media (min-width:992px) {
+    .sizernb {
+        width: 350px;
+        height: 243px;
+    }
+    .sizernh {
+        width: 350px;
+        height: 243px;
+    }
+}
+
+@media (max-width:1199px) {
+    .nav-link {
+        padding-top: 1.2em;
+    }
+}
+
+.navbar-nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    border-bottom: solid white 1px;
+    border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+}
+
+@media (min-width:1199px) {
+    .navbar-nav {
+        border: none;
+    }
+}
+
+.link:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+}
+
+.header {
+    text-align: center;
+    z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: red;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    text-shadow: 2px 2px 4px #000000;
+    font-size: 1.6rem;
+    margin: 20px 0 0 0;
+    display: none;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+.sticky {
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    width: 100%;
+}
+
+.snap {
+    color: white;
+    font-size: smaller;
+}
+
+.hausrise {
+    margin-top: 3.5em;
+}
+
+@media (min-width:1595px) {
+    .hausrise {
+        margin-top: 0;
+    }
+}
