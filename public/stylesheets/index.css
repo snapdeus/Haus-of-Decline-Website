@@ -1,0 +1,276 @@
+body, html {
+    background-color: black;
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footer {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.specialBorder {
+    border-radius: 0;
+    background-color: #000;
+    border: 3px double #fff;
+}
+
+.boyz {
+    margin-top: 2em;
+}
+
+.specialBorder:hover {
+    color: white;
+    box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.426);
+    transform: translatey(-0.2em);
+}
+
+#topkeep {
+    z-index: 1;
+    margin-bottom: 2rem;
+    text-shadow: 0.1em 0.1em 0.1em rgba(158, 158, 158, 0.727), 2px 2px 2px black;
+}
+
+.navbar-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+}
+
+.navbar-brand:hover, .nav-item:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+    transform: translatey(0.1em);
+}
+
+.navbar-nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+}
+
+.navbar-toggler-icon {
+    border-color: white;
+}
+
+.navbar.scrolled {
+    background: rgb(0, 0, 0);
+    transition: background 500ms;
+}
+
+.navbar.activated {
+    background: rgb(0, 0, 0);
+    transition: background 500ms;
+}
+
+.blurb {
+    color: white;
+    font-family: "Share Tech Mono";
+    padding-bottom: 3em;
+    font-size: 1em;
+}
+
+.descrip {
+    color: white;
+    font-family: "Share Tech Mono";
+    padding-top: .5em;
+    padding-bottom: 3em;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.descripNoPad {
+    color: white;
+    font-family: "Share Tech Mono";
+    padding-top: .5em;
+    font-size: 1em;
+    text-decoration: none;
+}
+
+.borderLine {
+    border-bottom: 1px solid white;
+    padding-bottom: 3.5em;
+    border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+}
+
+.borderLineTop {
+    border-top: 1px solid white;
+    border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+    padding-top: 2.5em;
+}
+
+.link:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+}
+
+.listenAnd {
+    font-family: "Share Tech Mono";
+    color: white;
+}
+
+.snap {
+    color: antiquewhite;
+    font-size: smaller;
+}
+
+.spacer {
+    margin-top: 2.5em;
+}
+
+.bottomSpacer {
+    margin-bottom: 3em;
+}
+
+@media (min-width:700px) {
+    .blurb {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width:769px) {
+    .borderLine {
+        padding-bottom: 1.2em;
+    }
+}
+
+@media (max-width:420px) {
+    .blurb {
+        font-size: .8em;
+    }
+    .listenAnd {
+        font-size: 1.8em;
+    }
+    .borderLine {
+        padding-bottom: 1.2em;
+    }
+}
+
+@media (max-width:320px) {
+    .blurb {
+        font-size: .7em;
+    }
+    .listenAnd {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width:1199px) {
+    .nav-link {
+        padding-top: 1.2em;
+    }
+}
+
+.navbar-nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    border-bottom: solid white 1px;
+    border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+}
+
+@media (min-width:1199px) {
+    .navbar-nav {
+        border: none;
+    }
+}
+
+.hausrise {
+    margin-top: 3.5em;
+}
+
+@media (min-width:1573px) {
+    .hausrise {
+        margin-top: 0;
+    }
+}
+
+.icon {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.subscribeOptions {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto
+}
+
+@media screen and (max-width:767px) {
+    .subscribeOptions {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-bottom: 1.5em
+    }
+    .subscribeOptions a {
+        width: 30%;
+        text-align: center;
+        margin-bottom: 40px
+    }
+}
+
+.subscribeOptions a {
+    position: relative
+}
+
+.subscribeOptions a:focus span.icon, .subscribeOptions a:hover span.icon {
+    color: #000;
+    background: #fff
+}
+
+.subscribeOptions a:focus svg .rev, .subscribeOptions a:hover svg .rev {
+    fill: #fff
+}
+
+.subscribeOptions a:focus svg path, .subscribeOptions a:focus svg rect, .subscribeOptions a:hover svg path, .subscribeOptions a:hover svg rect {
+    fill: #000
+}
+
+.subscribeOptions a svg path, .subscribeOptions a svg rect {
+    transition: fill .25s
+}
+
+.subscribeOptions a span.icon {
+    width: 52px;
+    height: 52px;
+    background: #000;
+    color: #fff;
+    margin-bottom: 7px;
+    border: 2px solid #000;
+    transition: all .25s
+}
+
+.subscribeOptions a span.icon .fa {
+    font-size: 28px
+}
+
+.subscribeOptions a span.iconLabel {
+    display: block;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    font-size: 13px;
+    line-height: 15px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    white-space: nowrap
+}
