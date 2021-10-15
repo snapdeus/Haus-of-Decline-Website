@@ -12,6 +12,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 };
 
 module.exports.validateComic = (req, res, next) => {
+
     const { error } = comicSchema.validate(req.body);
 
     if (error) {
