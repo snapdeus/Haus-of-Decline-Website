@@ -21,7 +21,8 @@ const seedDB = async () => {
         const comic = new Comic({
             description: `${ comics[i].description }`,
             title: `${ comics[i].title }`,
-            path: `${ comics[i].path }`
+            path: `${ comics[i].path }`,
+            filename: `${ comics[i].path.slice(5) }`
         })
         await comic.save();
     }

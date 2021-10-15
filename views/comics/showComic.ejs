@@ -1,0 +1,28 @@
+<% layout('layout/boilerplate') %>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="mx-auto mt-auto ">
+
+
+                <img loading="lazy" class="img-thumbnail specialBorder" src="../<%= comic.path %>" alt="Dune Worm"
+                    title="Ballsacks Haderach">
+
+            </div>
+
+        </div>
+        <div class="row">
+            <h2 class="hausFont mx-auto mt-3 ">
+                "<%= comic.title %>"
+
+            </h2>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <a class="card-link btn btn-info" href="/comics/<%= comic._id %>/edit">Edit</a>
+                    <form class='d-inline' action="/comics/<%= comic._id %>?_method=DELETE" method='POST'>
+                        <button class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>

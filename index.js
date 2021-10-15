@@ -40,7 +40,38 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 
+const sessionConfig = {
+    name: "session",
+    secret: 'thisshouldbesecret!',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        httpOnly: true,
+        // secure: true,
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
+    }
+}
+
+app.use(session(sessionConfig));
+app.use(flash());
+
+
+app.use((req, res, next) => {
+
+    // res.locals.currentUser = req.user;
+    res.locals.success = req.flash('success');
+    res.locals.error = req.flash('error');
+    next();
+})
+
+
+//MAKE SURE PASSPORT.SESSION IS BELOW SESSION
+
+
+//ROUTES
 app.use('/comics', comicRoutes);
+
 
 app.get('/', (req, res) => {
     res.render('home')

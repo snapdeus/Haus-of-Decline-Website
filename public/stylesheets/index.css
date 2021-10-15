@@ -33,6 +33,13 @@ body, html {
     transform: translatey(-0.2em);
 }
 
+.fixedElement {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}
+
 #topkeep {
     z-index: 1;
     margin-bottom: 2rem;
@@ -108,7 +115,7 @@ body, html {
     text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
 }
 
-.listenAnd {
+.hausFont {
     font-family: "Share Tech Mono";
     color: white;
 }
