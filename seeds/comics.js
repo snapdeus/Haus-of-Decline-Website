@@ -3,19 +3,19 @@ module.exports = [
     {
         title: "Self-Sufficiency",
         description: "Dan Crenshaw Self Suck",
-        path: "/gifs/172.DanCrenshaw.gif",
+        path: "/uploads/172.DanCrenshaw.gif",
 
     },
     {
         title: "The Pills are Alive with the Sound of Music",
         description: "Matrix Switcheroo Bizarro",
-        path: "/gifs/171.TheMatrix.gif",
+        path: "/uploads/171.TheMatrix.gif",
 
     },
     {
         title: "Batman Fucks it Up",
         description: "Batman Juggalo",
-        path: "/gifs/170.Batman.gif",
+        path: "/uploads/170.Batman.gif",
 
     },
 
@@ -23,19 +23,19 @@ module.exports = [
     {
         title: "Ballsacks Haderach",
         description: "Dune Worm",
-        path: "/gifs/169.Dune.gif",
+        path: "/uploads/169.Dune.gif",
 
     },
     {
         title: "I Want To Believe",
         description: "AOC Jon Stewart Glenn Greenwald",
-        path: "/gifs/168.PoliticallyIncisive.gif",
+        path: "/uploads/168.PoliticallyIncisive.gif",
 
     },
     {
         title: "Judgement at Spermberg",
         description: "Ruth Bader Ginsburg",
-        path: "/gifs/167.RuthBaderGinsburg.gif",
+        path: "/uploads/167.RuthBaderGinsburg.gif",
 
     },
 
@@ -43,19 +43,19 @@ module.exports = [
     {
         title: "Self-Sufficiency",
         description: "Dan Crenshaw Self Suck",
-        path: "/gifs/166.JamesCorden.gif",
+        path: "/uploads/166.JamesCorden.gif",
 
     },
     {
         title: "The Pills are Alive with the Sound of Music",
         description: "Matrix Switcheroo Bizarro",
-        path: "/gifs/165.GabagoolTony.gif"
+        path: "/uploads/165.GabagoolTony.gif"
 
     },
     {
         title: "Batman Fucks it Up",
         description: "Batman Juggalo",
-        path: "/gifs/164.ProLife.gif",
+        path: "/uploads/164.ProLife.gif",
 
     },
 
@@ -63,19 +63,19 @@ module.exports = [
     {
         title: "Ballsacks Haderach",
         description: "Dune Worm",
-        path: "/gifs/163.Trudeau2.gif",
+        path: "/uploads/163.Trudeau2.gif",
 
     },
     {
         title: "I Want To Believe",
         description: "AOC Jon Stewart Glenn Greenwald",
-        path: "/gifs/162.HapBunch.gif",
+        path: "/uploads/162.HapBunch.gif",
 
     },
     {
         title: "Judgement at Spermberg",
         description: "Ruth Bader Ginsburg",
-        path: "/gifs/161.NoahBerlatsky.gif",
+        path: "/uploads/161.NoahBerlatsky.gif",
 
     }
 

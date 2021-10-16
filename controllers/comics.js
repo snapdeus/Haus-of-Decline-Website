@@ -13,8 +13,9 @@ module.exports.renderNewForm = (req, res) => {
 
 module.exports.createComic = async (req, res) => {
     const comic = new Comic(req.body.comic);
+    comic.image = req.file.filename;
+    comic.filename = req.file.filename
     await comic.save();
-    console.log(comic)
     req.flash('success', 'Successfully made a new comic!');
     res.redirect(`/comics/${ comic._id }`)
     // res.send(req.body)
@@ -51,9 +52,11 @@ module.exports.updateComic = async (req, res) => {
     const { id } = req.params;
     // console.log(req.body);
     const comic = await Comic.findByIdAndUpdate(id, { ...req.body.comic });
-    // const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    // campground.images.push(...imgs);
-    // await campground.save();
+    if (req.file) {
+        comic.image = req.file.filename;
+        comic.filename = req.file.filename
+        await comic.save();
+    }
     // if (req.body.deleteImages) {
     //     for (let filename of req.body.deleteImages) {
     //         await cloudinary.uploader.destroy(filename);

@@ -8,6 +8,7 @@ const ComicSchema = new Schema({
     description: String,
     path: String,
     filename: String,
+    image: String,
 }, opts)
 
 
