@@ -24,14 +24,14 @@ const getShows = async () => {
 
 };
 
-const getEpisode = async (req, res) => {
-    try {
-        const res = await axios.get('https://api.transistor.fm/v1/episodes/' + `${ req.params.id }`, config)
-        return res.data.data
-    } catch (e) {
-        console.log(e);
-    }
-}
+// const getEpisode = async () => {
+//     try {
+//         const res = await axios.get('https://api.transistor.fm/v1/episodes/' + `${ req.params.id }`, config)
+//         return res.data.data
+//     } catch (e) {
+//         console.log(e);
+//     }
+// }
 
 module.exports.index = async (req, res) => {
     const epList = await getShows();
@@ -39,14 +39,18 @@ module.exports.index = async (req, res) => {
 };
 
 module.exports.showEpisode = async (req, res) => {
-    const episode = await getEpisode();
-    if (!episode) {
-        req.flash('error', 'Cannot Find that Episode');
-        res.redirect('/episodes');
+    const id = req.params.id
+    const getEpisode = async () => {
+        try {
+            const res = await axios.get('https://api.transistor.fm/v1/episodes/' + `${ id }`, config)
+            return res.data.data;
+        } catch (e) {
+            console.log(e);
+        }
+
     }
+    const episode = await getEpisode();
     res.render('episodes/showEpisode', { episode })
 
 }
-
-
 

@@ -16,6 +16,8 @@ const Comic = require('./models/comics')
 
 require('dotenv').config();
 
+const apiKey = process.env.TRANSISTOR_API_KEY;
+const config = { headers: { 'x-api-key': apiKey } }
 
 const userRoutes = require('./routes/user');
 const comicRoutes = require('./routes/comics')
@@ -108,8 +110,23 @@ app.use('/episodes', episodesRoutes);
 app.use('/', userRoutes);
 
 
-app.get('/', (req, res) => {
-    res.render('home')
+const getLatestShow = async () => {
+    try {
+        const url = `https://api.transistor.fm/v1/episodes?pagination[page]=1&pagination[per]=1`
+        const res = await axios.get(url, config)
+        return res.data.data;
+    } catch (e) {
+        console.log(e);
+    }
+
+};
+
+
+app.get('/', async (req, res) => {
+    const comics = await Comic.find({}).sort({ "filename": -1 })
+    const episode = await getLatestShow();
+
+    res.render('home', { comics, episode })
 });
 
 app.get('/about', (req, res) => {

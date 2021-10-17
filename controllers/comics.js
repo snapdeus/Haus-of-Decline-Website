@@ -28,6 +28,7 @@ module.exports.createComic = async (req, res) => {
 
 
 module.exports.showComic = async (req, res) => {
+
     const comic = await Comic.findById(req.params.id)
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');

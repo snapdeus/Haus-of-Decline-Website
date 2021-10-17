@@ -1,18 +1,19 @@
 <% layout('layout/boilerplate') %>
+    <h1 class="hausFont text-center">EPISODES</h1>
     <% for(let i=0; i < epList.length; i++){ %>
-        <li class='episodeTitle'>
-            <div class='dateSpace'>
+        <li style="color:white" class='episodeTitle'>
+            <div class='dateSpace hausFont mt-4 mb-1'>
                 <%= epList[i].attributes.formatted_published_at %>
             </div>
 
             <a style='color:white; text-decoration: none;' class='link' href="episodes/<%=epList[i].id%>">
                 #<%= epList[i].attributes.number %>
                     <img class='specialBorder' width='150' height='150' loading='lazy'
-                        src="<%= epList[i].attributes.image_url%>  " alt="">
+                        src=" <%= epList[i].attributes.image_url%>  " alt="<%= epList[i].attributes.title %>">
                     - <%= epList[i].attributes.title %>
 
 
-                        <div class='summary'>
+                        <div class='summary mb-4'>
                             <%= epList[i].attributes.summary %>
                         </div>
             </a>
