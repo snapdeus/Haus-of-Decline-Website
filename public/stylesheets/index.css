@@ -100,13 +100,13 @@ body, html {
 }
 
 .borderLine {
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid whitesmoke;
     padding-bottom: 3.5em;
     border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
 }
 
 .borderLineTop {
-    border-top: 1px solid white;
+    border-top: 1px solid whitesmoke;
     border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
     padding-top: 2.5em;
 }
@@ -175,7 +175,7 @@ body, html {
 .navbar-nav {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.3rem;
-    border-bottom: solid white 1px;
+    border-bottom: solid whitesmoke 1px;
     border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
 }
 

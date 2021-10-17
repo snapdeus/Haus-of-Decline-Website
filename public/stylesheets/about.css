@@ -1,0 +1,110 @@
+body, html {
+    background-color: black;
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#aboutText {
+    font-family: 'Share Tech Mono', monospace;
+    color: white;
+    font-size: 26px;
+}
+
+p {
+    margin-top: 1em;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+#followLink {
+    display: block;
+    margin-top: 1em;
+}
+
+#followUs {
+    font-size: 1.3em;
+}
+
+a:hover {
+    transform: translatey(0.1em);
+    text-decoration: none;
+    color: white;
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+}
+
+#topkeep {
+    z-index: 1;
+    margin-bottom: 2rem;
+    text-shadow: 0.1em 0.1em 0.1em rgba(158, 158, 158, 0.727), 2px 2px 2px black;
+}
+
+.navbar-brand {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+}
+
+.navbar-brand:hover, .nav-item:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+    transform: translatey(0.1em);
+}
+
+.navbar-toggler-icon {
+    border-color: white;
+}
+
+.navbar.scrolled {
+    background: rgb(0, 0, 0);
+    transition: background 500ms;
+}
+
+.navbar.activated {
+    background: rgb(0, 0, 0);
+    transition: background 500ms;
+}
+
+.logo {
+    font-size: 2em;
+    display: inline;
+    color: white;
+    margin-left: 5px;
+}
+
+pre {
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    font-size: 8pt;
+    font-weight: bold;
+}
+
+@media (max-width:1199px) {
+    .nav-link {
+        padding-top: 1.2em;
+    }
+}
+
+.hausrise {
+    margin-top: 3.5em;
+}
+
+@media (min-width:1595px) {
+    .hausrise {
+        margin-top: 0;
+    }
+}
+
+.navbar-nav {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 1.3rem;
+    border-bottom: solid white 1px;
+    border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+}
+
+@media (min-width:1199px) {
+    .navbar-nav {
+        border: none;
+    }
+}

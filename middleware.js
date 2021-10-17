@@ -37,3 +37,5 @@ module.exports.resizeComic = (req, res, next) => {
     })
     next()
 }
+
+

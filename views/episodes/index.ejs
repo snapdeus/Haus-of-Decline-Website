@@ -1,0 +1,28 @@
+<% layout('layout/boilerplate') %>
+    <% for(let i=0; i < epList.length; i++){ %>
+        <li class='episodeTitle'>
+            <div class='dateSpace'>
+                <%= epList[i].attributes.formatted_published_at %>
+            </div>
+
+            <a style='color:white; text-decoration: none;' class='link' href="episodes/<%=epList[i].id%>">
+                #<%= epList[i].attributes.number %>
+                    <img class='specialBorder' width='150' height='150' loading='lazy'
+                        src="<%= epList[i].attributes.image_url%>  " alt="">
+                    - <%= epList[i].attributes.title %>
+
+
+                        <div class='summary'>
+                            <%= epList[i].attributes.summary %>
+                        </div>
+            </a>
+
+            <% } %>
+
+        </li>
+
+
+
+
+
+        </ul>
