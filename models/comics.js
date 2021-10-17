@@ -6,7 +6,7 @@ const opts = { toJSON: { virtuals: true } };
 const ComicSchema = new Schema({
     title: String,
     description: String,
-    path: String,
+    // path: String,
     filename: String,
     image: String,
 }, opts)

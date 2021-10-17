@@ -1,4 +1,7 @@
 const Comic = require('../models/comics')
+const fs = require('fs');
+const im = require('imagemagick');
+
 
 module.exports.index = async (req, res) => {
     const comics = await Comic.find({})
@@ -15,13 +18,13 @@ module.exports.createComic = async (req, res) => {
     const comic = new Comic(req.body.comic);
     comic.image = req.file.filename;
     comic.filename = req.file.filename
+
     await comic.save();
     req.flash('success', 'Successfully made a new comic!');
     res.redirect(`/comics/${ comic._id }`)
     // res.send(req.body)
 
 };
-
 
 
 module.exports.showComic = async (req, res) => {
@@ -53,6 +56,11 @@ module.exports.updateComic = async (req, res) => {
     // console.log(req.body);
     const comic = await Comic.findByIdAndUpdate(id, { ...req.body.comic });
     if (req.file) {
+        fs.unlink(`uploads/${ comic.filename }`, function (err) {
+            if (err) throw err;
+            // if no error, file has been deleted successfully
+            console.log('File deleted!');
+        });
         comic.image = req.file.filename;
         comic.filename = req.file.filename
         await comic.save();
@@ -67,9 +75,16 @@ module.exports.updateComic = async (req, res) => {
     res.redirect(`/comics/${ comic._id }`)
 };
 
-module.exports.deleteComic = async (req, res) => {
+module.exports.deleteComic = async (req, res, next) => {
     const { id } = req.params;
+    const comic = await Comic.findById(id);
+    fs.unlink(`uploads/${ comic.filename }`, function (err) {
+        if (err) throw err;
+        // if no error, file has been deleted successfully
+        console.log('File deleted!');
+    });
     await Comic.findByIdAndDelete(id);
+
     req.flash('success', 'Successfully deleted comic!');
     res.redirect('/comics');
 }
