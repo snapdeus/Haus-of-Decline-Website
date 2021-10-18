@@ -1,7 +1,7 @@
 const Comic = require('../models/comics')
 const fs = require('fs');
 const im = require('imagemagick');
-
+const ObjectID = require('mongodb').ObjectId;
 
 module.exports.index = async (req, res) => {
     const comics = await Comic.find({})
@@ -28,7 +28,10 @@ module.exports.createComic = async (req, res) => {
 
 
 module.exports.showComic = async (req, res) => {
-
+    if (!ObjectID.isValid(req.params.id)) {
+        req.session.returnTo = req.session.previousReturnTo;
+        console.log('Invalid campground show id, returnTo reset to:', req.session.returnTo);
+    }
     const comic = await Comic.findById(req.params.id)
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');

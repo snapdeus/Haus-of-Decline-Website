@@ -1,29 +1,51 @@
 <% layout('layout/boilerplate') %>
-    <h1 class="hausFont text-center">EPISODES</h1>
-    <% for(let i=0; i < epList.length; i++){ %>
-        <li style="color:white" class='episodeTitle'>
-            <div class='dateSpace hausFont mt-4 mb-2'>
-                <%= epList[i].attributes.formatted_published_at %>
+    <link rel="stylesheet" href="/stylesheets/episodes.css">
+    <div class="container">
+        <h1 class="hausFont text-center">EPISODES</h1>
+
+
+
+        <% for(let i=0; i < epList.length; i++){ %>
+            <div class="row ">
+                <div class="pb-3 pt-3 pr-3 pl-3 mt-3 mb-3">
+                    <div class="pl-3">
+
+                        <li style="list-style-type: none;" class='episodeTitle'>
+                            <div class='dateSpace hausFont mt-4 mb-2'>
+                                <%= epList[i].attributes.formatted_published_at %>
+                            </div>
+
+                            <a style='color:white; text-decoration: none;' class='hausFont link add '
+                                href="episodes/<%=epList[i].id%>">
+
+                                #<%= epList[i].attributes.number %>
+
+                                    <img class='specialBorder add-hover' width='150' height='150' loading='lazy'
+                                        src=" <%= epList[i].attributes.image_url%>  "
+                                        alt="<%= epList[i].attributes.title %>">
+
+                                    <span class='title mx-auto'>
+                                        <%= epList[i].attributes.title %>
+                                    </span>
+
+
+                                    <div class='summary mt-2 mb-5 hausFont'>
+                                        <%= epList[i].attributes.summary %>
+                                    </div>
+                            </a>
+
+
+                        </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-
-            <a style='color:white; text-decoration: none;' class='link hausFont' href="episodes/<%=epList[i].id%>">
-                #<%= epList[i].attributes.number %>
-                    <img class='specialBorder' width='150' height='150' loading='lazy'
-                        src=" <%= epList[i].attributes.image_url%>  " alt="<%= epList[i].attributes.title %>">
-                    - <%= epList[i].attributes.title %>
-
-
-                        <div class='summary mt-2 mb-5 hausFont'>
-                            <%= epList[i].attributes.summary %>
-                        </div>
-            </a>
-
             <% } %>
 
-        </li>
+                <div class="col-3 col-md-2 fixed-bottom">
+                    <img src="gifs/resources/headernotext.png" class="img-fluid " alt="headerpic">
+                </div>
 
 
 
-
-
-        </ul>
+    </div>

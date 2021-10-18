@@ -1,11 +1,11 @@
 <% layout('layout/boilerplate') %>
-
+    <link rel="stylesheet" href="/stylesheets/episodes.css">
     <div class="container mt-3">
         <div class="row">
             <div class="mx-auto mt-auto ">
 
 
-                <img loading="lazy" style="max-width:350px" class="img-thumbnail specialBorder"
+                <img loading="lazy" style="max-width:350px" class="img-thumbnail specialBorder no-hover"
                     src="<%=episode.attributes.image_url%>" alt="<%= episode.attributes.title %>"
                     title="<%= episode.attributes.title %>">
 
@@ -17,15 +17,17 @@
                 "<%= episode.attributes.title %>"
 
             </h2>
-            <h3 class="hausFont mx-auto mt-3 ">
+        </div>
+        <div class="row">
+            <h5 class="hausFont mx-auto mt-3 ">
                 <%= episode.attributes.formatted_published_at %>
-            </h3>
+            </h5>
 
-            <p class="hausFont mx-auto mt-3 ">
+            <p class="hausFont mx-auto mt-3 summary">
                 <%= episode.attributes.summary %>
             </p>
-
         </div>
+
         <div class="row">
             <%- episode.attributes.embed_html_dark %>
         </div>

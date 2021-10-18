@@ -1,0 +1,22 @@
+.summary {
+    font-size: 20px;
+}
+
+.link {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.link:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+}
+
+.title {
+    font-size: 40px;
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.no-hover {
+    pointer-events: none;
+}

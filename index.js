@@ -96,6 +96,12 @@ passport.deserializeUser(User.deserializeUser());
 
 //LOCALS
 app.use((req, res, next) => {
+    if (!['/login', '/'].includes(req.originalUrl)) {
+        req.session.previousReturnTo = req.session.returnTo; // store the previous url
+        req.session.returnTo = req.originalUrl; // assign a new url
+        // console.log('req.session.previousReturnTo', req.session.previousReturnTo)
+        // console.log('req.session.returnTo', req.session.returnTo);
+    }
     res.locals.currentUser = req.user;
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error');
