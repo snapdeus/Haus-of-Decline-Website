@@ -17,7 +17,7 @@ db.once('open', () => {
 
 const seedDB = async () => {
     await Comic.deleteMany({});
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < comics.length; i++) {
         const comic = new Comic({
             description: `${ comics[i].description }`,
             title: `${ comics[i].title }`,
