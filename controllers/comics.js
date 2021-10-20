@@ -32,7 +32,11 @@ module.exports.showComic = async (req, res) => {
         req.session.returnTo = req.session.previousReturnTo;
         console.log('Invalid campground show id, returnTo reset to:', req.session.returnTo);
     }
+    const { id } = req.params;
     const comic = await Comic.findById(req.params.id)
+    comic.nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
+    comic.prevComic = await Comic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)
+    console.log(comic.nextComic[0], comic.prevComic[0])
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');
         res.redirect('/comics');
@@ -59,6 +63,7 @@ module.exports.updateComic = async (req, res) => {
     const { id } = req.params;
     // console.log(req.body);
     const comic = await Comic.findByIdAndUpdate(id, { ...req.body.comic });
+
     if (req.file) {
         fs.unlink(`uploads/${ comic.filename }`, function (err) {
             if (err) throw err;
@@ -66,7 +71,8 @@ module.exports.updateComic = async (req, res) => {
             console.log('File deleted!');
         });
         comic.image = req.file.filename;
-        comic.filename = req.file.filename
+        comic.filename = req.file.filename;
+
         await comic.save();
     }
     // if (req.body.deleteImages) {

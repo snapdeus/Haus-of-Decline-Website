@@ -1,6 +1,9 @@
 <% layout('layout/boilerplate') %>
-    <div class="container mt-3">
+    <link rel="stylesheet" href="/stylesheets/showComic.css">
+    <div class="container mt-3 mb-3">
+
         <div class="row">
+
             <div class="mx-auto mt-auto ">
 
 
@@ -9,12 +12,58 @@
 
             </div>
 
+
+
         </div>
+
+        <!-- OLD WAY OF DOING ARROWS -->
+        <!-- <div class="row mb-5">
+            <% if (comic.prevComic[0]) {%>
+                <div class="col-6 ml-auto">
+                    <a class="arrow arrow-left " title="Previous" href="/comics/<%=comic.prevComic[0]._id%>"></a>
+                </div>
+                <% } %>
+                    <% if (comic.nextComic[0].filename) {%>
+                        <div class="col-6 mr-auto">
+                            <a class="arrow arrow-right" title="Next" href="/comics/<%=comic.nextComic[0]._id%>"></a>
+                        </div>
+                        <% } %>
+                            <div class="arrow arrow--left">
+                                <span></span>
+                            </div>
+        </div> -->
+
+
+
+
+
+        <!-- <div id="arrow_2" class="arrow-wrapper">
+            <div class="arrow arrow--left">
+                <span>Prev</span>
+            </div>
+
+
+
+            <div class="arrow arrow--right">
+                <span>Next</span>
+            </div>
+        </div> -->
+
+
+
+        <!-- <a class="arrow arrow-left" title="Next" href=""></a>
+
         <div class="row">
+
             <h2 class="hausFont mx-auto mt-3 ">
                 "<%= comic.title %>"
-
             </h2>
+
+        </div>
+
+        <a class="arrow arrow-right" title="Next" href=""></a> -->
+
+        <div class="row">
             <% if(currentUser) {%>
                 <div class="col-md-3">
                     <div class="card-body">
@@ -27,4 +76,36 @@
                 <% } %>
         </div>
 
+    </div>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 text-center">
+                <div id="arrow_2" class="arrow-wrapper">
+                    <% if (comic.prevComic[0]) {%>
+
+                        <a style="text-decoration: none;" title="Previous" href="/comics/<%=comic.prevComic[0]._id%>">
+                            <div class="arrow arrow--left">
+                                <span>Prev</span>
+                            </div>
+                        </a>
+                        <% } %>
+                            <div>
+                                <h2 class="hausFont text-center mt-3 px-5 title">
+
+                                    "<%= comic.title %>"
+                                </h2>
+                            </div>
+                            <% if (comic.nextComic[0]) {%>
+
+                                <a style="text-decoration: none;" title="Previous"
+                                    href="/comics/<%=comic.nextComic[0]._id%>">
+                                    <div class="arrow arrow--right">
+                                        <span>Next</span>
+                                    </div>
+                                </a>
+                                <% } %>
+                </div>
+            </div>
+        </div>
     </div>

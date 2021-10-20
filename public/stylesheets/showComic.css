@@ -1,0 +1,180 @@
+/* .arrow {
+    position: absolute;
+    padding: 1rem; */
+
+/* Arrow size */
+
+/*
+    box-shadow: 4px -4px 0 4px white inset;
+    -webkit-box-shadow: 1px -1px white inset;
+    border: solid transparent;
+    border-width: 0 0 1rem 1rem;
+    transition: 0.2s;
+}
+
+.arrow:hover {
+    box-shadow: 4px -2px 0 2px white inset;
+    -webkit-box-shadow: 4px -4px white inset;
+}
+
+.arrow-up {
+    transform: rotate(135deg)
+}
+
+.arrow-right {
+    transform: rotate(225deg)
+}
+
+.arrow-down {
+    transform: rotate(-45deg)
+}
+
+.arrow-left {
+    transform: rotate(45deg)
+}
+*/
+
+/** Layout */
+
+@import url("https://fonts.googleapis.com/css?family=Righteous");
+span {
+    font-family: Righteous;
+    font-size: larger;
+}
+
+hr {
+    width: 33%;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-width: 2px 0;
+    border-style: solid;
+    margin: 3em 0;
+}
+
+.arrow-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.block {
+    width: 300px;
+    height: 100px;
+    background: #eee;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-wrapper:hover h1 {
+    opacity: 1;
+}
+
+/***************
+ * Arrow 2
+ ***************/
+
+#arrow_2 .arrow {
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    align-items: flex-end;
+    text-transform: uppercase;
+    position: relative;
+    transition: transform 0.1s;
+}
+
+#arrow_2 .arrow span {
+    display: block;
+    width: 3em;
+    opacity: 0;
+    transition: opacity 0.3s 0s;
+    padding: 0 0.5em;
+}
+
+#arrow_2 .arrow:hover span {
+    opacity: 1;
+    transition: opacity 0.1s 0.1s;
+}
+
+#arrow_2 .arrow:before {
+    content: "";
+    display: block;
+    border: solid #fff;
+    border-width: 2px 2px 0 0;
+    position: absolute;
+    top: .6em;
+    width: 14px;
+    height: 14px;
+}
+
+#arrow_2 .arrow.arrow--left:before {
+    transform: rotate(-135deg);
+    right: 0;
+    transition: right 0.1s 0.1s;
+}
+
+#arrow_2 .arrow.arrow--left:hover:before {
+    right: 100%;
+    transition: right 0.1s;
+}
+
+#arrow_2 .arrow.arrow--right {
+    text-align: right;
+}
+
+#arrow_2 .arrow.arrow--right:before {
+    left: 0;
+    transform: rotate(45deg);
+    transition: left 0.1s 0.1s;
+}
+
+#arrow_2 .arrow.arrow--right:hover:before {
+    left: 100%;
+    transition: left 0.1s;
+}
+
+#arrow_2 .arrow:hover {
+    transform: none;
+}
+
+@media (min-width:200px) {
+    .title {
+        margin-top: .5em;
+        font-size: 18px;
+        display: block;
+    }
+    .summary {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:400px) {
+    .title {
+        margin-top: .5em;
+        font-size: 22px;
+        display: block;
+    }
+    .summary {
+        font-size: 18px;
+    }
+}
+
+@media (min-width:700px) {
+    .title {
+        font-size: 22px;
+        display: inline;
+    }
+    .summary {
+        font-size: 20px;
+    }
+}
+
+@media (min-width:900px) {
+    .title {
+        font-size: 24px;
+        display: inline;
+    }
+    .summary {
+        font-size: 20px;
+    }
+}
