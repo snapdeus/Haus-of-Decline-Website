@@ -20,3 +20,51 @@
 .no-hover {
     pointer-events: none;
 }
+
+.borderNoHover {
+    border-radius: 0;
+    background-color: #000;
+    border: 3px double #fff;
+}
+
+@media (min-width:200px) {
+    .title {
+        margin-top: .5em;
+        font-size: 18px;
+        display: block;
+    }
+    .summary {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:400px) {
+    .title {
+        margin-top: .5em;
+        font-size: 22px;
+        display: block;
+    }
+    .summary {
+        font-size: 18px;
+    }
+}
+
+@media (min-width:700px) {
+    .title {
+        font-size: 22px;
+        display: inline;
+    }
+    .summary {
+        font-size: 20px;
+    }
+}
+
+@media (min-width:900px) {
+    .title {
+        font-size: 24px;
+        display: inline;
+    }
+    .summary {
+        font-size: 20px;
+    }
+}

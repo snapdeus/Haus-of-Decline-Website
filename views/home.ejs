@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <div class="mx-auto mb-3">
-                <h1 class="display hausFont">
+                <h1 class="display hausFont text-center">
                     Listen & Subscribe
                 </h1>
             </div>
@@ -108,10 +108,12 @@
             </div>
         </div>
 
-        <div class="row align-items-center bottomSpacer">
+        <div class="row align-items-center bottomSpacer mt-5">
             <div class="descripNoPad mx-auto">
-                <a style='color:white; text-decoration: underline;' class='link' href="/comics">Comics Index
-                </a>
+                <button class="btn btn-dark">
+                    <a style='color:white; text-decoration: underline;' class='link' href="/comics">Comics Index
+                    </a>
+                </button>
             </div>
         </div>
 
@@ -143,6 +145,10 @@
 
     <script>
         $(function () {
+
+            const sourceImg = $("div.carousel-item").find("img")
+            height = sourceImg.height()
+            $(".carousel").css("height", height);
             $('.carousel.lazy-load').bind('slide.bs.carousel', function (e) {
                 var image = $(e.relatedTarget).find('img[data-src]');
                 image.attr('src', image.data('src'));

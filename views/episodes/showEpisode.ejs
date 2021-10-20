@@ -1,25 +1,27 @@
 <% layout('layout/boilerplate') %>
-    <link rel="stylesheet" href="/stylesheets/episodes.css">
+    <link rel="stylesheet" href="/stylesheets/showEpisode.css">
     <div class="container mt-3">
+        <div class="row mb-5">
+            <%- episode.attributes.embed_html_dark %>
+        </div>
         <div class="row">
-            <div class="mx-auto mt-auto ">
+            <div class="mx-auto mt-auto col-8 col-sm-6 col-lg-4">
 
 
-                <img loading="lazy" style="max-width:350px" class="img-thumbnail specialBorder no-hover"
-                    src="<%=episode.attributes.image_url%>" alt="<%= episode.attributes.title %>"
-                    title="<%= episode.attributes.title %>">
+                <img loading="lazy" class="img-thumbnail borderNoHover no-hover" src="<%=episode.attributes.image_url%>"
+                    alt="<%= episode.attributes.title %>" title="<%= episode.attributes.title %>">
 
             </div>
 
         </div>
         <div class="row">
-            <h2 class="hausFont mx-auto mt-3 ">
+            <h2 class="hausFont mx-auto mt-3 title">
                 "<%= episode.attributes.title %>"
 
             </h2>
         </div>
         <div class="row">
-            <h5 class="hausFont mx-auto mt-3 ">
+            <h5 class="hausFont mx-auto mt-3 summary" style="font-style: italic;">
                 <%= episode.attributes.formatted_published_at %>
             </h5>
 
@@ -28,8 +30,6 @@
             </p>
         </div>
 
-        <div class="row">
-            <%- episode.attributes.embed_html_dark %>
-        </div>
+
 
     </div>
