@@ -6,7 +6,7 @@
 
 
         <% for(let i=0; i < epList.length; i++){ %>
-            <div class="row epBorderLine">
+            <div class="row mx-5">
                 <div class=" pt-3 pr-3 pl-3 mt-3 mb-3">
                     <div class="pl-3">
 
@@ -16,20 +16,20 @@
                             </div>
 
                             <a style='color:white; text-decoration: none;' class='hausFont link add '
-                                href="episodes/<%=epList[i].id%>">
+                                href="<%= pageNumber %>/<%=epList[i].id%>">
 
                                 #<%= epList[i].attributes.number %>
 
-                                    <img class='specialBorder add-hover' width='150' height='150' loading='lazy'
+                                    <img class='specialBorder add-hover' width='200' height='200' loading='lazy'
                                         src=" <%= epList[i].attributes.image_url%>  "
                                         alt="<%= epList[i].attributes.title %>">
 
-                                    <span class='title mx-auto'>
+                                    <span class='title text-center mt-3' style="display:block">
                                         <%= epList[i].attributes.title %>
                                     </span>
 
 
-                                    <div class='summary mt-2 mb-5 hausFont'>
+                                    <div class='row summary mt-3 mb-5 hausFont'>
                                         <%= epList[i].attributes.summary %>
                                     </div>
                             </a>
@@ -40,7 +40,50 @@
                     </div>
                 </div>
             </div>
+            <div class="epBorderLine"></div>
             <% } %>
+
+                <nav class="mt-5" aria-label="Page navigation example">
+                    <ul class="pagination pagination-lg justify-content-center">
+                        <% if (metaData.currentPage===1) { %>
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item active"><a class="page-link" href="<%= metaData.currentPage %>">
+                                    <%= metaData.currentPage %>
+                                </a></li>
+                            <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
+                                    <%= metaData.currentPage +1 %>
+                                </a></li>
+                            <li class="page-item"><a class="page-link" href="<%= metaData.currentPage + 2%>">
+                                    <%= metaData.currentPage + 2 %>
+                                </a></li>
+
+
+                            <% } else { %>
+                                <li class="page-item">
+                                    <a class="page-link" href="<%= metaData.currentPage -1 %>"
+                                        tabindex="-1">Previous</a>
+                                </li>
+
+                                <li class="page-item"><a class="page-link" href="<%= metaData.currentPage -1 %>">
+                                        <%= metaData.currentPage -1 %>
+                                    </a></li>
+                                <li class="page-item active"><a class="page-link" href="<%= metaData.currentPage %>">
+                                        <%= metaData.currentPage %>
+                                    </a></li>
+                                <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
+                                        <%= metaData.currentPage + 1 %>
+                                    </a></li>
+                                <% } %>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
+                                    </li>
+                    </ul>
+                </nav>
+
+
+
 
                 <div class="col-3 col-md-2 fixed-bottom">
                     <img src="gifs/resources/headernotext.png" class="img-fluid " alt="headerpic">

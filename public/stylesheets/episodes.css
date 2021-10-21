@@ -14,7 +14,7 @@
 .title {
     font-size: 40px;
     text-decoration: none;
-    color: whitesmoke;
+    color: white;
 }
 
 .disabled {
@@ -26,6 +26,28 @@
 .epBorderLine {
     border-bottom: 1px solid whitesmoke;
     border-image: linear-gradient(90deg, rgb(0, 0, 0), rgba(255, 255, 255, .5), rgb(0, 0, 0)) 1;
+}
+
+.pagination>li>a {
+    background-color: #263238;
+    color: #CFD8DC;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    color: white;
+    background-color: #546E7A;
+    border-color: #ddd;
+}
+
+.pagination>.active>a {
+    color: white;
+    background-color: #90A4AE!Important;
+    border: solid 1px whitesmoke !Important;
+}
+
+.pagination>.active>a:hover {
+    background-color: #CFD8DC !Important;
+    border: solid 1px #5A4181;
 }
 
 @media (min-width:200px) {

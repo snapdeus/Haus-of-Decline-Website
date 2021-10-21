@@ -92,7 +92,7 @@ body, html {
     font-family: "Share Tech Mono";
     padding-top: .5em;
     padding-bottom: 3em;
-    font-size: 1em;
+    font-size: 1.5em;
     text-decoration: none;
 }
 
@@ -139,6 +139,16 @@ body, html {
 }
 
 .carousel-control-prev {
+    align-items: flex-end;
+    margin-bottom: -50px;
+}
+
+.carousel-control-next {
+    align-items: flex-end;
+    margin-bottom: -50px;
+}
+
+/* .carousel-control-prev {
     margin-left: -60px;
 }
 
@@ -189,7 +199,7 @@ body, html {
     .carousel-control-next {
         margin-right: -60px;
     }
-}
+} */
 
 @media (min-width:700px) {
     .blurb {
