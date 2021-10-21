@@ -13,6 +13,7 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize')
 const User = require('./models/user');
 const Comic = require('./models/comics')
+const helmet = require('helmet')
 
 require('dotenv').config();
 
@@ -51,6 +52,64 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static('uploads'));
+app.use(helmet());
+
+const scriptSrcUrls = [
+    "https://stackpath.bootstrapcdn.com",
+    "https://kit.fontawesome.com",
+    "https://cdnjs.cloudflare.com",
+    "https://cdn.jsdelivr.net",
+    "https://code.jquery.com",
+    "https://share.transistor.fm",
+    "https://assets.transistor.fm",
+    "https://use.fontawesome.com"
+];
+const styleSrcUrls = [
+    "https://kit-free.fontawesome.com",
+    "https://stackpath.bootstrapcdn.com",
+    "https://fonts.googleapis.com",
+    "https://use.fontawesome.com",
+    "https://share.transistor.fm",
+    "https://assets.transistor.fm"
+    
+];
+const connectSrcUrls = [
+    "https://api.transistor.fm",
+    "https://i.creativecommons.org",
+    "https://assets.transistor.fm"
+];
+const fontSrcUrls = [
+    "https://fonts.gstatic.com",
+    "https://fonts.googleapis.com"
+];
+app.use(
+    helmet.contentSecurityPolicy({
+        directives: {
+            defaultSrc: [],
+            connectSrc: ["'self'", ...connectSrcUrls],
+            scriptSrc: ["'unsafe-inline'", "'self'", ...scriptSrcUrls],
+            styleSrc: ["'self'", "'unsafe-inline'", ...styleSrcUrls],
+            workerSrc: ["'self'", "blob:"],
+            childSrc: [
+                "blob:",
+                "https://share.transistor.fm", 
+                "https://assets.transistor.fm"
+            ],
+            objectSrc: [],
+            imgSrc: [
+                "'self'",
+                "blob:",
+                "data:",
+                "https://share.transistor.fm",
+                "https://images.transistor.fm",
+                "https://assets.transistor.fm",
+                "https://licensebuttons.net",
+                "https://i.creativecommons.org"
+            ],
+            fontSrc: ["'self'", ...fontSrcUrls],
+        },
+    })
+);
 
 app.use(mongoSanitize({
     replaceWith: '_'
@@ -61,7 +120,7 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'squirrel'
+        secret: "squirrel"
     }
 });
 store.on("error", function (e) {
@@ -69,15 +128,16 @@ store.on("error", function (e) {
 })
 
 
+
 const sessionConfig = {
     store,
     name: "session",
-    secret: 'thisshouldbesecret!',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
+        secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }

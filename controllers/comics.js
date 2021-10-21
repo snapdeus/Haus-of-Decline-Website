@@ -34,14 +34,14 @@ module.exports.showComic = async (req, res) => {
     }
     const { id } = req.params;
     const comic = await Comic.findById(req.params.id)
-    comic.nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
-    comic.prevComic = await Comic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)
-    console.log(comic.nextComic[0], comic.prevComic[0])
+    const nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
+    const prevComic = await Comic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)
+    console.log(nextComic, prevComic)
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');
         res.redirect('/comics');
     }
-    res.render('comics/showComic', { comic });
+    res.render('comics/showComic', { comic, nextComic, prevComic });
     //TESTING THAT FLASH WORKS
     // req.flash('error', 'Cannot Find that Comic');
     // res.redirect('/');

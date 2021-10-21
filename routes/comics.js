@@ -31,7 +31,7 @@ router.get('/new', isLoggedIn, comics.renderNewForm);
 router.route('/:id')
     .get(catchAsync(comics.showComic))
     .put(isLoggedIn, upload.single('image'), validateComic, catchAsync(comics.updateComic))
-    .delete(catchAsync(isLoggedIn, comics.deleteComic));
+    .delete(isLoggedIn, comics.deleteComic);
 
 router.get('/:id/edit', isLoggedIn, catchAsync(comics.renderEditForm));
 

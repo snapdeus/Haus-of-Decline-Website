@@ -12,9 +12,8 @@ footer {
     /* Height of the footer */
 }
 
-@import url("https://fonts.googleapis.com/css?family=Righteous");
 span {
-    font-family: Righteous;
+    font-family: "Share Tech Mono";
     font-size: larger;
 }
 
