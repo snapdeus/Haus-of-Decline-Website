@@ -4,7 +4,7 @@
 
         <div class="row">
 
-            <div class="mx-auto mt-auto ">
+            <div class="col-lg-10 mx-auto mt-auto ">
 
 
                 <img loading="lazy" class="img-thumbnail specialBorder" src="/uploads/<%= comic.filename %>"
@@ -81,17 +81,17 @@
     <div class="container">
         <div class="row ">
             <div class="col-12 text-center">
-                <div id="arrow_2" class="arrow-wrapper">
+                <div id="arrow_2" class="arrow-wrapper text-center ">
                     <% if (comic.prevComic[0]) {%>
 
                         <a style="text-decoration: none;" title="Previous" href="/comics/<%=comic.prevComic[0]._id%>">
-                            <div class="arrow arrow--left">
+                            <div class="arrow arrow--left add-hover">
                                 <span>Prev</span>
                             </div>
                         </a>
                         <% } %>
                             <div>
-                                <h2 class="hausFont text-center mt-3 px-5 title">
+                                <h2 class="hausFont text-center mt-3 px-4 title">
 
                                     "<%= comic.title %>"
                                 </h2>
@@ -100,7 +100,7 @@
 
                                 <a style="text-decoration: none; color:white;" title="Next"
                                     href="/comics/<%=comic.nextComic[0]._id%>">
-                                    <div class="arrow arrow--right">
+                                    <div class="arrow arrow--right ">
                                         <span>Next</span>
                                     </div>
                                 </a>
@@ -108,4 +108,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="row align-items-center bottomSpacer">
+            <div class="descripNoPad mx-auto">
+                <button class="btn btn-dark">
+                    <a style='color:white; text-decoration: underline;' class='link' href="/comics">Comics Index
+                    </a>
+                </button>
+            </div>
+        </div>
+
     </div>

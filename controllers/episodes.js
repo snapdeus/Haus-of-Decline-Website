@@ -72,8 +72,9 @@ module.exports.showEpisode = async (req, res) => {
         }
 
     }
+
     const episode = await getEpisode();
-    res.render('episodes/showEpisode', { episode })
+    res.render('episodes/showEpisode', { episode, pageNumber })
 
 }
 

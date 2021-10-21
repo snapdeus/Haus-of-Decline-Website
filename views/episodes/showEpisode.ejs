@@ -5,7 +5,7 @@
             <%- episode.attributes.embed_html_dark %>
         </div>
         <div class="row">
-            <div class="mx-auto mt-auto col-8 col-sm-6 col-lg-4">
+            <div class="mx-auto mt-auto col-8 col-sm-6 col-lg-3">
 
 
                 <img loading="lazy" class="img-thumbnail borderNoHover no-hover" src="<%=episode.attributes.image_url%>"
@@ -29,7 +29,15 @@
                 <%= episode.attributes.summary %>
             </p>
         </div>
-
+        <div class="row align-items-center bottomSpacer">
+            <div class="descripNoPad mx-auto">
+                <button class="btn btn-dark">
+                    <a style='color:white; text-decoration: underline;' class='link'
+                        href="/episodes/<%=pageNumber%>">Episode Index
+                    </a>
+                </button>
+            </div>
+        </div>
 
 
     </div>

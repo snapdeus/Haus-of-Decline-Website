@@ -2,13 +2,15 @@
     <link rel="stylesheet" href="/stylesheets/episodes.css">
     <div class="container">
         <h1 class="display-4 mt-2 hausFont text-center">EPISODES</h1>
+        <p class=" hausFont text-center">Page <%=pageNumber%>
+        </p>
 
 
 
         <% for(let i=0; i < epList.length; i++){ %>
-            <div class="row mx-5">
-                <div class=" pt-3 pr-3 pl-3 mt-3 mb-3">
-                    <div class="pl-3">
+            <div class="row mx-5 ">
+                <div class=" pt-3 pr-3 pl-3 mt-3 mb-3 ">
+                    <div class="pl-3 ">
 
                         <li style="list-style-type: none;" class='episodeTitle'>
                             <div style="font-style: italic;" class='dateSpace hausFont mt-4 mb-2 '>
@@ -20,7 +22,7 @@
 
                                 #<%= epList[i].attributes.number %>
 
-                                    <img class='specialBorder add-hover' width='200' height='200' loading='lazy'
+                                    <img class='specialBorder add-hover epList' loading='lazy'
                                         src=" <%= epList[i].attributes.image_url%>  "
                                         alt="<%= epList[i].attributes.title %>">
 
@@ -85,10 +87,11 @@
 
 
 
-                <div class="col-3 col-md-2 fixed-bottom">
-                    <img src="gifs/resources/headernotext.png" class="img-fluid " alt="headerpic">
-                </div>
 
 
 
+
+    </div>
+    <div class="col-3 col-md-2 fixed-bottom">
+        <img src="../gifs/resources/headernotext.png" class="img-fluid " alt="headerpic">
     </div>
