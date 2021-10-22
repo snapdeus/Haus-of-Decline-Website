@@ -2,15 +2,15 @@
     <link rel="stylesheet" href="/stylesheets/episodes.css">
     <div class="container">
         <h1 class="display-4 mt-2 hausFont text-center">EPISODES</h1>
-        <p class=" hausFont text-center">Page <%=pageNumber%>
-        </p>
+
+
 
 
 
         <% for(let i=0; i < epList.length; i++){ %>
             <div class="row mx-5 ">
-                <div class=" pt-3 pr-3 pl-3 mt-3 mb-3 ">
-                    <div class="pl-3 ">
+                <div class=" pt-3 pr-3 pl-3 mt-3 mb-3 text-center">
+                    <div>
 
                         <li style="list-style-type: none;" class='episodeTitle'>
                             <div style="font-style: italic;" class='dateSpace hausFont mt-4 mb-2 '>
@@ -22,12 +22,12 @@
 
                                 #<%= epList[i].attributes.number %>
 
-                                    <img class='specialBorder add-hover epList' loading='lazy'
+                                    <img class='specialBorder add-hover epList ' loading='lazy'
                                         src=" <%= epList[i].attributes.image_url%>  "
                                         alt="<%= epList[i].attributes.title %>">
 
                                     <span class='title text-center mt-3' style="display:block">
-                                        <%= epList[i].attributes.title %>
+                                        "<%= epList[i].attributes.title %>"
                                     </span>
 
 
@@ -45,7 +45,7 @@
             <div class="epBorderLine"></div>
             <% } %>
 
-                <nav class="mt-5" aria-label="Page navigation example">
+                <nav class="mt-5" aria-label="Episode Page Navigation">
                     <ul class="pagination pagination-lg justify-content-center">
                         <% if (metaData.currentPage===1) { %>
                             <li class="page-item disabled">
@@ -60,7 +60,9 @@
                             <li class="page-item"><a class="page-link" href="<%= metaData.currentPage + 2%>">
                                     <%= metaData.currentPage + 2 %>
                                 </a></li>
-
+                            <li class="page-item">
+                                <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
+                            </li>
 
                             <% } else { %>
                                 <li class="page-item">
@@ -74,17 +76,23 @@
                                 <li class="page-item active"><a class="page-link" href="<%= metaData.currentPage %>">
                                         <%= metaData.currentPage %>
                                     </a></li>
-                                <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
-                                        <%= metaData.currentPage + 1 %>
-                                    </a></li>
-                                <% } %>
+
+                                <% if (metaData.currentPage !==metaData.totalPages) { %>
+                                    <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
+                                            <%= metaData.currentPage + 1 %>
+                                        </a></li>
                                     <li class="page-item">
                                         <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
                                     </li>
+                                    <% } else { %>
+
+                                        <li class="page-item disabled">
+                                            <a class="page-link" href="#" tabindex="-1">Next</a>
+                                        </li>
+                                        <% } %>
+                                            <% } %>
                     </ul>
                 </nav>
-
-
 
 
 

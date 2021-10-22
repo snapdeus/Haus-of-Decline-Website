@@ -71,7 +71,7 @@ const styleSrcUrls = [
     "https://use.fontawesome.com",
     "https://share.transistor.fm",
     "https://assets.transistor.fm"
-    
+
 ];
 const connectSrcUrls = [
     "https://api.transistor.fm",
@@ -92,7 +92,7 @@ app.use(
             workerSrc: ["'self'", "blob:"],
             childSrc: [
                 "blob:",
-                "https://share.transistor.fm", 
+                "https://share.transistor.fm",
                 "https://assets.transistor.fm"
             ],
             objectSrc: [],

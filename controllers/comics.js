@@ -36,7 +36,7 @@ module.exports.showComic = async (req, res) => {
     const comic = await Comic.findById(req.params.id)
     const nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
     const prevComic = await Comic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)
-    console.log(nextComic, prevComic)
+    // console.log(nextComic, prevComic)
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');
         res.redirect('/comics');
