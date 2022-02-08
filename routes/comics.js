@@ -3,7 +3,7 @@ const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const Comic = require('../models/comics');
 const comics = require('../controllers/comics');
-const { validateComic, resizeComic, isLoggedIn } = require('../middleware.js');
+const { validateComic, resizeComic, isLoggedIn, isAuthor } = require('../middleware.js');
 const multer = require('multer');
 const im = require('imagemagick');
 
@@ -30,10 +30,10 @@ router.get('/new', isLoggedIn, comics.renderNewForm);
 
 router.route('/:id')
     .get(catchAsync(comics.showComic))
-    .put(isLoggedIn, upload.single('image'), validateComic, catchAsync(comics.updateComic))
-    .delete(isLoggedIn, comics.deleteComic);
+    .put(isLoggedIn, isAuthor, upload.single('image'), validateComic, catchAsync(comics.updateComic))
+    .delete(isLoggedIn, isAuthor, comics.deleteComic);
 
-router.get('/:id/edit', isLoggedIn, catchAsync(comics.renderEditForm));
+router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(comics.renderEditForm));
 
 
 module.exports = router;

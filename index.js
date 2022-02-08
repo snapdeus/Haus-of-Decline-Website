@@ -137,7 +137,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -156,14 +156,17 @@ passport.deserializeUser(User.deserializeUser());
 
 //LOCALS
 app.use((req, res, next) => {
-    if (!['/login', '/'].includes(req.originalUrl)) {
+    if (!['/login'].includes(req.originalUrl)) {
+
         req.session.previousReturnTo = req.session.returnTo; // store the previous url
         req.session.returnTo = req.originalUrl; // assign a new url
-        // console.log('req.session.previousReturnTo', req.session.previousReturnTo)
-        // console.log('req.session.returnTo', req.session.returnTo);
+
     }
+
     res.locals.currentUser = req.user;
+
     res.locals.success = req.flash('success');
+
     res.locals.error = req.flash('error');
     next();
 })
@@ -171,6 +174,7 @@ app.use((req, res, next) => {
 
 
 //ROUTES
+
 app.use('/comics', comicRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/', userRoutes);

@@ -12,6 +12,18 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 };
 
+module.exports.isAuthor = async (req, res, next) => {
+    const { id } = req.params;
+    const comic = await Comic.findById(id);
+    console.log(comic.author)
+    console.log(req.user._id)
+    if (!comic.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission.');
+        return res.redirect(`/comics/${ id }`)
+    }
+    next();
+}
+
 module.exports.validateComic = (req, res, next) => {
 
     const { error } = comicSchema.validate(req.body);

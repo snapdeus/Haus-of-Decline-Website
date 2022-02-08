@@ -9,6 +9,10 @@ const ComicSchema = new Schema({
     // path: String,
     filename: String,
     image: String,
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    },
 }, opts)
 
 
