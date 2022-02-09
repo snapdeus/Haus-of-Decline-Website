@@ -1,6 +1,7 @@
-const { comicSchema } = require('./schemas.js')
+const { comicSchema, commentSchema } = require('./schemas.js')
 const ExpressError = require('./utils/ExpressError');
 const Comic = require('./models/comics');
+const Comment = require('./models/comment')
 const im = require('imagemagick');
 
 module.exports.isLoggedIn = (req, res, next) => {
@@ -48,6 +49,26 @@ module.exports.resizeComic = (req, res, next) => {
 
     })
     next()
+};
+
+module.exports.isCommentAuthor = async (req, res, next) => {
+    const { id, commentId } = req.params;
+    const comment = await Comment.findById(commentId);
+    if (!comment.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission.');
+        return res.redirect(`/campgrounds/${ id }`)
+    }
+    next();
+}
+
+module.exports.validateComment = (req, res, next) => {
+    const { error } = commentSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next()
+    }
 }
 
 

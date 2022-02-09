@@ -33,7 +33,13 @@ module.exports.showComic = async (req, res) => {
         console.log('Invalid campground show id, returnTo reset to:', req.session.returnTo);
     }
     const { id } = req.params;
-    const comic = await Comic.findById(req.params.id)
+    const comic = await Comic.findById(req.params.id).populate({
+        path: 'comments',
+        populate: {
+            path: 'author'
+        }
+    }).populate('author');
+
     const nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
     const prevComic = await Comic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)
     // console.log(nextComic, prevComic)
