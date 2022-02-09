@@ -13,6 +13,7 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize')
 const User = require('./models/user');
 const Comic = require('./models/comics')
+const Comment = require('./models/comment')
 const helmet = require('helmet')
 
 require('dotenv').config();
@@ -177,10 +178,7 @@ app.use((req, res, next) => {
 
 //ROUTES
 
-app.use('/comics', comicRoutes);
-app.use('/comics/:id/comments', commentRoutes)
-app.use('/episodes', episodesRoutes);
-app.use('/', userRoutes);
+
 
 
 const getLatestShow = async () => {
@@ -206,7 +204,10 @@ app.get('/about', (req, res) => {
     res.render('about')
 });
 
-
+app.use('/comics', comicRoutes);
+app.use('/comics/:id/comments', commentRoutes)
+app.use('/episodes', episodesRoutes);
+app.use('/', userRoutes);
 
 //EPISODES SECTION
 

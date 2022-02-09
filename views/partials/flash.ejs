@@ -13,3 +13,14 @@
                             aria-hidden="true">&times;</span></button>
             </div>
             <% } %>
+
+                <!-- THE BELOW script HIDES THE ALERT -->
+                <script>
+                    $(document).ready(function () {
+                        // show the alert
+                        setTimeout(function () {
+                            $(".alert").alert('close');
+                        }, 2000);
+                    });
+
+                </script>

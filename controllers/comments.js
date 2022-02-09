@@ -2,8 +2,11 @@ const Comment = require('../models/comment');
 const Comic = require('../models/comics');
 
 module.exports.createComment = async (req, res) => {
-    const comic = await Comic.findById(req.params.id);
-    const comment = new Comment(req.body.review);
+
+    const comic = await Comic.findById(req.params.id)
+    const comment = new Comment(req.body.comment);
+
+
     comment.author = req.user._id;
     comic.comments.push(comment);
     await comment.save();

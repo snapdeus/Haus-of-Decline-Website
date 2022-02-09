@@ -18,7 +18,7 @@ module.exports.createComic = async (req, res) => {
     const comic = new Comic(req.body.comic);
     comic.image = req.file.filename;
     comic.filename = req.file.filename
-
+    comic.author = req.user._id;
     await comic.save();
     req.flash('success', 'Successfully made a new comic!');
     res.redirect(`/comics/${ comic._id }`)
@@ -39,6 +39,7 @@ module.exports.showComic = async (req, res) => {
             path: 'author'
         }
     }).populate('author');
+
 
     const nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
     const prevComic = await Comic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)

@@ -5,7 +5,7 @@ html, body {
 }
 
 footer {
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: auto;
     height: 40px;
@@ -42,6 +42,10 @@ hr {
 
 .arrow-wrapper:hover h1 {
     opacity: 1;
+}
+
+.commentBox {
+    background: #343a40;
 }
 
 /***************
