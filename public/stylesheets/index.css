@@ -201,6 +201,8 @@ body, html {
     }
 } */
 
+
+
 @media (min-width:700px) {
     .blurb {
         font-size: 1.1em;
@@ -217,9 +219,11 @@ body, html {
     .blurb {
         font-size: .8em;
     }
+
     .listenAnd {
         font-size: 1.8em;
     }
+
     .borderLine {
         padding-bottom: 1.2em;
     }
@@ -229,6 +233,7 @@ body, html {
     .blurb {
         font-size: .7em;
     }
+
     .listenAnd {
         font-size: 1.3em;
     }
@@ -295,6 +300,7 @@ body, html {
         justify-content: center;
         margin-bottom: 1.5em
     }
+
     .subscribeOptions a {
         width: 30%;
         text-align: center;

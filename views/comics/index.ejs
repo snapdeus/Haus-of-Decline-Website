@@ -11,7 +11,7 @@
             <div class="row">
                 <% } %>
                     <div class="col-lg-4  col-xs-12">
-                        <a href="/comics/<%=comics[i]._id%> " data-fancybox="gallery"
+                        <a href="/comics/<%=pageNumber%>/<%=comics[i]._id%> " data-fancybox="gallery"
                             data-caption="<%= comics[i].title %>">
                             <img loading="lazy" class="img-thumbnail sizernh" src="/uploads/<%= comics[i].filename %> "
                                 alt="<%= comics[i].description %>" title="<%= comics[i].title %> ">
@@ -20,6 +20,54 @@
                     <% } %>
             </div>
 
+            <nav class="mt-5" aria-label="Episode Page Navigation">
+                <ul class="pagination pagination-lg justify-content-center hausFont">
+
+                    <% if (pageNumber===1) { %>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
+                                <%= pageNumber %>
+                            </a></li>
+                        <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                <%= pageNumber +1 %>
+                            </a></li>
+                        <li class="page-item"><a class="page-link" href="<%= pageNumber + 2%>">
+                                <%= pageNumber + 2 %>
+                            </a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                        </li>
+
+                        <% } else { %>
+                            <li class="page-item">
+                                <a class="page-link" href="<%= pageNumber -1 %>" tabindex="-1">Previous</a>
+                            </li>
+
+                            <li class="page-item"><a class="page-link" href="<%= pageNumber -1 %>">
+                                    <%= pageNumber -1 %>
+                                </a></li>
+                            <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
+                                    <%= pageNumber %>
+                                </a></li>
+
+                            <% if (pageNumber !==12) { %>
+                                <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                        <%= pageNumber + 1 %>
+                                    </a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                </li>
+                                <% } else { %>
+
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Next</a>
+                                    </li>
+                                    <% } %>
+                                        <% } %>
+                </ul>
+            </nav>
 
 
             <!-- <script src="js/fancybox-master/dist/jquery.fancybox.js"></script> -->

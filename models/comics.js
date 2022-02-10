@@ -1,3 +1,4 @@
+const { number } = require('joi');
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
@@ -9,6 +10,7 @@ const ComicSchema = new Schema({
     // path: String,
     filename: String,
     image: String,
+    ordinality: Number,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

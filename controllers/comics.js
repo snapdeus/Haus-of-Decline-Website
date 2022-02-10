@@ -4,9 +4,16 @@ const im = require('imagemagick');
 const ObjectID = require('mongodb').ObjectId;
 
 module.exports.index = async (req, res) => {
+    const pageNumber = parseInt(req.params.page);
+    if (!pageNumber) {
+        res.redirect("comics/1")
+    }
+    const { limit = 15 } = req.query;
     const comics = await Comic.find({})
         .sort({ "filename": -1 })
-    res.render('comics/index', { comics })
+        .limit(limit * 1).skip((pageNumber - 1) * limit);
+
+    res.render('comics/index', { comics, pageNumber })
     req.flash('success', "FOUND IT FOUND")
 };
 
@@ -28,6 +35,15 @@ module.exports.createComic = async (req, res) => {
 
 
 module.exports.showComic = async (req, res) => {
+
+    const pageNumber = parseInt(req.params.page);
+
+    // console.log(req.params)
+    const { limit = 15 } = req.query;
+    const comics = await Comic.find({})
+        .sort({ "filename": -1 })
+        .limit(limit * 1).skip((pageNumber - 1) * limit);
+
     if (!ObjectID.isValid(req.params.id)) {
         req.session.returnTo = req.session.previousReturnTo;
         console.log('Invalid campground show id, returnTo reset to:', req.session.returnTo);
@@ -48,7 +64,7 @@ module.exports.showComic = async (req, res) => {
         req.flash('error', 'Cannot Find that Comic');
         res.redirect('/comics');
     }
-    res.render('comics/showComic', { comic, nextComic, prevComic });
+    res.render('comics/showComic', { comic, nextComic, prevComic, pageNumber, comics });
     //TESTING THAT FLASH WORKS
     // req.flash('error', 'Cannot Find that Comic');
     // res.redirect('/');
@@ -60,14 +76,14 @@ module.exports.renderEditForm = async (req, res) => {
     const comic = await Comic.findById(id);
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');
-        res.redirect('/comics');
+        res.redirect('/comics/1');
     }
 
     res.render('comics/edit', { comic });
 }
 
 module.exports.updateComic = async (req, res) => {
-    const { id } = req.params;
+    const { id, page } = req.params;
     // console.log(req.body);
     const comic = await Comic.findByIdAndUpdate(id, { ...req.body.comic });
 
@@ -89,7 +105,7 @@ module.exports.updateComic = async (req, res) => {
     //     await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     // }
     req.flash('success', "Successfully updated Comic")
-    res.redirect(`/comics/${ comic._id }`)
+    res.redirect(`/${ page }/comics/${ comic._id }`)
 };
 
 module.exports.deleteComic = async (req, res, next) => {
@@ -103,5 +119,5 @@ module.exports.deleteComic = async (req, res, next) => {
     await Comic.findByIdAndDelete(id);
 
     req.flash('success', 'Successfully deleted comic!');
-    res.redirect('/comics');
+    res.redirect('/comics/1');
 }

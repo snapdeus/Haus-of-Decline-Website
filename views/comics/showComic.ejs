@@ -39,29 +39,47 @@
         <div class="row ">
             <div class="col-12 text-center">
                 <div id="arrow_2" class="arrow-wrapper text-center ">
-                    <% if (prevComic[0]) {%>
 
-                        <a style="text-decoration: none;" title="Previous" href="/comics/<%=prevComic[0]._id%>">
+                    <% if ((prevComic[0]) && comics[0].ordinality===comic.ordinality) {%>
+
+                        <a style="text-decoration: none;" title="Previous"
+                            href="/comics/<%= pageNumber -1 %> /<%=prevComic[0]._id%>">
                             <div class="arrow arrow--left">
                                 <span>Prev</span>
                             </div>
                         </a>
-                        <% } %>
-                            <div>
-                                <h2 class="hausFont text-center mt-3 px-4 title">
 
-                                    "<%= comic.title %>"
-                                </h2>
-                            </div>
-                            <% if (nextComic[0]) {%>
 
-                                <a style="text-decoration: none; color:white;" title="Next"
-                                    href="/comics/<%=nextComic[0]._id%>">
-                                    <div class="arrow arrow--right ">
-                                        <span class="mr-1">Next</span>
-                                    </div>
-                                </a>
-                                <% } %>
+                        <% } else if (prevComic[0]) { %>
+                            <a style="text-decoration: none;" title="Previous"
+                                href="/comics/<%= pageNumber %> /<%=prevComic[0]._id%>">
+                                <div class="arrow arrow--left">
+                                    <span>Prev</span>
+                                </div>
+                            </a>
+                            <% } %>
+                                <div>
+                                    <h2 class="hausFont text-center mt-3 px-4 title">
+
+                                        "<%= comic.title %>"
+                                    </h2>
+                                </div>
+                                <% if (nextComic[0] && comics[14].ordinality===comic.ordinality) {%>
+
+                                    <a style="text-decoration: none; color:white;" title="Next"
+                                        href="/comics/<%= pageNumber +1%>/<%=nextComic[0]._id%>">
+                                        <div class="arrow arrow--right ">
+                                            <span class="mr-1">Next</span>
+                                        </div>
+                                    </a>
+                                    <% } else if (nextComic[0]){ %>
+                                        <a style="text-decoration: none; color:white;" title="Next"
+                                            href="/comics/<%= pageNumber %>/<%=nextComic[0]._id%>">
+                                            <div class="arrow arrow--right ">
+                                                <span class="mr-1">Next</span>
+                                            </div>
+                                        </a>
+                                        <% } %>
                 </div>
             </div>
         </div>
@@ -69,7 +87,8 @@
         <div class="row align-items-center bottomSpacer">
             <div class="descripNoPad mx-auto">
                 <button class="btn btn-dark">
-                    <a style='color:white; text-decoration: underline;' class='link' href="/comics">Comics Index
+                    <a style='color:white; text-decoration: underline;' class='link'
+                        href="/comics/<%= pageNumber %> ">Comics Index
                     </a>
                 </button>
             </div>

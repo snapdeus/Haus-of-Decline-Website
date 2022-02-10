@@ -136,6 +136,7 @@ footer {
         width: 350px;
         height: 243px;
     }
+
     .sizernh {
         width: 350px;
         height: 243px;
@@ -201,4 +202,38 @@ footer {
     .hausrise {
         margin-top: 0;
     }
+}
+
+
+
+
+.disabled {
+    pointer-events: none;
+    /* <----------- */
+    opacity: 0.2;
+}
+
+
+
+.pagination>li>a {
+    background-color: black;
+    color: #CFD8DC;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    color: black;
+    background-color: whitesmoke;
+    border-color: #ddd;
+}
+
+.pagination>.active>a {
+    color: white;
+    background-color: #343535 !Important;
+    border: solid 1px whitesmoke !Important;
+}
+
+.pagination>.active>a:hover {
+    background-color: #546E7A !Important;
+    border: solid 1px #5A4181;
+    color: black;
 }

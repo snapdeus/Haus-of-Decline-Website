@@ -22,18 +22,24 @@ const upload = multer({ storage: storage })
 
 router.route('/')
     .get(catchAsync(comics.index))
-    .post(isLoggedIn, upload.single('image'), validateComic, catchAsync(comics.createComic))
+// .post(isLoggedIn, upload.single('image'), validateComic, catchAsync(comics.createComic))
+
+//alternate
 // .post(upload.single('image'), resizeComic, validateComic, catchAsync(comics.createComic))
 
 
-router.get('/new', isLoggedIn, comics.renderNewForm);
+router.route('/:page')
+    .get(catchAsync(comics.index))
+    .post(isLoggedIn, upload.single('image'), validateComic, catchAsync(comics.createComic))
 
-router.route('/:id')
+router.get('/:page/new', isLoggedIn, comics.renderNewForm);
+
+router.route('/:page/:id')
     .get(catchAsync(comics.showComic))
     .put(isLoggedIn, isAuthor, upload.single('image'), validateComic, catchAsync(comics.updateComic))
     .delete(isLoggedIn, isAuthor, comics.deleteComic);
 
-router.get('/:id/edit', isLoggedIn, isAuthor, catchAsync(comics.renderEditForm));
+router.get('/:page/:id/edit', isLoggedIn, isAuthor, catchAsync(comics.renderEditForm));
 
 
 module.exports = router;

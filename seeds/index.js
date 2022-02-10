@@ -23,7 +23,8 @@ const seedDB = async () => {
             title: `${ comics[i].title }`,
             path: `${ comics[i].path }`,
             filename: `${ comics[i].path.slice(9) }`,
-            author: `616b71a610e1e8eb28069c0c`
+            author: `616b71a610e1e8eb28069c0c`,
+            ordinality: `${ parseInt(comics[i].path.slice(9, 12)) }`
         })
         await comic.save();
     }

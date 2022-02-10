@@ -204,10 +204,11 @@ app.get('/about', (req, res) => {
     res.render('about')
 });
 
+app.use('/', userRoutes);
 app.use('/comics', comicRoutes);
 app.use('/comics/:id/comments', commentRoutes)
 app.use('/episodes', episodesRoutes);
-app.use('/', userRoutes);
+
 
 //EPISODES SECTION
 
