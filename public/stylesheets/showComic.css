@@ -46,84 +46,19 @@ hr {
 
 .commentBox {
     background: #343a40;
+    min-width: 210px;
 }
 
-/***************
- * Arrow 2
- ***************/
 
-#arrow_2 .arrow {
-    color: white !important;
-    cursor: pointer;
-    display: block;
-    align-items: flex-end;
-    text-transform: uppercase;
-    position: relative;
-    transition: transform 0.1s;
-}
 
-#arrow_2 .arrow span {
-    display: block;
-    width: 3em;
-    opacity: 0;
-    transition: opacity 0.3s 0s;
-    padding: 0 0.5em;
-}
-
-#arrow_2 .arrow:hover span {
-    opacity: 1;
-    transition: opacity 0.1s 0.1s;
-    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
-}
-
-#arrow_2 .arrow:before {
-    color: white !important;
-    content: "";
-    display: block;
-    border: solid white;
-    border-width: 2px 2px 0 0;
-    position: absolute;
-    top: .6em;
-    width: 14px;
-    height: 14px;
-}
-
-#arrow_2 .arrow.arrow--left:before {
-    transform: rotate(-135deg);
-    right: 0;
-    transition: right 0.2s 0.2s;
-}
-
-#arrow_2 .arrow.arrow--left:hover:before {
-    right: 100%;
-    transition: right 0.2s;
-}
-
-#arrow_2 .arrow.arrow--right {
-    text-align: right;
-}
-
-#arrow_2 .arrow.arrow--right:before {
-    left: 0;
-    transform: rotate(45deg);
-    transition: left 0.2s 0.2s;
-}
-
-#arrow_2 .arrow.arrow--right:hover:before {
-    left: 100%;
-    transition: left 0.2s;
-}
-
-#arrow_2 .arrow:hover {
-    transform: none;
-}
 
 @media (min-width:200px) {
     .title {
         margin-top: .5em;
-        font-size: 12px;
-        display: block;
+        font-size: 16px;
+        display: inline;
     }
+
     .summary {
         font-size: 16px;
     }
@@ -132,9 +67,10 @@ hr {
 @media (min-width:400px) {
     .title {
         margin-top: .5em;
-        font-size: 22px;
-        display: block;
+        font-size: 20px;
+        display: inline;
     }
+
     .summary {
         font-size: 18px;
     }
@@ -142,9 +78,10 @@ hr {
 
 @media (min-width:700px) {
     .title {
-        font-size: 22px;
+        font-size: 26px;
         display: inline;
     }
+
     .summary {
         font-size: 20px;
     }
@@ -152,9 +89,10 @@ hr {
 
 @media (min-width:900px) {
     .title {
-        font-size: 24px;
+        font-size: 28px;
         display: inline;
     }
+
     .summary {
         font-size: 20px;
     }

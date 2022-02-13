@@ -1,6 +1,8 @@
 <% layout('layout/boilerplate') %>
     <link rel="stylesheet" href="/stylesheets/showComic.css">
     <link rel="stylesheet" href="/stylesheets/stars.css">
+
+
     <div class="container mt-3 mb-3">
 
         <div class="row">
@@ -21,11 +23,13 @@
 
         <div class="row">
 
-            <% if(currentUser) {%>
+            <% if(currentUser && comic.author.equals(currentUser._id)) {%>
                 <div class="col-md-3">
                     <div class="card-body">
-                        <a class="card-link btn btn-info" href="/comics/<%= comic._id %>/edit">Edit</a>
-                        <form class='d-inline' action="/comics/<%= comic._id %>?_method=DELETE" method='POST'>
+                        <a class="card-link btn btn-info"
+                            href="/comics/<%= pageNumber %>/<%= comic._id %>/edit">Edit</a>
+                        <form class='d-inline' action="/comics/<%= pageNumber %>/<%= comic._id %>?_method=DELETE"
+                            method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>
                     </div>
@@ -42,41 +46,43 @@
 
                     <% if ((prevComic[0]) && comics[0].ordinality===comic.ordinality) {%>
 
-                        <a style="text-decoration: none;" title="Previous"
-                            href="/comics/<%= pageNumber -1 %> /<%=prevComic[0]._id%>">
-                            <div class="arrow arrow--left">
-                                <span>Prev</span>
+                        <a style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;" class="link"
+                            title="Previous" href="/comics/<%= pageNumber -1 %>/<%=prevComic[0]._id%>">
+                            <div>
+                                <span>PREV</span>
                             </div>
                         </a>
 
 
                         <% } else if (prevComic[0]) { %>
-                            <a style="text-decoration: none;" title="Previous"
-                                href="/comics/<%= pageNumber %> /<%=prevComic[0]._id%>">
-                                <div class="arrow arrow--left">
-                                    <span>Prev</span>
+                            <a style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
+                                class="link" title="Previous" href="/comics/<%= pageNumber %>/<%=prevComic[0]._id%>">
+                                <div>
+                                    <span>PREV</span>
                                 </div>
                             </a>
                             <% } %>
                                 <div>
-                                    <h2 class="hausFont text-center mt-3 px-4 title">
+                                    <h2 class="hausFont text-center mt-3 px-4 title d-block">
 
                                         "<%= comic.title %>"
                                     </h2>
                                 </div>
                                 <% if (nextComic[0] && comics[14].ordinality===comic.ordinality) {%>
 
-                                    <a style="text-decoration: none; color:white;" title="Next"
+                                    <a style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
+                                        class="link" title="Next"
                                         href="/comics/<%= pageNumber +1%>/<%=nextComic[0]._id%>">
-                                        <div class="arrow arrow--right ">
-                                            <span class="mr-1">Next</span>
+                                        <div>
+                                            <span class="mr-1">NEXT</span>
                                         </div>
                                     </a>
                                     <% } else if (nextComic[0]){ %>
-                                        <a style="text-decoration: none; color:white;" title="Next"
+                                        <a style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
+                                            class='link' title="Next"
                                             href="/comics/<%= pageNumber %>/<%=nextComic[0]._id%>">
-                                            <div class="arrow arrow--right ">
-                                                <span class="mr-1">Next</span>
+                                            <div>
+                                                <span class="mr-1">NEXT</span>
                                             </div>
                                         </a>
                                         <% } %>
@@ -84,7 +90,7 @@
             </div>
         </div>
 
-        <div class="row align-items-center bottomSpacer">
+        <div class="row align-items-center bottomSpacer mt-3">
             <div class="descripNoPad mx-auto">
                 <button class="btn btn-dark">
                     <a style='color:white; text-decoration: underline;' class='link'
@@ -96,62 +102,63 @@
 
         <div class="col-6">
             <% if(currentUser) {%>
-                <h2 class="hausFont">Leave a comment</h2>
-                <form action="/comics/<%=comic._id%>/comments" method="POST" class='mb-3 validated-form' novalidate>
-                    <!-- <div class="mb-3">
-                  <label class='form-label' for="rating">Rating</label>
-                  <input class="form-range" type="range" min='1' max='5' name="comment[rating]" id="rating">
-                </div> -->
-                    <div class="mb-3">
-                        <fieldset class="starability-basic">
-                            <input type="radio" id="no-rate" class="input-no-rate" name="comment[rating]" value="1"
-                                checked aria-label="No rating." />
-                            <input type="radio" id="first-rate1" name="comment[rating]" value="1" />
-                            <label for="first-rate1" title="Terrible">1 star</label>
-                            <input type="radio" id="first-rate2" name="comment[rating]" value="2" />
-                            <label for="first-rate2" title="Not good">2 stars</label>
-                            <input type="radio" id="first-rate3" name="comment[rating]" value="3" />
-                            <label for="first-rate3" title="Average">3 stars</label>
-                            <input type="radio" id="first-rate4" name="comment[rating]" value="4" />
-                            <label for="first-rate4" title="Very good">4 stars</label>
-                            <input type="radio" id="first-rate5" name="comment[rating]" value="5" />
-                            <label for="first-rate5" title="Amazing">5 stars</label>
-                        </fieldset>
-                    </div>
-                    <div class="mb-3">
-                        <label class='form-label hausFont' for="body">Comment Text</label>
-                        <textarea class='form-control commentBox' name="comment[body]" id="body" cols="30" rows="3"
-                            required></textarea>
-                        <div class="valid-feedback">
-                            Looks good!
+                <h3 class="hausFont">Leave a comment</h2>
+                    <form action="/comics/<%=comic._id%>/comments" method="POST" class='mb-3 validated-form' novalidate>
+
+                        <div class="mt-1">
+                            <fieldset class="starability-basic">
+                                <input type="radio" id="no-rate" class="input-no-rate" name="comment[rating]" value="1"
+                                    checked aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="comment[rating]" value="1" />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="comment[rating]" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="comment[rating]" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="comment[rating]" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="comment[rating]" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+
+
                         </div>
-                    </div>
-                    <button class='btn btn-success'>Submit</button>
-                </form>
-                <% } %>
-                    <% for (let comment of comic.comments) { %>
-                        <div class="card bg-dark text-white mb-3">
-                            <div class="div  card-body">
-                                <h5 class="card-title">
-                                    <%= comment.author.username %>
-                                </h5>
-                                <p class="starability-result" data-rating=<%=comment.rating %> >
-                                    Rated: <%= comment.rating %> stars
-                                </p>
-
-
-                                <p class="card-text">
-                                    comment: <%= comment.body %>
-                                </p>
-                                <% if(currentUser && comment.author.equals(currentUser._id)) { %>
-                                    <form action="/comics/<%= comic._id %>/comments/<%= comment._id %>?_method=DELETE"
-                                        method='POST'>
-                                        <button class="btn btn-sm btn-danger">Delete</button>
-                                    </form>
-                                    <% } %>
+                        <div class="mb-3">
+                            <label class='form-label hausFont' for="body">Comment Text</label>
+                            <textarea class='form-control commentBox' name="comment[body]" id="body" cols="30" rows="3"
+                                required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
                             </div>
                         </div>
-                        <% } %>
+                        <button class='btn btn-success pt-1 pb-1'>Submit</button>
+                    </form>
+                    <% } %>
+                        <h3 class="hausFont">Comments</h2>
+                            <% for (let comment of comic.comments) { %>
+                                <div class="card bg-dark text-white mb-3" style="min-width:210px">
+                                    <div class="div  card-body">
+                                        <h5 class="card-title">
+                                            <%= comment.author.username %>
+                                        </h5>
+                                        <p class="starability-result" data-rating=<%=comment.rating %> >
+                                            Rated: <%= comment.rating %> stars
+                                        </p>
+
+
+                                        <p class="card-text">
+                                            comment: <%= comment.body %>
+                                        </p>
+                                        <% if(currentUser && comment.author.equals(currentUser._id)) { %>
+                                            <form
+                                                action="/comics/<%= comic._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                                method='POST'>
+                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <% } %>
         </div>
 
 

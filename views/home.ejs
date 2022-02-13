@@ -78,20 +78,21 @@
                 <div class="col-lg-6 mx-auto col-xs-12 ">
                     <div id="comicCarousel" data-interval="false" class="carousel slide lazy-load" data-ride="carousel">
                         <div class="carousel-inner">
-                            <% comics.forEach((img, i)=> { %>
-                                <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
-                                    <% if (i===0){ %>
-                                        <img src="/uploads/<%= img.filename%>"
-                                            class="d-block w-100 img-thumbnail specialBorder"
-                                            alt="<%= img.description %>">
-                                        <% } else { %>
-                                            <img data-src="/uploads/<%= img.filename%>"
+                            <a href="/comics/1">
+                                <% comics.forEach((img, i)=> { %>
+                                    <div class="carousel-item <%= i === 0 ? 'active' : ''%>">
+                                        <% if (i===0){ %>
+                                            <img src="/uploads/<%= img.filename%>"
                                                 class="d-block w-100 img-thumbnail specialBorder"
                                                 alt="<%= img.description %>">
-                                            <% } %>
-                                </div>
-                                <% }) %>
-
+                                            <% } else { %>
+                                                <img data-src="/uploads/<%= img.filename%>"
+                                                    class="d-block w-100 img-thumbnail specialBorder"
+                                                    alt="<%= img.description %>">
+                                                <% } %>
+                                    </div>
+                                    <% }) %>
+                            </a>
                         </div>
                         <% if(comics.length> 1) {%>
                             <a class="carousel-control-prev" href="#comicCarousel" role="button" data-slide="prev">

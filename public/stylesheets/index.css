@@ -5,6 +5,11 @@ body, html {
     background-attachment: fixed;
 }
 
+.page-item {
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
 #header {
     display: flex;
     justify-content: center;
