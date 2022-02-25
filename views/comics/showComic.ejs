@@ -27,8 +27,8 @@
                 <div class="col-md-3">
                     <div class="card-body">
                         <a class="card-link btn btn-info"
-                            href="/comics/<%= pageNumber %>/<%= comic._id %>/edit">Edit</a>
-                        <form class='d-inline' action="/comics/<%= pageNumber %>/<%= comic._id %>?_method=DELETE"
+                            href="/comics/cod/<%= pageNumber %>/<%= comic._id %>/edit">Edit</a>
+                        <form class='d-inline' action="/comics/cod/<%= pageNumber %>/<%= comic._id %>?_method=DELETE"
                             method='POST'>
                             <button class="btn btn-danger">Delete</button>
                         </form>
@@ -47,7 +47,7 @@
                     <% if ((prevComic[0]) && comics[0].ordinality===comic.ordinality) {%>
 
                         <a style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;" class="link"
-                            title="Previous" href="/comics/<%= pageNumber -1 %>/<%=prevComic[0]._id%>">
+                            title="Previous" href="/comics/cod/<%= pageNumber -1 %>/<%=prevComic[0]._id%>">
                             <div>
                                 <span>PREV</span>
                             </div>
@@ -56,7 +56,8 @@
 
                         <% } else if (prevComic[0]) { %>
                             <a style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
-                                class="link" title="Previous" href="/comics/<%= pageNumber %>/<%=prevComic[0]._id%>">
+                                class="link" title="Previous"
+                                href="/comics/cod/<%= pageNumber %>/<%=prevComic[0]._id%>">
                                 <div>
                                     <span>PREV</span>
                                 </div>
@@ -72,7 +73,7 @@
 
                                     <a style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
                                         class="link" title="Next"
-                                        href="/comics/<%= pageNumber +1%>/<%=nextComic[0]._id%>">
+                                        href="/comics/cod/<%= pageNumber +1%>/<%=nextComic[0]._id%>">
                                         <div>
                                             <span class="mr-1">NEXT</span>
                                         </div>
@@ -80,7 +81,7 @@
                                     <% } else if (nextComic[0]){ %>
                                         <a style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
                                             class='link' title="Next"
-                                            href="/comics/<%= pageNumber %>/<%=nextComic[0]._id%>">
+                                            href="/comics/cod/<%= pageNumber %>/<%=nextComic[0]._id%>">
                                             <div>
                                                 <span class="mr-1">NEXT</span>
                                             </div>
@@ -94,7 +95,7 @@
             <div class="descripNoPad mx-auto">
                 <button class="btn btn-dark">
                     <a style='color:white; text-decoration: underline;' class='link'
-                        href="/comics/<%= pageNumber %> ">Comics Index
+                        href="/comics/cod/<%= pageNumber %> ">Comics Index
                     </a>
                 </button>
             </div>
@@ -103,7 +104,8 @@
         <div class="col-6">
             <% if(currentUser) {%>
                 <h3 class="hausFont">Leave a comment</h2>
-                    <form action="/comics/<%=comic._id%>/comments" method="POST" class='mb-3 validated-form' novalidate>
+                    <form action="/comics/cod/<%=comic._id%>/comments" method="POST" class='mb-3 validated-form'
+                        novalidate>
 
                         <div class="mt-1">
                             <fieldset class="starability-basic">
@@ -151,7 +153,7 @@
                                         </p>
                                         <% if(currentUser && comment.author.equals(currentUser._id)) { %>
                                             <form
-                                                action="/comics/<%= comic._id %>/comments/<%= comment._id %>?_method=DELETE"
+                                                action="/comics/cod/<%= comic._id %>/comments/<%= comment._id %>?_method=DELETE"
                                                 method='POST'>
                                                 <button class="btn btn-sm btn-danger">Delete</button>
                                             </form>

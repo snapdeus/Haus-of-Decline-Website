@@ -11,6 +11,7 @@ const ComicSchema = new Schema({
     filename: String,
     image: String,
     ordinality: Number,
+    series: Number,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

@@ -7,7 +7,7 @@ module.exports.index = async (req, res) => {
     const pageNumber = parseInt(req.params.page);
 
     if (!pageNumber) {
-        res.redirect("comics/1")
+        res.redirect("cod/1")
     }
     const { limit = 15 } = req.query;
     const comics = await Comic.find({})
@@ -20,7 +20,7 @@ module.exports.index = async (req, res) => {
 
 module.exports.renderNewForm = (req, res) => {
 
-    res.render('comics/new');
+    res.render('comics/cod/new');
 }
 
 module.exports.createComic = async (req, res) => {
@@ -30,7 +30,7 @@ module.exports.createComic = async (req, res) => {
     comic.author = req.user._id;
     await comic.save();
     req.flash('success', 'Successfully made a new comic!');
-    res.redirect(`/comics/1/${ comic._id }`)
+    res.redirect(`/comics/cod/1/${ comic._id }`)
     // res.send(req.body)
 
 };
@@ -64,7 +64,7 @@ module.exports.showComic = async (req, res) => {
     // console.log(nextComic, prevComic)
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');
-        res.redirect('/comics');
+        res.redirect('/comics/directory');
     }
     res.render('comics/showComic', { comic, nextComic, prevComic, pageNumber, comics });
     //TESTING THAT FLASH WORKS
@@ -79,10 +79,10 @@ module.exports.renderEditForm = async (req, res) => {
     const comic = await Comic.findById(id);
     if (!comic) {
         req.flash('error', 'Cannot Find that Comic');
-        res.redirect(`comics/${ page }/edit`);
+        res.redirect(`comics/cod/${ page }/edit`);
     }
 
-    res.render('comics/edit', { comic });
+    res.render('comics/edit', { comic, page });
 }
 
 module.exports.updateComic = async (req, res) => {
@@ -108,7 +108,7 @@ module.exports.updateComic = async (req, res) => {
     //     await campground.updateOne({ $pull: { images: { filename: { $in: req.body.deleteImages } } } })
     // }
     req.flash('success', "Successfully updated Comic")
-    res.redirect(`comics/${ page }/${ comic._id }`)
+    res.redirect(`${ comic._id }`)
 };
 
 module.exports.deleteComic = async (req, res, next) => {
@@ -122,5 +122,5 @@ module.exports.deleteComic = async (req, res, next) => {
     await Comic.findByIdAndDelete(id);
 
     req.flash('success', 'Successfully deleted comic!');
-    res.redirect(`/comics/${ page }`);
+    res.redirect(`/comics/cod/${ page }`);
 }

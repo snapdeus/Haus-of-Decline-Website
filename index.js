@@ -24,7 +24,7 @@ const config = { headers: { 'x-api-key': apiKey } }
 const userRoutes = require('./routes/user');
 const comicRoutes = require('./routes/comics')
 const commentRoutes = require('./routes/comments')
-
+const directoryRoutes = require('./routes/directory')
 const episodesRoutes = require('./routes/episodes')
 
 const MongoStore = require('connect-mongo');
@@ -205,9 +205,10 @@ app.get('/about', (req, res) => {
 });
 
 app.use('/', userRoutes);
-app.use('/comics', comicRoutes);
-app.use('/comics/:id/comments', commentRoutes)
+app.use('/comics/cod', comicRoutes);
+app.use('/comics/cod/:id/comments', commentRoutes)
 app.use('/episodes', episodesRoutes);
+app.use('/comics/directory', directoryRoutes);
 
 
 //EPISODES SECTION
