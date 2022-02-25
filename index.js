@@ -14,6 +14,7 @@ const mongoSanitize = require('express-mongo-sanitize')
 const User = require('./models/user');
 const Comic = require('./models/comics')
 const Comment = require('./models/comment')
+const GayComment = require('./models/gayComment')
 const helmet = require('helmet')
 
 require('dotenv').config();
@@ -22,10 +23,12 @@ const apiKey = process.env.TRANSISTOR_API_KEY;
 const config = { headers: { 'x-api-key': apiKey } }
 
 const userRoutes = require('./routes/user');
-const comicRoutes = require('./routes/comics')
-const commentRoutes = require('./routes/comments')
-const directoryRoutes = require('./routes/directory')
-const episodesRoutes = require('./routes/episodes')
+const comicRoutes = require('./routes/comics');
+const gayComicRoutes = require('./routes/gayComics');
+const gayCommentRoutes = require('./routes/gayComments');
+const commentRoutes = require('./routes/comments');
+const directoryRoutes = require('./routes/directory');
+const episodesRoutes = require('./routes/episodes');
 
 const MongoStore = require('connect-mongo');
 const dbUrl = 'mongodb://localhost:27017/haus-db';
@@ -206,7 +209,9 @@ app.get('/about', (req, res) => {
 
 app.use('/', userRoutes);
 app.use('/comics/cod', comicRoutes);
-app.use('/comics/cod/:id/comments', commentRoutes)
+app.use('/comics/gay', gayComicRoutes);
+app.use('/comics/cod/:id/comments', commentRoutes);
+app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
 

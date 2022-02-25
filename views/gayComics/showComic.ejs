@@ -1,0 +1,168 @@
+<% layout('layout/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheets/showGayComic.css">
+    <link rel="stylesheet" href="/stylesheets/stars.css">
+
+
+    <div class="container mt-3 mb-3">
+
+        <div class="row">
+
+            <div class="col-lg-10 mx-auto mt-auto ">
+
+
+                <img loading="lazy" class="img-thumbnail specialBorder" src="/uploads/<%= gayComic.filename %>"
+                    alt="<%= gayComic.description %>" title="<%= gayComic.title %>">
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+
+            <% if(currentUser && gayComic.author.equals(currentUser._id)) {%>
+                <div class="col-md-3">
+                    <div class="card-body">
+                        <a class="card-link btn btn-info"
+                            href="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>/edit">Edit</a>
+                        <form class='d-inline' action="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>?_method=DELETE"
+                            method='POST'>
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 text-center">
+                <div id="arrow_2" class="arrow-wrapper text-center ">
+
+                    <% if ((prevGayComic[0]) && gayComics[0].ordinality===gayComic.ordinality) {%>
+
+                        <a style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;" class="link"
+                            title="Previous" href="/gayComics/gay/<%= pageNumber -1 %>/<%=prevGayComic[0]._id%>">
+                            <div>
+                                <span>PREV</span>
+                            </div>
+                        </a>
+
+
+                        <% } else if (prevGayComic[0]) { %>
+                            <a style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
+                                class="link" title="Previous"
+                                href="/gayComics/gay/<%= pageNumber %>/<%=prevGayComic[0]._id%>">
+                                <div>
+                                    <span>PREV</span>
+                                </div>
+                            </a>
+                            <% } %>
+                                <div>
+                                    <h2 class="hausFont text-center mt-3 px-4 title d-block">
+
+                                        "<%= gayComic.title %>"
+                                    </h2>
+                                </div>
+                                <% if (nextGayComic[0] && gayComics[14].ordinality===gayComic.ordinality) {%>
+
+                                    <a style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
+                                        class="link" title="Next"
+                                        href="/gayComics/gay/<%= pageNumber +1%>/<%=nextGayComic[0]._id%>">
+                                        <div>
+                                            <span class="mr-1">NEXT</span>
+                                        </div>
+                                    </a>
+                                    <% } else if (nextGayComic[0]){ %>
+                                        <a style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
+                                            class='link' title="Next"
+                                            href="/gayComics/gay/<%= pageNumber %>/<%=nextGayComic[0]._id%>">
+                                            <div>
+                                                <span class="mr-1">NEXT</span>
+                                            </div>
+                                        </a>
+                                        <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center bottomSpacer mt-3">
+            <div class="descripNoPad mx-auto">
+                <button class="btn btn-dark">
+                    <a style='color:white; text-decoration: underline;' class='link'
+                        href="/gayComics/gay/<%= pageNumber %> ">gayComics Index
+                    </a>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <% if(currentUser) {%>
+                <h3 class="hausFont">Leave a gay comment</h2>
+                    <form action="/comics/gay/<%=gayComic._id%>/gayComments" method="POST" class='mb-3 validated-form'
+                        novalidate>
+
+                        <div class="mt-1">
+                            <fieldset class="starability-basic">
+                                <input type="radio" id="no-rate" class="input-no-rate" name="gayComment[rating]"
+                                    value="1" checked aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="gayComment[rating]" value="1" />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="gayComment[rating]" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="gayComment[rating]" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="gayComment[rating]" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="gayComment[rating]" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label class='form-label hausFont' for="body">Comment Text</label>
+                            <textarea class='form-control commentBox' name="gayComment[body]" id="body" cols="30"
+                                rows="3" required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class='btn btn-success pt-1 pb-1'>Submit</button>
+                    </form>
+                    <% } %>
+                        <h3 class="hausFont">Comments</h2>
+                            <% for (let gayComment of gayComic.gayComments) { %>
+                                <div class="card bg-dark text-white mb-3" style="min-width:210px">
+                                    <div class="div  card-body">
+                                        <h5 class="card-title">
+                                            <%= gayComment.author.username %>
+                                        </h5>
+                                        <p class="starability-result" data-rating=<%=gayComment.rating %> >
+                                            Rated: <%= gayComment.rating %> stars
+                                        </p>
+
+
+                                        <p class="card-text">
+                                            comment: <%= gayComment.body %>
+                                        </p>
+                                        <% if(currentUser && gayComment.author.equals(currentUser._id)) { %>
+                                            <form
+                                                action="/comics/gay/<%= gayComic._id %>/gayComments/<%= gayComment._id %>?_method=DELETE"
+                                                method='POST'>
+                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <% } %>
+        </div>
+
+
+
+    </div>
