@@ -283,188 +283,188 @@ module.exports = [
 
     {
         path: '/uploads/breadbodies/048.FamilyTherapy.jpg',
-        title: x,
-        description: x
+        title: 'Family Therapy',
+        description: 'Asexual reproduction cellular'
     },
 
     {
         path: '/uploads/breadbodies/049.PackOfDicks.jpg',
-        title: x,
-        description: x
+        title: 'Pack of Dicks',
+        description: 'Start a fresh dick on the bus'
     },
 
     {
         path: '/uploads/breadbodies/050.Flaccid.jpg',
-        title: x,
-        description: x
+        title: 'Flaccid',
+        description: 'Hard cock priapism'
     },
 
     {
         path: '/uploads/breadbodies/051.Dog.jpg',
-        title: x,
-        description: x
+        title: 'Dog',
+        description: 'Mans best suicide friend'
     },
 
     {
         path: '/uploads/breadbodies/052.ThePowderMonster.jpg',
-        title: x,
-        description: x
+        title: 'The Powder Monster',
+        description: 'Snorting your enemies'
     },
 
     {
         path: '/uploads/breadbodies/053.TheWave.jpg',
-        title: x,
-        description: x
+        title: 'The Wave',
+        description: 'Penis wave'
     },
 
     {
         path: '/uploads/breadbodies/054.Saxophone.jpg',
-        title: x,
-        description: x
+        title: 'Saxophone',
+        description: 'Dick Penis Instrument'
     },
 
     {
         path: '/uploads/breadbodies/055.Finesse.jpg',
-        title: x,
-        description: x
+        title: 'Finesse',
+        description: 'Cum letters'
     },
 
     {
         path: '/uploads/breadbodies/056.Charisma.jpg',
-        title: x,
-        description: x
+        title: 'Charisma',
+        description: 'Friendship fairy rapist'
     },
 
     {
         path: '/uploads/breadbodies/057.Detective.jpg',
-        title: x,
-        description: x
+        title: 'Detective',
+        description: 'Playing with a dead body'
     },
 
     {
         path: '/uploads/breadbodies/058.Gentrification.jpg',
-        title: x,
-        description: x
+        title: 'Gentrification',
+        description: 'Penis Buildings'
     },
 
     {
         path: '/uploads/breadbodies/059.Podcast.jpg',
-        title: x,
-        description: x
+        title: 'Podcast',
+        description: 'change the world offended'
     },
 
     {
         path: '/uploads/breadbodies/060.JohnnyRelatable.jpg',
-        title: x,
-        description: x
+        title: 'Johnny Relatable',
+        description: 'million dollar cock ring'
     },
 
     {
         path: '/uploads/breadbodies/061.Burner.jpg',
-        title: x,
-        description: x
+        title: 'Burner',
+        description: 'Discard untraceable abortion'
     },
 
     {
         path: '/uploads/breadbodies/062.Undercover.jpg',
-        title: x,
-        description: x
+        title: 'Undercover',
+        description: 'Christmas tree dog girlfriend acab'
     },
 
     {
         path: '/uploads/breadbodies/063.AllHead.jpg',
-        title: x,
-        description: x
+        title: 'All Head',
+        description: 'Penis that is only head tiny'
     },
 
     {
         path: '/uploads/breadbodies/064.Meemaw.jpg',
-        title: x,
-        description: x
+        title: 'Meemaw',
+        description: 'Black metal grandma'
     },
 
     {
         path: '/uploads/breadbodies/065.Context.jpg',
-        title: x,
-        description: x
+        title: 'Context',
+        description: 'Kill all the hobos'
     },
 
     {
         path: '/uploads/breadbodies/066.Salesman.jpg',
-        title: x,
-        description: x
+        title: 'Salesman',
+        description: 'Insurance'
     },
 
     {
         path: '/uploads/breadbodies/067.Cat.jpg',
-        title: x,
-        description: x
+        title: 'Cat',
+        description: 'Give me your shoes'
     },
 
     {
         path: '/uploads/breadbodies/068.SayItWithCum.jpg',
-        title: x,
-        description: x
+        title: 'Say It With Cum',
+        description: "Cum proposal"
     },
 
     {
         path: '/uploads/breadbodies/069.IsraeliDildo.jpg',
-        title: x,
-        description: x
+        title: 'Israeli Dildo',
+        description: 'BDSM'
     },
 
     {
         path: '/uploads/breadbodies/070.Crab.jpg',
-        title: x,
-        description: x
+        title: 'Crab',
+        description: 'Crab nude beach penis claw pincer bite'
     },
 
     {
         path: '/uploads/breadbodies/071.GaryRiffs.jpg',
-        title: x,
-        description: x
+        title: 'Gary Riffs',
+        description: 'Penis war II Magna Carta'
     },
 
     {
         path: '/uploads/breadbodies/072.WinnerMindset.jpg',
-        title: x,
-        description: x
+        title: 'Winner Mindset',
+        description: 'Hands permanently caked in shit'
     },
 
     {
         path: '/uploads/breadbodies/073.NeverHeardOfHitler.jpg',
-        title: x,
-        description: x
+        title: 'Never Heard of Hitler',
+        description: 'Mustache guy adolf'
     },
 
     {
         path: '/uploads/breadbodies/074.Prolapse.jpg',
-        title: x,
-        description: x
+        title: 'Prolapse',
+        description: 'Lifting weights'
     },
 
     {
         path: '/uploads/breadbodies/075.FirstGayPorn.jpg',
-        title: x,
-        description: x
+        title: 'First Gay Porn',
+        description: 'Giant penis world fair crush'
     },
 
     {
         path: '/uploads/breadbodies/076.Stigmata.jpg',
-        title: x,
-        description: x
+        title: 'Stigmata',
+        description: 'Holes in hands'
     },
 
     {
         path: '/uploads/breadbodies/077.Warrior.jpg',
-        title: x,
-        description: x
+        title: 'Warrior',
+        description: 'Karate chop penis'
     },
 
     {
         path: '/uploads/breadbodies/078.Tell.jpg',
-        title: x,
-        description: x
+        title: 'Tell',
+        description: 'Erection poker'
     },
 
 
