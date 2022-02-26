@@ -11,7 +11,7 @@ module.exports.index = async (req, res) => {
     }
     const { limit = 15 } = req.query;
     const gayComics = await GayComic.find({})
-        .sort({ "ordinality": -1 })
+        .sort({ "filename": -1 })
         .limit(limit * 1).skip((pageNumber - 1) * limit);
 
     res.render('gayComics/index', { gayComics, pageNumber })
@@ -40,7 +40,7 @@ module.exports.showGayComic = async (req, res) => {
 
     const pageNumber = parseInt(req.params.page);
 
-    console.log(req.params)
+    // console.log(req.params)
     const { limit = 15 } = req.query;
     const gayComics = await GayComic.find({})
         .sort({ "filename": -1 })

@@ -4,6 +4,10 @@ const comics = require('./comics')
 const gayComics = require('./gayComics')
 const GayComic = require('../models/gayComics');
 
+require('dotenv').config();
+const ALEX_ID = process.env.ALEX_ID;
+
+
 mongoose.connect('mongodb://localhost:27017/haus-db', {
     useNewUrlParser: true,
     // useCreateIndex: true,
@@ -26,7 +30,7 @@ const seedDB = async () => {
             path: `${ comics[i].path }`,
             series: 0,
             filename: `${ comics[i].path.slice(9) }`,
-            author: `616b71a610e1e8eb28069c0c`,
+            author: ALEX_ID,
             ordinality: `${ parseInt(comics[i].path.slice(9, 12)) }`
         })
         await comic.save();
@@ -41,8 +45,8 @@ const seedDBwithGay = async () => {
             title: `${ gayComics[i].title }`,
             path: `${ gayComics[i].path }`,
             series: 1,
-            filename: `${ gayComics[i].path.slice(9) }`,
-            author: `616b71a610e1e8eb28069c0c`,
+            filename: `${ gayComics[i].path.slice(19) }`,
+            author: ALEX_ID,
             ordinality: `${ parseInt(gayComics[i].path.slice(19, 22)) }`
         })
         await gayComic.save();

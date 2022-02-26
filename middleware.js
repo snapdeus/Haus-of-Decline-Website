@@ -6,6 +6,9 @@ const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
 const im = require('imagemagick');
 
+
+
+
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
 
@@ -81,6 +84,7 @@ module.exports.resizeComic = (req, res, next) => {
 module.exports.isCommentAuthor = async (req, res, next) => {
     const { id, commentId } = req.params;
     const comment = await Comment.findById(commentId);
+    console.log(comment.author)
     if (!comment.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission.');
         return res.redirect(`/comics/directory`)
@@ -119,3 +123,11 @@ module.exports.validateGayComment = (req, res, next) => {
 }
 
 
+module.exports.isAuthenticated = (req, res, next) => {
+    const authUser = req.user.toObject()
+    if (!authUser.hasOwnProperty('isAdmin')) {
+        req.flash('error', 'You do not have permission.');
+        return res.redirect(`/comics/directory`)
+    }
+    next();
+}

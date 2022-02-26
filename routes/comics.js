@@ -3,7 +3,7 @@ const router = express.Router(({ mergeParams: true }));
 const catchAsync = require('../utils/catchAsync');
 const Comic = require('../models/comics');
 const comics = require('../controllers/comics');
-const { validateComic, resizeComic, isLoggedIn, isAuthor } = require('../middleware.js');
+const { validateComic, resizeComic, isLoggedIn, isAuthor, isAuthenticated } = require('../middleware.js');
 const multer = require('multer');
 const im = require('imagemagick');
 
@@ -32,7 +32,7 @@ router.route('/:page')
     .get(catchAsync(comics.index))
     .post(isLoggedIn, upload.single('image'), validateComic, catchAsync(comics.createComic))
 
-router.get('/:page/new', isLoggedIn, comics.renderNewForm);
+router.get('/:page/new', isLoggedIn, isAuthenticated, comics.renderNewForm);
 
 router.route('/:page/:id')
     .get(catchAsync(comics.showComic))

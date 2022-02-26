@@ -1,6 +1,32 @@
 <% layout('layout/boilerplate') %>
     <link rel="stylesheet" href="/stylesheets/directory.css">
 
-    <h1 class="hausFont"><a href="/comics/cod/1">Comix of Decline</a> </h1>
-    <div class="mb-3"></div>
-    <h1 class="hausFont"><a href="/comics/gay/1">Gay Comix</a> </h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto col-xs-12 ">
+
+                <h1 class="hausFont mt-5"><a href="/comics/cod/1"> <img src="/uploads/<%= comic.filename%>"
+                            class="d-block w-50 img-thumbnail specialBorder" alt="<%= comic.description %>"> Comix of
+                        Decline</a> </h1>
+            </div>
+        </div>
+
+        <div class="mb-3"></div>
+        <div class="row">
+            <div class="col-lg-6 mx-auto col-xs-12 ">
+
+                <h1 class="hausFont mt-5"><a href="/comics/gay/1"><img src="/uploads/GayComics/<%= gayComic.filename%>"
+                            class="d-block w-50 img-thumbnail specialBorder" alt="<%= gayComic.description %>">Gay
+                        Comix</a> </h1>
+            </div>
+        </div>
+        <% if(currentUser.toObject().isAdmin){ %>
+            <div class="col-lg-6 mx-auto col-xs-12 ">
+                <div class="row">
+
+                    <h3 class="mt-5 mb-5"> <a href="/new">SUBMIT NEW GAY COMIC</a> </h3>
+
+                </div>
+            </div>
+            <% } %>
+    </div>
