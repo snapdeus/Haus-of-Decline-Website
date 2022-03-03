@@ -44,52 +44,50 @@
         <div class="row ">
             <div class="col-12 text-center">
                 <div id="arrow_2" class="arrow-wrapper text-center ">
-                    <%= console.log(gayComic.ordinality) %>
-                        <%= console.log(prevGayComic[0].ordinality) %>
-                            <% if ((prevGayComic[0]) && gayComics[0].ordinality===gayComic.ordinality) {%>
 
-                                <a style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;"
-                                    class="link" title="Previous"
-                                    href="/comics/gay/<%= pageNumber -1 %>/<%=prevGayComic[0]._id%>">
-                                    <div>
-                                        <span>PREV</span>
-                                    </div>
-                                </a>
+                    <% if ((prevGayComic[0]) && gayComics[0].ordinality===gayComic.ordinality) {%>
+
+                        <a style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;" class="link"
+                            title="Previous" href="/comics/gay/<%= pageNumber -1 %>/<%=prevGayComic[0]._id%>">
+                            <div>
+                                <span>PREV</span>
+                            </div>
+                        </a>
 
 
-                                <% } else if (prevGayComic[0]) { %>
-                                    <a style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
-                                        class="link" title="Previous"
-                                        href="/comics/gay/<%= pageNumber %>/<%=prevGayComic[0]._id%>">
+                        <% } else if (prevGayComic[0]) { %>
+                            <a style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
+                                class="link" title="Previous"
+                                href="/comics/gay/<%= pageNumber %>/<%=prevGayComic[0]._id%>">
+                                <div>
+                                    <span>PREV</span>
+                                </div>
+                            </a>
+                            <% } %>
+                                <div>
+                                    <h2 class="hausFont text-center mt-3 px-4 title d-block">
+
+                                        "<%= gayComic.title %>"
+                                    </h2>
+                                </div>
+                                <% if (nextGayComic[0] && gayComics[14].ordinality===gayComic.ordinality) {%>
+
+                                    <a style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
+                                        class="link" title="Next"
+                                        href="/comics/gay/<%= pageNumber +1%>/<%=nextGayComic[0]._id%>">
                                         <div>
-                                            <span>PREV</span>
+                                            <span class="mr-1">NEXT</span>
                                         </div>
                                     </a>
-                                    <% } %>
-                                        <div>
-                                            <h2 class="hausFont text-center mt-3 px-4 title d-block">
-
-                                                "<%= gayComic.title %>"
-                                            </h2>
-                                        </div>
-                                        <% if (nextGayComic[0] && gayComics[14].ordinality===gayComic.ordinality) {%>
-
-                                            <a style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
-                                                class="link" title="Next"
-                                                href="/gayComics/gay/<%= pageNumber +1%>/<%=nextGayComic[0]._id%>">
-                                                <div>
-                                                    <span class="mr-1">NEXT</span>
-                                                </div>
-                                            </a>
-                                            <% } else if (nextGayComic[0]){ %>
-                                                <a style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
-                                                    class='link' title="Next"
-                                                    href="/comics/gay/<%= pageNumber %>/<%=nextGayComic[0]._id%>">
-                                                    <div>
-                                                        <span class="mr-1">NEXT</span>
-                                                    </div>
-                                                </a>
-                                                <% } %>
+                                    <% } else if (nextGayComic[0]){ %>
+                                        <a style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
+                                            class='link' title="Next"
+                                            href="/comics/gay/<%= pageNumber %>/<%=nextGayComic[0]._id%>">
+                                            <div>
+                                                <span class="mr-1">NEXT</span>
+                                            </div>
+                                        </a>
+                                        <% } %>
                 </div>
             </div>
         </div>

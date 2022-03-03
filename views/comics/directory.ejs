@@ -20,13 +20,15 @@
                         Comix</a> </h1>
             </div>
         </div>
-        <% if(currentUser.toObject().isAdmin){ %>
-            <div class="col-lg-6 mx-auto col-xs-12 ">
-                <div class="row">
+        <% if(currentUser){ %>
+            <% if(currentUser.toObject().isAdmin){ %>
+                <div class="col-lg-6 mx-auto col-xs-12 ">
+                    <div class="row">
 
-                    <h3 class="mt-5 mb-5"> <a href="/new">SUBMIT NEW GAY COMIC</a> </h3>
+                        <h3 class="mt-5 mb-5"> <a href="/new">SUBMIT NEW GAY COMIC</a> </h3>
 
+                    </div>
                 </div>
-            </div>
-            <% } %>
+                <% } %>
+                    <% } %>
     </div>

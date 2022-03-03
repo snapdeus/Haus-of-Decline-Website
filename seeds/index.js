@@ -46,7 +46,7 @@ const seedDBwithGay = async () => {
             path: `${ gayComics[i].path }`,
             series: 1,
             filename: `${ gayComics[i].path.slice(19) }`,
-            author: ALEX_ID,
+            author: '616b71a610e1e8eb28069c0c',
             ordinality: `${ parseInt(gayComics[i].path.slice(19, 22)) }`
         })
         await gayComic.save();
