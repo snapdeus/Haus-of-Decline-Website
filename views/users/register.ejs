@@ -1,40 +1,44 @@
 <% layout('layout/boilerplate') %>
-    <% layout('layout/boilerplate') %>
-        <div class="container d-flex justify-content-center align-items-center mt-5">
-            <div class="row">
-                <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
-                    <div class="card bg-dark text-white shadow">
-                        <img src=" gifs/resources/card.gif" alt="" class="card-img-top" />
-                        <div class="card-body">
-                            <h5 class="card-title">Register</h5>
-                            <form action="/register" method="POST" class="validated-form" novalidate>
-                                <div class="mb-3">
-                                    <label class="form-label" for="username">Username</label>
-                                    <input class="form-control" type="text" id="username" name="username" required
-                                        autofocus>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="email">Email</label>
-                                    <input class="form-control" type="email" id="email" name="email" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label" for="password">Password</label>
-                                    <input class="form-control" type="password" id="password" name="password" required>
-                                    <div class="valid-feedback">
-                                        Looks good!
-                                    </div>
-                                </div>
-                                <button class="btn btn-secondary btn-block">Register</button>
-                            </form>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-                        </div>
+
+
+    <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+                <div class="card bg-dark text-white shadow">
+                    <img src=" gifs/resources/card.gif" alt="" class="card-img-top" />
+                    <div class="card-body">
+                        <h5 class="card-title">Register</h5>
+                        <form action="/register" method="POST" class="validated-form" novalidate>
+                            <div class="g-recaptcha" data-sitekey="6Le69dAeAAAAAIS_2p_mMuvfChENk-OU00uDcqdC"></div>
+                            <div class="mb-3">
+                                <label class="form-label" for="username">Username</label>
+                                <input class="form-control" type="text" id="username" name="username" required
+                                    autofocus>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">Email</label>
+                                <input class="form-control" type="email" id="email" name="email" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Password</label>
+                                <input class="form-control" type="password" id="password" name="password" required>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary btn-block">Register</button>
+                        </form>
+
                     </div>
                 </div>
             </div>
         </div>
+    </div>
