@@ -40,7 +40,7 @@ module.exports.showComic = async (req, res) => {
 
     const pageNumber = parseInt(req.params.page);
 
-    console.log(req.params)
+    // console.log(req.params)
     const { limit = 15 } = req.query;
     const comics = await Comic.find({})
         .sort({ "filename": -1 })
@@ -48,7 +48,7 @@ module.exports.showComic = async (req, res) => {
 
     if (!ObjectID.isValid(req.params.id)) {
         req.session.returnTo = req.session.previousReturnTo;
-        console.log('Invalid campground show id, returnTo reset to:', req.session.returnTo);
+        console.log('Invalid comic id, returnTo reset to:', req.session.returnTo);
     }
     const { id } = req.params;
     const comic = await Comic.findById(req.params.id).populate({

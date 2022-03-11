@@ -46,8 +46,9 @@
 
                     <% if ((prevComic[0]) && comics[0].ordinality===comic.ordinality) {%>
 
-                        <a style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;" class="link"
-                            title="Previous" href="/comics/cod/<%= pageNumber -1 %>/<%=prevComic[0]._id%>">
+                        <a id="prevLink"
+                            style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;"
+                            class="link" title="Previous" href="/comics/cod/<%= pageNumber -1 %>/<%=prevComic[0]._id%>">
                             <div>
                                 <span>PREV</span>
                             </div>
@@ -55,7 +56,8 @@
 
 
                         <% } else if (prevComic[0]) { %>
-                            <a style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
+                            <a id="prevLink"
+                                style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
                                 class="link" title="Previous"
                                 href="/comics/cod/<%= pageNumber %>/<%=prevComic[0]._id%>">
                                 <div>
@@ -71,7 +73,8 @@
                                 </div>
                                 <% if (nextComic[0] && comics[14].ordinality===comic.ordinality) {%>
 
-                                    <a style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
+                                    <a id="nextLink"
+                                        style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
                                         class="link" title="Next"
                                         href="/comics/cod/<%= pageNumber +1%>/<%=nextComic[0]._id%>">
                                         <div>
@@ -79,7 +82,8 @@
                                         </div>
                                     </a>
                                     <% } else if (nextComic[0]){ %>
-                                        <a style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
+                                        <a id="nextLink"
+                                            style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
                                             class='link' title="Next"
                                             href="/comics/cod/<%= pageNumber %>/<%=nextComic[0]._id%>">
                                             <div>
@@ -166,3 +170,20 @@
 
 
     </div>
+
+    <script>
+        document.addEventListener("keyup", function (e) {
+            const key = e.which || e.keyCode;
+            switch (key) {
+                //left arrow
+                case 37:
+                    document.getElementById("prevLink").click();
+                    break;
+                //right arrow
+                case 39:
+                    document.getElementById("nextLink").click();
+                    break;
+            }
+        });
+
+    </script>

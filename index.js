@@ -13,6 +13,7 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize')
 const User = require('./models/user');
 const Comic = require('./models/comics')
+const GayComic = require('./models/gayComics')
 const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
 const helmet = require('helmet')
@@ -31,13 +32,19 @@ const directoryRoutes = require('./routes/directory');
 const episodesRoutes = require('./routes/episodes');
 
 const MongoStore = require('connect-mongo');
-const dbUrl = 'mongodb://localhost:27017/haus-db';
+const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
+    + 'localhost:27017/' + 'haus-db' + '?authSource=admin'
 
-mongoose.connect('mongodb://localhost:27017/haus-db', {
+
+
+mongoose.connect('mongodb://localhost:27017/haus-db?authSource=admin', {
     useNewUrlParser: true,
     // useCreateIndex: true,
     useUnifiedTopology: true,
     // useFindAndModify: false
+    user: process.env.MONGO_USER,
+    pass: process.env.MONGO_PW,
+    autoIndex: false
 });
 
 const db = mongoose.connection;
@@ -197,10 +204,10 @@ const getLatestShow = async () => {
 
 
 app.get('/', async (req, res) => {
-    const comics = await Comic.find({}).sort({ "filename": -1 })
+    const gayComics = await GayComic.find({}).sort({ "filename": -1 })
     const episode = await getLatestShow();
 
-    res.render('home', { comics, episode })
+    res.render('home', { gayComics, episode })
 });
 
 app.get('/about', (req, res) => {
@@ -254,6 +261,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err })
 })
 
-app.listen(3000, () => {
+app.listen(3000, '127.0.0.1', () => {
     console.log('Serving on Port 3000')
 });

@@ -8,11 +8,13 @@ require('dotenv').config();
 const ALEX_ID = process.env.ALEX_ID;
 
 
-mongoose.connect('mongodb://localhost:27017/haus-db', {
+mongoose.connect('mongodb://localhost:27017/haus-db?authSource=admin', {
     useNewUrlParser: true,
     // useCreateIndex: true,
     useUnifiedTopology: true,
     // useFindAndModify: false
+    user: process.env.MONGO_USER,
+    pass: process.env.MONGO_PW,
 });
 
 const db = mongoose.connection;
