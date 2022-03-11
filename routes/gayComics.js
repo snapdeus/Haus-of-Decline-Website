@@ -5,7 +5,7 @@ const GayComic = require('../models/gayComics');
 const gayComics = require('../controllers/gayComics');
 const { validateGayComic, resizeComic, isLoggedIn, isGayAuthor, isAuthenticated } = require('../middleware.js');
 const multer = require('multer');
-const im = require('imagemagick');
+
 
 
 const storage = multer.diskStorage({

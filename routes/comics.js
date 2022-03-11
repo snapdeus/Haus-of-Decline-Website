@@ -5,7 +5,7 @@ const Comic = require('../models/comics');
 const comics = require('../controllers/comics');
 const { validateComic, resizeComic, isLoggedIn, isAuthor, isAuthenticated } = require('../middleware.js');
 const multer = require('multer');
-const im = require('imagemagick');
+
 
 
 const storage = multer.diskStorage({

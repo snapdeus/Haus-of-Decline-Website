@@ -1,6 +1,5 @@
 const Comic = require('../models/comics')
 const fs = require('fs');
-const im = require('imagemagick');
 const ObjectID = require('mongodb').ObjectId;
 
 module.exports.index = async (req, res) => {
