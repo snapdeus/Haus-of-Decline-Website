@@ -4,7 +4,7 @@ const Comic = require('./models/comics');
 const GayComic = require('./models/gayComics')
 const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
-const im = require('imagemagick');
+
 
 
 
