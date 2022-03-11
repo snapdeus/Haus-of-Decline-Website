@@ -4,7 +4,28 @@ const Comic = require('./models/comics');
 const GayComic = require('./models/gayComics')
 const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
+const request = require('request')
 
+
+module.exports.captchaMid = (req, res, next) => {
+    const captcha = req.body['g-recaptcha-response'];
+
+    if (captcha) {
+        var secretKey = process.env.CAPTCHA;
+        var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${ secretKey }&response=${ captcha }&remoteip=${ req.connection.remoteAddress }`;
+        request.get(verifyURL, (err, response, body) => {
+            if (body.success !== undefined && !body.success) {
+                req.flash('error', 'Captcha Failed');
+                res.redirect('/register');
+            } else {
+                next();
+            }
+        })
+    } else {
+        req.flash('error', 'Please select captcha');
+        res.redirect('/register');
+    }
+};
 
 
 

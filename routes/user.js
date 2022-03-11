@@ -4,11 +4,12 @@ const User = require('../models/user');
 const catchAsync = require('../utils/catchAsync')
 const passport = require('passport')
 const user = require('../controllers/user')
+const { captchaMid } = require('../middleware.js');
 
 
 router.route('/register')
     .get(user.renderRegister)
-    .post(catchAsync(user.registerUser))
+    .post(captchaMid, catchAsync(user.registerUser))
 
 
 

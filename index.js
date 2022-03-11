@@ -75,7 +75,10 @@ const scriptSrcUrls = [
     "https://code.jquery.com",
     "https://share.transistor.fm",
     "https://assets.transistor.fm",
-    "https://use.fontawesome.com"
+    "https://use.fontawesome.com",
+    "https://www.google.com",
+    "https://www.gstatic.com"
+
 ];
 const styleSrcUrls = [
     "https://kit-free.fontawesome.com",
@@ -106,6 +109,7 @@ app.use(
             childSrc: [
                 "blob:",
                 "https://share.transistor.fm",
+                "https://www.google.com",
                 "https://assets.transistor.fm"
             ],
             objectSrc: [],
