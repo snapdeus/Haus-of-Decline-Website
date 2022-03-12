@@ -48,8 +48,6 @@ module.exports.showGayComic = async (req, res) => {
     if (!ObjectID.isValid(req.params.id)) {
         req.session.returnTo = req.session.previousReturnTo;
         console.log('Invalid comic id, returnTo reset to:', req.session.returnTo);
-        res.redirect('/comics/directory')
-        return
     }
     const { id } = req.params;
     const gayComic = await GayComic.findById(req.params.id).populate({
