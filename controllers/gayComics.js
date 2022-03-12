@@ -113,7 +113,7 @@ module.exports.updateGayComic = async (req, res) => {
 module.exports.deleteGayComic = async (req, res, next) => {
     const { id, page } = req.params;
     const gayComic = await GayComic.findById(id);
-    fs.unlink(`uploads/${ gayComic.filename }`, function (err) {
+    fs.unlink(`uploads/GayComics/${ gayComic.filename }`, function (err) {
         if (err) throw err;
         // if no error, file has been deleted successfully
         console.log('File deleted!');
