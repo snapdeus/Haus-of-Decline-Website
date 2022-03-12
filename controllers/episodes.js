@@ -68,12 +68,21 @@ module.exports.showEpisode = async (req, res) => {
             const res = await axios.get('https://api.transistor.fm/v1/episodes/' + `${ id }`, config)
             return res.data.data;
         } catch (e) {
-            console.log(e);
+            // console.log(e);
+            return
         }
 
     }
 
     const episode = await getEpisode();
+
+    if (!episode) {
+        req.session.returnTo = req.session.previousReturnTo;
+        console.log('Invalid ep id, returnTo reset to:', req.session.returnTo);
+        res.redirect('/episodes/1')
+        return
+    }
+
     res.render('episodes/showEpisode', { episode, pageNumber })
 
 }
