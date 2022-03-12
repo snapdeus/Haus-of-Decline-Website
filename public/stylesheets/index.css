@@ -145,12 +145,12 @@ body, html {
 
 .carousel-control-prev {
     align-items: flex-end;
-    margin-bottom: -50px;
+    margin-bottom: -80px;
 }
 
 .carousel-control-next {
     align-items: flex-end;
-    margin-bottom: -50px;
+    margin-bottom: -80px;
 }
 
 /* .carousel-control-prev {

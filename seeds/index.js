@@ -32,7 +32,7 @@ const seedDB = async () => {
             path: `${ comics[i].path }`,
             series: 0,
             filename: `${ comics[i].path.slice(9) }`,
-            author: ALEX_ID,
+            author: '622b6e3138fdc4cef6097ca8',
             ordinality: `${ parseInt(comics[i].path.slice(9, 12)) }`
         })
         await comic.save();
@@ -48,7 +48,7 @@ const seedDBwithGay = async () => {
             path: `${ gayComics[i].path }`,
             series: 1,
             filename: `${ gayComics[i].path.slice(19) }`,
-            author: '616b71a610e1e8eb28069c0c',
+            author: '622b6e3138fdc4cef6097ca8',
             ordinality: `${ parseInt(gayComics[i].path.slice(19, 22)) }`
         })
         await gayComic.save();
