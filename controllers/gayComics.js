@@ -50,17 +50,19 @@ module.exports.showGayComic = async (req, res) => {
         console.log('Invalid comic id, returnTo reset to:', req.session.returnTo);
     }
     const { id } = req.params;
+    // console.log(req.params)
     const gayComic = await GayComic.findById(req.params.id).populate({
         path: 'gayComments',
         populate: {
             path: 'author'
         }
     }).populate('author');
+    const comicOrd = gayComic.ordinality;
 
 
-    const nextGayComic = await GayComic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
-    const prevGayComic = await GayComic.find({ _id: { $lt: id } }).sort({ _id: -1 }).limit(1)
-    // console.log(nextComic, prevComic)
+    const nextGayComic = await GayComic.find({ ordinality: { $lt: comicOrd } }).sort({ ordinality: -1 }).limit(1);
+    const prevGayComic = await GayComic.find({ ordinality: { $gt: comicOrd } }).sort({ ordinality: 1 }).limit(1)
+
     if (!gayComic) {
         req.flash('error', 'Cannot Find that gayComic');
         res.redirect('/comics/directory');
