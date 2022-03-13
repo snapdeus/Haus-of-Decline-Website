@@ -153,58 +153,19 @@ body, html {
     margin-bottom: -80px;
 }
 
-/* .carousel-control-prev {
-    margin-left: -60px;
-}
 
-.carousel-control-next {
-    margin-right: -60px;
-}
 
-@media (min-width:300px) {
-    .carousel-control-prev {
-        margin-left: -33px;
-    }
-    .carousel-control-next {
-        margin-right: -33px;
+@media (max-width:525) {
+    #comicCarousel {
+        min-height: 325px;
     }
 }
 
-@media (min-width:355px) {
-    .carousel-control-prev {
-        margin-left: -40px;
-    }
-    .carousel-control-next {
-        margin-right: -40px;
+@media (min-width:526) {
+    #comicCarousel {
+        min-height: 485px;
     }
 }
-
-@media (min-width:450px) {
-    .carousel-control-prev {
-        margin-left: -45px;
-    }
-    .carousel-control-next {
-        margin-right: -45px;
-    }
-}
-
-@media (min-width:520px) {
-    .carousel-control-prev {
-        margin-left: -50px;
-    }
-    .carousel-control-next {
-        margin-right: -50px;
-    }
-}
-
-@media (min-width:578px) {
-    .carousel-control-prev {
-        margin-left: -60px;
-    }
-    .carousel-control-next {
-        margin-right: -60px;
-    }
-} */
 
 
 
