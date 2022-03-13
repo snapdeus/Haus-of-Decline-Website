@@ -148,7 +148,7 @@ store.on("error", function (e) {
 
 const sessionConfig = {
     store,
-    name: "session",
+    name: "hausSession",
     secret,
     resave: false,
     saveUninitialized: true,
