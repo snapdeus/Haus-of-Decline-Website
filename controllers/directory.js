@@ -5,7 +5,7 @@ const ObjectID = require('mongodb').ObjectId;
 
 module.exports.showDirectory = async (req, res) => {
     const comic = await Comic.findOne({})
-    const gayComic = await GayComic.findOne({})
+    const gayComic = await GayComic.findOne().sort({ ordinality: -1 }).limit(1)
     res.render('comics/directory', { comic, gayComic })
 
 };
