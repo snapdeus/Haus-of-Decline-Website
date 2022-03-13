@@ -157,13 +157,13 @@ body, html {
 
 @media (max-width:525) {
     #comicCarousel {
-        min-height: 450px;
+        min-height: 450px !important;
     }
 }
 
 @media (min-width:526) {
     #comicCarousel {
-        min-height: 525px;
+        min-height: 525px !important;
     }
 }
 
