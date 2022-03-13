@@ -93,6 +93,30 @@
                                             <% } %>
                     </ul>
                 </nav>
+                <nav aria-label="Episode Page Navigation">
+                    <ul class="pagination justify-content-center hausFont">
+                        <% if (metaData.currentPage===1) { %>
+                            <li class="page-item ">
+                                <a id="firstLast" class="page-link disabled" href="#">First</a>
+                            </li>
+
+
+                            <% } else { %>
+                                <li class="page-item ">
+                                    <a id="firstLast" class="page-link disable" href="/episodes/1">First</a>
+                                </li>
+                                <% } %>
+                                    <%if(metaData.currentPage===metaData.totalPages) {%>
+                                        <li id="firstLast" class="page-item disabled">
+                                            <a class="page-link" href="<%= metaData.totalPages %> ">Last</a>
+                                        </li>
+                                        <% } else { %>
+                                            <li id="firstLast" class="page-item">
+                                                <a class="page-link" href="<%= metaData.totalPages %> ">Last</a>
+                                            </li>
+                                            <% } %>
+                    </ul>
+                </nav>
 
 
 
