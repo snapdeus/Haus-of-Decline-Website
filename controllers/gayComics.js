@@ -8,12 +8,16 @@ module.exports.index = async (req, res) => {
     if (!pageNumber) {
         res.redirect("gay/1")
     }
+    const gayComic = await GayComic.findOne().sort({ ordinality: -1 }).limit(1)
+    const totalPages = Math.ceil(gayComic.ordinality / 15);
+
+
     const { limit = 15 } = req.query;
     const gayComics = await GayComic.find({})
         .sort({ "filename": -1 })
         .limit(limit * 1).skip((pageNumber - 1) * limit);
 
-    res.render('gayComics/index', { gayComics, pageNumber })
+    res.render('gayComics/index', { gayComics, pageNumber, totalPages })
     req.flash('success', "FOUND IT FOUND")
 };
 
