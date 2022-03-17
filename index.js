@@ -124,7 +124,8 @@ app.use(
                 "https://images.transistor.fm",
                 "https://assets.transistor.fm",
                 "https://licensebuttons.net",
-                "https://i.creativecommons.org"
+                "https://i.creativecommons.org",
+                "https://www.google-analytics.com"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },
