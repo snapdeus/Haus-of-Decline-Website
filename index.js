@@ -77,7 +77,9 @@ const scriptSrcUrls = [
     "https://assets.transistor.fm",
     "https://use.fontawesome.com",
     "https://www.google.com",
-    "https://www.gstatic.com"
+    "https://www.gstatic.com",
+    "http://www.googletagmanager.com",
+    "https://www.google-analytics.com"
 
 ];
 const styleSrcUrls = [
@@ -92,7 +94,8 @@ const styleSrcUrls = [
 const connectSrcUrls = [
     "https://api.transistor.fm",
     "https://i.creativecommons.org",
-    "https://assets.transistor.fm"
+    "https://assets.transistor.fm",
+    "https://www.google-analytics.com"
 ];
 const fontSrcUrls = [
     "https://fonts.gstatic.com",
