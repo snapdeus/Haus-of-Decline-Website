@@ -79,7 +79,8 @@ const scriptSrcUrls = [
     "https://www.google.com",
     "https://www.gstatic.com",
     "http://www.googletagmanager.com",
-    "https://www.google-analytics.com"
+    "https://www.google-analytics.com",
+    "https://c6.patreon.com"
 
 ];
 const styleSrcUrls = [
@@ -113,7 +114,8 @@ app.use(
                 "blob:",
                 "https://share.transistor.fm",
                 "https://www.google.com",
-                "https://assets.transistor.fm"
+                "https://assets.transistor.fm",
+                "https://www.patreon.com"
             ],
             objectSrc: [],
             imgSrc: [
@@ -221,6 +223,10 @@ app.get('/', async (req, res) => {
 
 app.get('/about', (req, res) => {
     res.render('about')
+});
+
+app.get('/support', (req, res) => {
+    res.render('support')
 });
 
 app.use('/', userRoutes);
