@@ -2,6 +2,16 @@
     font-size: 20px;
 }
 
+a {
+    text-decoration: none;
+    color: #FFF9D1
+}
+
+a:hover {
+    color: gold;
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+}
+
 .link {
     text-decoration: none;
     color: whitesmoke;
@@ -27,12 +37,21 @@
     border: 3px double #fff;
 }
 
+.descripNoPad {
+    color: white;
+    font-family: "Share Tech Mono";
+    padding-top: 2.5em;
+    font-size: 1em;
+    text-decoration: none;
+}
+
 @media (min-width:200px) {
     .title {
         margin-top: .5em;
         font-size: 18px;
         display: block;
     }
+
     .summary {
         font-size: 16px;
     }
@@ -44,6 +63,7 @@
         font-size: 22px;
         display: block;
     }
+
     .summary {
         font-size: 18px;
     }
@@ -54,6 +74,7 @@
         font-size: 22px;
         display: inline;
     }
+
     .summary {
         font-size: 20px;
     }
@@ -64,6 +85,7 @@
         font-size: 24px;
         display: inline;
     }
+
     .summary {
         font-size: 20px;
     }
