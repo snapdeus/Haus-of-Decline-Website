@@ -66,6 +66,7 @@ module.exports.showEpisode = async (req, res) => {
     const getEpisode = async () => {
         try {
             const res = await axios.get('https://api.transistor.fm/v1/episodes/' + `${ id }`, config)
+
             return res.data.data;
         } catch (e) {
             // console.log(e);
