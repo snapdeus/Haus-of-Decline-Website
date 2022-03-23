@@ -18,6 +18,18 @@
             <li class="nav-item pt-2 pb-1 active">
                 <a class="nav-link " href="/support">SUPPORT</a>
             </li>
+            <% if(currentUser){ %>
+                <% if(currentUser.toObject().isAdmin){ %>
+
+                    <li class="nav-item pt-2 pb-1 active">
+                        <a class="nav-link" href="/comics/gay/1/new">SUBMIT</a>
+                    </li>
+
+                    <% } %>
+                        <% } %>
+
+
+
         </ul>
         <div class="navbar-nav ml-auto">
 
