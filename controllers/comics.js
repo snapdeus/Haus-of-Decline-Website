@@ -2,6 +2,11 @@ const Comic = require('../models/comics')
 const fs = require('fs');
 const ObjectID = require('mongodb').ObjectId;
 
+const axios = require('axios')
+require('dotenv').config();
+const apiKey = process.env.TRANSISTOR_API_KEY;
+const config = { headers: { 'x-api-key': apiKey } }
+
 module.exports.index = async (req, res) => {
     const pageNumber = parseInt(req.params.page);
 
@@ -37,6 +42,19 @@ module.exports.createComic = async (req, res) => {
 
 module.exports.showComic = async (req, res) => {
 
+    const getLatestShow = async () => {
+        try {
+            const url = `https://api.transistor.fm/v1/episodes?pagination[page]=1&pagination[per]=1`
+            const res = await axios.get(url, config)
+            return res.data.data;
+        } catch (e) {
+            console.log(e);
+        }
+
+    };
+
+    const episode = await getLatestShow();
+
     const pageNumber = parseInt(req.params.page);
 
     // console.log(req.params)
@@ -67,7 +85,7 @@ module.exports.showComic = async (req, res) => {
         req.flash('error', 'Cannot Find that Comic');
         res.redirect('/comics/directory');
     }
-    res.render('comics/showComic', { comic, nextComic, prevComic, pageNumber, comics });
+    res.render('comics/showComic', { comic, nextComic, prevComic, pageNumber, comics, episode });
     //TESTING THAT FLASH WORKS
     // req.flash('error', 'Cannot Find that Comic');
     // res.redirect('/');

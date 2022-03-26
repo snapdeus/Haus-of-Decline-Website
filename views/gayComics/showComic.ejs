@@ -107,7 +107,11 @@
                 </button>
             </div>
         </div>
-
+        <div class="row align-items-center bottomSpacer mt-3">
+            <div class=" mx-auto descrip"><a class="link" style="color: white;"
+                    href="/episodes/1/<%=episode[0].id%>">Our latest podcast
+                    episode!</a> </div>
+        </div>
         <div class="col-6">
             <% if(currentUser) {%>
                 <h3 class="hausFont">Leave a gay comment</h2>
@@ -150,7 +154,7 @@
                                         <h5 class="card-title">
                                             <%= gayComment.author.username %>
                                         </h5>
-                                        <p class="starability-result" data-rating=<%=gayComment.rating %> >
+                                        <p class="starability-result" data-rating="<%=gayComment.rating %>">
                                             Rated: <%= gayComment.rating %> stars
                                         </p>
 
