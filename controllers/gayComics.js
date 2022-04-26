@@ -11,9 +11,10 @@ module.exports.index = async (req, res) => {
     const pageNumber = parseInt(req.params.page);
 
     if (!pageNumber) {
-        res.redirect("gay/1")
+        res.redirect("/comics/gay/1")
     }
     const gayComic = await GayComic.findOne().sort({ ordinality: -1 }).limit(1)
+    //caution, total pages here is based on a uni-directional ordinality
     const totalPages = Math.ceil(gayComic.ordinality / 15);
 
 
@@ -61,6 +62,7 @@ module.exports.showGayComic = async (req, res) => {
 
     const pageNumber = parseInt(req.params.page);
 
+
     // console.log(req.params)
     const { limit = 15 } = req.query;
     const gayComics = await GayComic.find({})
@@ -68,9 +70,14 @@ module.exports.showGayComic = async (req, res) => {
         .limit(limit * 1).skip((pageNumber - 1) * limit);
 
     if (!ObjectID.isValid(req.params.id)) {
+
+        res.redirect(`/comics/gay/${ pageNumber }`);
+
         req.session.returnTo = req.session.previousReturnTo;
         console.log('Invalid comic id, returnTo reset to:', req.session.returnTo);
     }
+
+
     const { id } = req.params;
     // console.log(req.params)
     const gayComic = await GayComic.findById(req.params.id).populate({
@@ -80,6 +87,15 @@ module.exports.showGayComic = async (req, res) => {
         }
     }).populate('author');
     const comicOrd = gayComic.ordinality;
+
+    const totalGayComics = await GayComic.countDocuments({ series: 1 })
+    // console.log(totalGayComics)
+    const totalPages = Math.ceil((totalGayComics + 1) / 15);
+
+    // console.log(pageNumber, totalPages)
+    if (pageNumber > totalPages) {
+        res.redirect(`/comics/gay/${ totalPages }`)
+    }
 
 
     const nextGayComic = await GayComic.find({ ordinality: { $lt: comicOrd } }).sort({ ordinality: -1 }).limit(1);
@@ -102,7 +118,7 @@ module.exports.renderGayEditForm = async (req, res) => {
     const gayComic = await GayComic.findById(id);
     if (!gayComic) {
         req.flash('error', 'Cannot Find that Comic');
-        res.redirect(`comics/gay/${ page }/edit`);
+        res.redirect(`comics / gay / ${ page } / edit`);
     }
 
     res.render('gayComics/edit', { gayComic, page });
@@ -114,7 +130,7 @@ module.exports.updateGayComic = async (req, res) => {
     const gayComic = await GayComic.findByIdAndUpdate(id, { ...req.body.gayComic });
 
     if (req.file) {
-        fs.unlink(`uploads/${ gayComic.filename }`, function (err) {
+        fs.unlink(`uploads / ${ gayComic.filename }`, function (err) {
             if (err) throw err;
             // if no error, file has been deleted successfully
             console.log('File deleted!');
@@ -137,7 +153,7 @@ module.exports.updateGayComic = async (req, res) => {
 module.exports.deleteGayComic = async (req, res, next) => {
     const { id, page } = req.params;
     const gayComic = await GayComic.findById(id);
-    fs.unlink(`uploads/GayComics/${ gayComic.filename }`, function (err) {
+    fs.unlink(`uploads / GayComics / ${ gayComic.filename }`, function (err) {
         if (err) throw err;
         // if no error, file has been deleted successfully
         console.log('File deleted!');
@@ -145,5 +161,5 @@ module.exports.deleteGayComic = async (req, res, next) => {
     await GayComic.findByIdAndDelete(id);
 
     req.flash('success', 'Successfully deleted comic!');
-    res.redirect(`/comics/gay/${ page }`);
+    res.redirect(`/ comics / gay / ${ page }`);
 }

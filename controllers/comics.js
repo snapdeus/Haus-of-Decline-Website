@@ -11,8 +11,10 @@ module.exports.index = async (req, res) => {
     const pageNumber = parseInt(req.params.page);
 
     if (!pageNumber) {
-        res.redirect("cod/1")
+        res.redirect("/comics/cod/1")
     }
+
+
     const { limit = 15 } = req.query;
     const comics = await Comic.find({})
         .sort({ "filename": -1 })
@@ -66,7 +68,7 @@ module.exports.showComic = async (req, res) => {
     if (!ObjectID.isValid(req.params.id)) {
         req.session.returnTo = req.session.previousReturnTo;
         console.log('Invalid comic id, returnTo reset to:', req.session.returnTo);
-        res.redirect('/comics/directory')
+        res.redirect(`/comics/cod/${ pageNumber }`);
         return
     }
     const { id } = req.params;
@@ -76,6 +78,15 @@ module.exports.showComic = async (req, res) => {
             path: 'author'
         }
     }).populate('author');
+    const totalComics = await Comic.countDocuments({ series: 0 })
+    console.log(totalComics)
+    const totalPages = Math.ceil((totalComics + 1) / 15);
+
+    console.log(pageNumber, totalPages)
+    if (pageNumber > totalPages) {
+        res.redirect(`/comics/cod/${ totalPages }`)
+    }
+
 
 
     const nextComic = await Comic.find({ _id: { $gt: id } }).sort({ _id: 1 }).limit(1);
