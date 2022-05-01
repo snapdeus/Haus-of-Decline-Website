@@ -66,6 +66,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static('uploads'));
 app.use(helmet());
+app.use(express.json())
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com",
@@ -237,6 +238,11 @@ app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
 
+
+// app.post('/webhook', (req, res) => {
+//     console.log(req.body);
+//     res.sendStatus(200)
+// })
 
 //EPISODES SECTION
 

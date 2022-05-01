@@ -71,12 +71,18 @@ body {
     background-color: #fff;
     border: 3px double #fff;
     border-radius: 0px;
-    padding: 0px;
+    padding: 1px;
+}
+
+.gayIndexBorder{
+    border-radius: 0;
+    background-color: #000;
+    border: 4px double #fff;
 }
 
 .img-thumbnail:hover {
     color: white;
-    box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.426);
+    box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(255, 230, 137, 0.626);
     transform: translatey(-0.2em);
 }
 
@@ -98,6 +104,8 @@ footer {
 .specialBorder {
     background-color: #000;
 }
+
+
 
 .sizernb {
     width: 100%;
