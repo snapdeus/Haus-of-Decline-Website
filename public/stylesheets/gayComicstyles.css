@@ -71,13 +71,13 @@ body {
     background-color: #fff;
     border: 3px double #fff;
     border-radius: 0px;
-    padding: 1px;
+    padding: 3px;
 }
 
 .gayIndexBorder{
     border-radius: 0;
     background-color: #000;
-    border: 4px double #fff;
+    border: 3px double #fff;
 }
 
 .img-thumbnail:hover {
