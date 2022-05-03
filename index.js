@@ -30,6 +30,7 @@ const gayCommentRoutes = require('./routes/gayComments');
 const commentRoutes = require('./routes/comments');
 const directoryRoutes = require('./routes/directory');
 const episodesRoutes = require('./routes/episodes');
+const webhookRoutes = require('./routes/webhooks')
 
 const MongoStore = require('connect-mongo');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
@@ -238,6 +239,9 @@ app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
 
+
+
+app.use('/webhooks', webhookRoutes);
 
 // app.post('/webhook', (req, res) => {
 //     console.log(req.body);

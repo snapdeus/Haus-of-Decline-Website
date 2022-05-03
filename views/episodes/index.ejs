@@ -1,122 +1,137 @@
 <% layout('layout/boilerplate') %>
     <link rel="stylesheet" href="/stylesheets/episodes.css">
     <div class="container">
-        <h1 class="display-4 mt-2 hausFont text-center">EPISODES</h1>
 
+        <div class="container">
 
-
-
-
-        <% for(let i=0; i < epList.length; i++){ %>
-            <div class="row mx-5 ">
-                <div class="mx-auto pt-3 pr-3 pl-3 mt-3 mb-3 text-center">
-                    <div>
-
-                        <li style="list-style-type: none;" class='episodeTitle'>
-                            <div style="font-style: italic;" class='dateSpace hausFont mt-4 mb-2 '>
-                                <%= epList[i].attributes.formatted_published_at %>
-                            </div>
-
-                            <a style='color:white; text-decoration: none;' class='hausFont link add '
-                                href="<%= pageNumber %>/<%=epList[i].id%>">
-
-                                <span id='epNum'> #<%= epList[i].attributes.number %> </span>
-
-                                <img class='specialBorder add-hover epList ' loading='lazy'
-                                    src=" <%= epList[i].attributes.image_url%>  "
-                                    alt="<%= epList[i].attributes.title %>">
-
-                                <span class='title text-center mt-3' style="display:block">
-                                    "<%= epList[i].attributes.title %>"
-                                </span>
-
-
-                                <div class='row summary mt-3 mb-5 hausFont'>
-                                    <%= epList[i].attributes.summary %>
-                                </div>
-                            </a>
-
-
-                        </li>
-                        </ul>
-                    </div>
+            <div class="row">
+                <div class="mx-auto mb-3">
+                    <h2 style='text-decoration: none;' class="display hausFontNoColor text-center">
+                        <a class="link  rainbow_text_animated" style=' text-decoration: none;'
+                            href="https://www.patreon.com/hausofdecline">Support
+                            us on Patreon!</a>
+                    </h2>
                 </div>
             </div>
-            <div class="epBorderLine"></div>
-            <% } %>
 
-                <nav class="mt-5" aria-label="Episode Page Navigation">
-                    <ul class="pagination  justify-content-center hausFont">
-                        <% if (metaData.currentPage===1) { %>
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1">Previous</a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="<%= metaData.currentPage %>">
-                                    <%= metaData.currentPage %>
-                                </a></li>
-                            <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
-                                    <%= metaData.currentPage +1 %>
-                                </a></li>
-                            <li class="page-item"><a class="page-link" href="<%= metaData.currentPage + 2%>">
-                                    <%= metaData.currentPage + 2 %>
-                                </a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
-                            </li>
+            <h1 class="display-4 mt-2 hausFont text-center">EPISODES</h1>
 
-                            <% } else { %>
-                                <li class="page-item">
-                                    <a class="page-link" href="<%= metaData.currentPage -1 %>"
-                                        tabindex="-1">Previous</a>
+
+
+
+
+            <% for(let i=0; i < epList.length; i++){ %>
+                <div class="row mx-5 ">
+                    <div class="mx-auto pt-3 pr-3 pl-3 mt-3 mb-3 text-center">
+                        <div>
+
+                            <li style="list-style-type: none;" class='episodeTitle'>
+                                <div style="font-style: italic;" class='dateSpace hausFont mt-4 mb-2 '>
+                                    <%= epList[i].attributes.formatted_published_at %>
+                                </div>
+
+                                <a style='color:white; text-decoration: none;' class='hausFont link add '
+                                    href="<%= pageNumber %>/<%=epList[i].id%>">
+
+                                    <span id='epNum'> #<%= epList[i].attributes.number %> </span>
+
+                                    <img class='specialBorder add-hover epList ' loading='lazy'
+                                        src=" <%= epList[i].attributes.image_url%>  "
+                                        alt="<%= epList[i].attributes.title %>">
+
+                                    <span class='title text-center mt-3' style="display:block">
+                                        "<%= epList[i].attributes.title %>"
+                                    </span>
+
+
+                                    <div class='row summary mt-3 mb-5 hausFont'>
+                                        <%= epList[i].attributes.summary %>
+                                    </div>
+                                </a>
+
+
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="epBorderLine"></div>
+                <% } %>
+
+                    <nav class="mt-5" aria-label="Episode Page Navigation">
+                        <ul class="pagination  justify-content-center hausFont">
+                            <% if (metaData.currentPage===1) { %>
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
                                 </li>
-
-                                <li class="page-item"><a class="page-link" href="<%= metaData.currentPage -1 %>">
-                                        <%= metaData.currentPage -1 %>
-                                    </a></li>
                                 <li class="page-item active"><a class="page-link" href="<%= metaData.currentPage %>">
                                         <%= metaData.currentPage %>
                                     </a></li>
-
-                                <% if (metaData.currentPage !==metaData.totalPages) { %>
-                                    <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
-                                            <%= metaData.currentPage + 1 %>
-                                        </a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
-                                    </li>
-                                    <% } else { %>
-
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Next</a>
-                                        </li>
-                                        <% } %>
-                                            <% } %>
-                    </ul>
-                </nav>
-                <nav aria-label="Episode Page Navigation">
-                    <ul class="pagination justify-content-center hausFont">
-                        <% if (metaData.currentPage===1) { %>
-                            <li class="page-item ">
-                                <a id="firstLast" class="page-link disabled" href="#">First</a>
-                            </li>
-
-
-                            <% } else { %>
-                                <li class="page-item ">
-                                    <a id="firstLast" class="page-link disable" href="/episodes/1">First</a>
+                                <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
+                                        <%= metaData.currentPage +1 %>
+                                    </a></li>
+                                <li class="page-item"><a class="page-link" href="<%= metaData.currentPage + 2%>">
+                                        <%= metaData.currentPage + 2 %>
+                                    </a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
                                 </li>
-                                <% } %>
-                                    <%if(metaData.currentPage===metaData.totalPages) {%>
-                                        <li id="firstLast" class="page-item disabled">
-                                            <a class="page-link" href="<%= metaData.totalPages %> ">Last</a>
+
+                                <% } else { %>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<%= metaData.currentPage -1 %>"
+                                            tabindex="-1">Previous</a>
+                                    </li>
+
+                                    <li class="page-item"><a class="page-link" href="<%= metaData.currentPage -1 %>">
+                                            <%= metaData.currentPage -1 %>
+                                        </a></li>
+                                    <li class="page-item active"><a class="page-link"
+                                            href="<%= metaData.currentPage %>">
+                                            <%= metaData.currentPage %>
+                                        </a></li>
+
+                                    <% if (metaData.currentPage !==metaData.totalPages) { %>
+                                        <li class="page-item"><a class="page-link"
+                                                href="<%= metaData.currentPage +1 %>">
+                                                <%= metaData.currentPage + 1 %>
+                                            </a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
                                         </li>
                                         <% } else { %>
-                                            <li id="firstLast" class="page-item">
-                                                <a class="page-link" href="<%= metaData.totalPages %> ">Last</a>
+
+                                            <li class="page-item disabled">
+                                                <a class="page-link" href="#" tabindex="-1">Next</a>
                                             </li>
                                             <% } %>
-                    </ul>
-                </nav>
+                                                <% } %>
+                        </ul>
+                    </nav>
+                    <nav aria-label="Episode Page Navigation">
+                        <ul class="pagination justify-content-center hausFont">
+                            <% if (metaData.currentPage===1) { %>
+                                <li class="page-item ">
+                                    <a id="firstLast" class="page-link disabled" href="#">First</a>
+                                </li>
+
+
+                                <% } else { %>
+                                    <li class="page-item ">
+                                        <a id="firstLast" class="page-link disable" href="/episodes/1">First</a>
+                                    </li>
+                                    <% } %>
+                                        <%if(metaData.currentPage===metaData.totalPages) {%>
+                                            <li id="firstLast" class="page-item disabled">
+                                                <a class="page-link" href="<%= metaData.totalPages %> ">Last</a>
+                                            </li>
+                                            <% } else { %>
+                                                <li id="firstLast" class="page-item">
+                                                    <a class="page-link" href="<%= metaData.totalPages %> ">Last</a>
+                                                </li>
+                                                <% } %>
+                        </ul>
+                    </nav>
 
 
 
@@ -124,7 +139,7 @@
 
 
 
-    </div>
-    <div class="col-3 col-md-2 fixed-bottom">
-        <img src="../gifs/resources/headernotext.png" class="img-fluid " alt="headerpic">
-    </div>
+        </div>
+        <div class="col-3 col-md-2 fixed-bottom">
+            <img src="../gifs/resources/headernotext.png" class="img-fluid " alt="headerpic">
+        </div>

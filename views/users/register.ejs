@@ -36,10 +36,22 @@
                                     Looks good!
                                 </div>
                             </div>
-                            <button class="btn btn-secondary btn-block">Register</button>
+                            <div class="mb-3">
+                                <label class="form-label" for="confirm_password">Confirm Password</label>
+                                <input class="form-control" type="password" id="confirm_password"
+                                    name="confirm_password" required>
+                                <span id='message'></span>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
+                            </div>
+                            <button id="register_button" disabled class="btn btn-secondary btn-block">Register</button>
 
                             <div class="g-recaptcha" data-sitekey="6Lc4edQeAAAAABZhRNetbDPsxlVHHCBtFV_TDFW5"></div>
 
+
+                            <!-- test captcha
+                            <div class="g-recaptcha" data-sitekey="6Le69dAeAAAAAIS_2p_mMuvfChENk-OU00uDcqdC"></div> -->
 
 
                         </form>
@@ -49,3 +61,16 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        $('#password, #confirm_password').on('keyup', function () {
+            if ($('#password').val() === $('#confirm_password').val() && $('#password').val() !== '') {
+                $('#message').html('Passwords Match!').css('color', 'green');
+                $('#register_button').prop('disabled', false);
+            } else {
+                $('#message').html('Passwords do not match').css('color', 'red');
+                $('#register_button').prop('disabled', true);
+            }
+        });
+    </script>

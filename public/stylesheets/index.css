@@ -50,6 +50,36 @@ body, html {
     z-index: 100;
 }
 
+.rainbow_text_animated {
+    background: linear-gradient(to right, #a17fe4, #0099ff , #00ff00,#ffff00, #ff3399, #ee82ee , #6666ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow_animation 3s ease-in-out infinite;
+    background-size: 400% 100%;
+}
+
+
+.rainbow_text_animated:hover {
+    background: linear-gradient(to right, #b877f5, #0099ff , #00ff00,#ffff00, #ff3399, #ee82ee , #6666ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow_animation 3s ease-in-out infinite;
+    background-size: 400% 100%;
+}
+
+@keyframes rainbow_animation {
+    0%,100% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 100% 0;
+    }
+}
+
+
 #topkeep {
     z-index: 1;
     margin-bottom: 2rem;
@@ -122,7 +152,14 @@ body, html {
 }
 
 .link:hover {
-    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+    text-shadow: 0.05em 0.05em 0.1em rgba(254, 206, 255, 0.645), 1px 1px 1px #f8ceff9b;
+}
+
+.hausFontNoColor {
+    font-family: "Share Tech Mono";
+    font-size: 3rem;
+    
+    
 }
 
 .hausFont {

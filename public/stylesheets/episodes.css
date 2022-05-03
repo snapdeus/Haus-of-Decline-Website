@@ -2,14 +2,12 @@
     font-size: 20px;
 }
 
-.link {
+/* .link {
     text-decoration: none;
     color: whitesmoke;
-}
+} */
 
-.link:hover {
-    text-shadow: 0.09em 0.2em 0.3em rgb(250, 255, 90), 2px 3px 2px black;
-}
+
 
 .title {
     font-size: 40px;
