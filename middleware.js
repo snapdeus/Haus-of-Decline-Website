@@ -42,8 +42,8 @@ module.exports.isLoggedIn = (req, res, next) => {
 module.exports.isAuthor = async (req, res, next) => {
     const { id } = req.params;
     const comic = await Comic.findById(id);
-    console.log(comic.author)
-    console.log(req.user._id)
+    // console.log(comic.author)
+    // console.log(req.user._id)
     if (!comic.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission.');
         return res.redirect(`/comics/directory`)
@@ -55,8 +55,8 @@ module.exports.isAuthor = async (req, res, next) => {
 module.exports.isGayAuthor = async (req, res, next) => {
     const { id } = req.params;
     const gayComic = await GayComic.findById(id);
-    console.log(gayComic.author)
-    console.log(req.user._id)
+    // console.log(gayComic.author)
+    // console.log(req.user._id)
     if (!gayComic.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission.');
         return res.redirect(`/comics/directory`)
@@ -105,7 +105,7 @@ module.exports.resizeComic = (req, res, next) => {
 module.exports.isCommentAuthor = async (req, res, next) => {
     const { id, commentId } = req.params;
     const comment = await Comment.findById(commentId);
-    console.log(comment.author)
+    // console.log(comment.author)
     if (!comment.author.equals(req.user._id)) {
         req.flash('error', 'You do not have permission.');
         return res.redirect(`/comics/directory`)
