@@ -1,11 +1,15 @@
 express = require('express');
 const router = express.Router(({ mergeParams: true }));
 const catchAsync = require('../utils/catchAsync')
-const { patreonWebhook, transistorWebhook } = require('../controllers/webhooks')
+const { patreonWebhook, transistorWebhook, patreonPost } = require('../controllers/webhooks')
 
 router.post('/transistorWebhook', catchAsync(transistorWebhook));
 
 router.post('/patreonWebhook', catchAsync(patreonWebhook));
 
+router.post('/patreonPost', catchAsync(patreonPost));
+
 
 module.exports = router;
+
+

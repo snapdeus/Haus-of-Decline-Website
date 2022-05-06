@@ -1,7 +1,16 @@
+const { eventEmitter, postEventEmitter } = require('../eventEmitters/eventEmitter');
 
+
+const listener = require('../eventEmitters/eventListener');
 
 module.exports.patreonWebhook = async (req, res) => {
-    console.log(req.body);
+    eventEmitter.emit('pubsub', req.body);
+    res.sendStatus(200)
+}
+
+
+module.exports.patreonPost = async (req, res) => {
+    postEventEmitter.emit('newPost', req.body);
     res.sendStatus(200)
 }
 

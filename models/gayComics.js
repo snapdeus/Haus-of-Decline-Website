@@ -24,5 +24,18 @@ const GayComicSchema = new Schema({
     ]
 }, opts)
 
+GayComicSchema.index({
+    title: 'text',
+    description: 'text'
+},
+    {
+        name: 'MyTestIndex',
+        weights: {
+            title: 10,
+            description: 5
+        }
+
+    })
+
 
 module.exports = mongoose.model('GayComics', GayComicSchema)
