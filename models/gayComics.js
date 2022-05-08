@@ -40,6 +40,8 @@ GayComicSchema.index({
     })
 
 //enabled .ensureIndexes to add index the first time
-module.exports = mongoose.model('GayComics', GayComicSchema).ensureIndexes(function (err) {
-    if (err) return handleError(err);
-});
+module.exports = mongoose.model('GayComics', GayComicSchema);
+
+//     .ensureIndexes(function (err) {
+//     if (err) return handleError(err);
+// });
