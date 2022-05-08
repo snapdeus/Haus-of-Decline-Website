@@ -24,14 +24,14 @@ module.exports.doSearch = async (req, res) => {
 
 
     for (comic of gayComics) {
-        // const comicNumber = comic.ordinality
+        const comicNumber = comic.ordinality
 
-        // if (comicNumber % 15 >= totalGayComics % 15 || comicNumber % 15 === 0) {
-        //     comic.pageNumber = totalPages - Math.ceil(comicNumber / 15)
-        // } else if (comicNumber % 15 < totalGayComics % 15) {
-        //     comic.pageNumber = totalPages - (Math.ceil(comicNumber / 15) - 1)
-        // }
-        comic.pageNumber = totalPages - Math.ceil((comic.ordinality - 1) / 15);
+        if (comicNumber % 15 >= totalGayComics % 15 || comicNumber % 15 === 0) {
+            comic.pageNumber = totalPages - Math.ceil(comicNumber / 15)
+        } else if (comicNumber % 15 < totalGayComics % 15) {
+            comic.pageNumber = totalPages - (Math.ceil(comicNumber / 15) - 1)
+        }
+
     }
 
 

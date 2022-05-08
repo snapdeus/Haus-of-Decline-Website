@@ -217,6 +217,7 @@ const getLatestShow = async () => {
 
 app.get('/', async (req, res) => {
     const gayComics = await GayComic.find({}).sort({ "filename": -1 })
+
     const episode = await getLatestShow();
 
     res.render('home', { gayComics, episode })
