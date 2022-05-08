@@ -23,11 +23,16 @@
             <div class="row">
                 <% } %>
                     <div class="col-lg-4  col-xs-12">
-                        <a href="/comics/gay/<%=pageNumber%>/<%=gayComics[i]._id%> " data-fancybox="gallery"
+                        <a class="link" style="text-decoration: none;"
+                            href="/comics/gay/<%=pageNumber%>/<%=gayComics[i]._id%> " data-fancybox="gallery"
                             data-caption="<%= gayComics[i].title %>">
                             <img loading="lazy" class="img-thumbnail gayIndexBorder"
                                 src="/uploads/GayComics/<%= gayComics[i].filename %> "
                                 alt="<%= gayComics[i].description %>" title="<%= gayComics[i].title %> ">
+                            <p class="hausFont text-center">
+                                #<%= gayComics[i].ordinality %>
+                                    <%= gayComics[i].title%>
+                            </p>
                         </a>
                     </div>
                     <% } %>
