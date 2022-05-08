@@ -11,7 +11,11 @@ module.exports.doSearch = async (req, res) => {
     });
 
 
-    const gayComics = await GayComic.find({ $text: { $search: `${ searchTerms }` } })
+    const unsortedGayComics = await GayComic.find({ $text: { $search: `${ searchTerms }` } })
+
+    const gayComics = unsortedGayComics.sort(function (a, b) {
+        return a.ordinality - b.ordinality
+    })
 
     const maxNumber = await GayComic.findOne({})
         .sort({ ordinality: -1 })
@@ -28,6 +32,8 @@ module.exports.doSearch = async (req, res) => {
             comic.pageNumber = totalPages - (Math.ceil(comicNumber / 15) - 1)
         }
     }
+
+
 
     res.render('search', { gayComics })
 }
