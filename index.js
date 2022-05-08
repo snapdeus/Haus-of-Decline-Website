@@ -31,6 +31,7 @@ const commentRoutes = require('./routes/comments');
 const directoryRoutes = require('./routes/directory');
 const episodesRoutes = require('./routes/episodes');
 const webhookRoutes = require('./routes/webhooks')
+const searchRoutes = require('./routes/search')
 
 const MongoStore = require('connect-mongo');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
@@ -40,9 +41,7 @@ const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW
 
 mongoose.connect('mongodb://localhost:27017/haus-db?authSource=admin', {
     useNewUrlParser: true,
-    // useCreateIndex: true,
     useUnifiedTopology: true,
-    // useFindAndModify: false
     user: process.env.MONGO_USER,
     pass: process.env.MONGO_PW,
     autoIndex: false
@@ -135,7 +134,7 @@ app.use(
         },
     })
 );
-
+// mongo sanitize before defining routes
 app.use(mongoSanitize({
     replaceWith: '_'
 }))
@@ -238,6 +237,7 @@ app.use('/comics/cod/:id/comments', commentRoutes);
 app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
+app.use('/search', searchRoutes);
 
 
 

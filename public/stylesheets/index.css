@@ -261,6 +261,10 @@ body, html {
     .hausrise {
         margin-top: 0;
     }
+    #searchBar {
+        margin-left: auto;
+    }
+
 }
 
 .icon {
