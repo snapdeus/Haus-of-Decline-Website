@@ -37,7 +37,7 @@ client.on('ready', () => {
         if (title.includes('Daily')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
-                .setTitle(`New Daily Comic: ${ title }`)
+                .setTitle(`New Patreon Comic: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
             client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
