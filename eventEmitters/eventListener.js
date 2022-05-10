@@ -14,7 +14,7 @@ client.on('ready', () => {
         const response = requestBody;
         console.log(response.data)
         const name = response.data.attributes.full_name;
-        const plegdeAmt = response.data.attributes.pledge_amount_cents / 100;
+        const plegdeAmt = response.data.attributes.campaign_pledge_amount_cents / 100;
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(`New Patreon Subscriber!`)

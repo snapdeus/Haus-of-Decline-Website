@@ -44,6 +44,9 @@ module.exports.index = async (req, res) => {
     }
     const getShows = async () => {
         try {
+            if (!pageNumber) {
+                pageNumber = 1
+            }
             const url = `https://api.transistor.fm/v1/episodes?pagination[page]=${ pageNumber }&pagination[per]=10`
             const res = await axios.get(url, config)
 
