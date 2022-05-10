@@ -12,15 +12,15 @@ client.on('ready', () => {
 
     eventEmitter.on('pubsub', function (requestBody) {
         const response = requestBody;
-        // console.log(response)
+        console.log(response.data)
         const name = response.data.attributes.full_name;
-        const plegdeAmt = response.data.attributes.pledge_amount_cents;
+        const plegdeAmt = response.data.attributes.pledge_amount_cents / 100;
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(`New Patreon Subscriber!`)
             .addField("Patreon User", name)
-            .addField('Pledged:', `$${ plegdeAmt / 100 }`);
-        client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
+            .addField('Pledged:', `$${ plegdeAmt }`);
+        client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
 
     });
 
