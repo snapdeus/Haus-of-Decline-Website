@@ -20,7 +20,7 @@ client.on('ready', () => {
             .setTitle(`New Patreon Subscriber!`)
             .addField("Patreon User", name)
             .addField('Pledged:', `$${ plegdeAmt }`);
-        client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
+        client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
 
     });
 
