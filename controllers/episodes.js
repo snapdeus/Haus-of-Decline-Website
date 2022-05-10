@@ -40,7 +40,7 @@ const config = { headers: { 'x-api-key': apiKey } }
 module.exports.index = async (req, res) => {
     const pageNumber = req.params.page;
     if (!pageNumber) {
-        pageNumber = 1;
+        pageNumber = "1";
         res.redirect("episodes/1")
     }
     const getShows = async () => {
