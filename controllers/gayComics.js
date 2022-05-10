@@ -11,7 +11,7 @@ module.exports.index = async (req, res) => {
     const pageNumber = parseInt(req.params.page);
 
     if (!pageNumber) {
-        res.redirect("/comics/gay/1")
+        return res.redirect("/comics/gay/1")
     }
     const gayComic = await GayComic.findOne().sort({ "ordinality": -1 }).limit(1)
     //caution, total pages here is based on a uni-directional ordinality
