@@ -37,10 +37,11 @@ client.on('ready', () => {
         const content = unformattedContent.replace(/<[^>]*>?/gm, '')
         const title = response.data.attributes.title;
         const url = response.data.attributes.url
-        const file = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/oink.png');
-        const file2 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/balls.png');
+        const file = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/daily.png');
+        const file2 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/episode.jpg');
         const file3 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/gravy.png');
         const file4 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/commission.png');
+        const file5 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/balls.png');
 
         if (title.includes('Daily')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -48,7 +49,7 @@ client.on('ready', () => {
                 .setTitle(`New Comic on Patreon!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://oink.png')
+                .setThumbnail('attachment://daily.png')
             client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
         } else if (title.includes('BE')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -56,7 +57,7 @@ client.on('ready', () => {
                 .setTitle(`New Bonus Episode! ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://balls.png')
+                .setThumbnail('attachment://episode.jpg')
             client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file2] })
         } else if (title.includes('Behind')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -64,8 +65,8 @@ client.on('ready', () => {
                 .setTitle(`New Behind the Scenes post!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://gravy.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file3] })
+                .setThumbnail('attachment://balls.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file5] })
         } else if (title.includes('Commission')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
