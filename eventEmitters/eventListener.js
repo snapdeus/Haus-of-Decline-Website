@@ -82,4 +82,4 @@ client.on('ready', () => {
 })
 
 
-client.login(process.env.TESTBOT_TOKEN)
+client.login(process.env.BOT_TOKEN)
