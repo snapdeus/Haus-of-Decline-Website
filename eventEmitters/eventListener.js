@@ -36,14 +36,13 @@ client.on('ready', () => {
         const title = response.data.attributes.title;
         const url = response.data.attributes.url
 
-
         if (title.includes('Daily')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Comic on Patreon!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('https://hausofdecline.com/uploads/oink.png')
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
             client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         } else if (title.includes('BE')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -51,7 +50,7 @@ client.on('ready', () => {
                 .setTitle(`New Bonus Episode! ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('https://hausofdecline.com/uploads/oink.png')
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
             client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         } else if (title.includes('Behind')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -59,7 +58,7 @@ client.on('ready', () => {
                 .setTitle(`New Behind the Scenes post!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('https://hausofdecline.com/uploads/oink.png')
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
             client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         } else if (title.includes('Commission')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -67,15 +66,16 @@ client.on('ready', () => {
                 .setTitle(`New Commissioned Comic!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('https://hausofdecline.com/uploads/oink.png')
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
             client.channels.cache.get(process.env.TESTCOMMISSION_CHANNEL).send({ embeds: [embedMsg] })
         } else {
+
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Post on Patreon: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('https://hausofdecline.com/uploads/oink.png')
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
             client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         }
     })
