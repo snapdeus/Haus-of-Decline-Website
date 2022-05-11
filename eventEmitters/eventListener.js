@@ -35,7 +35,7 @@ client.on('ready', () => {
         const content = unformattedContent.replace(/<[^>]*>?/gm, '')
         const title = response.data.attributes.title;
         const url = response.data.attributes.url
-        const file = new Discord.MessageAttachment('../gifs/resources/oink.png');
+        const file = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/oink.png');
 
         if (title.includes('Daily')) {
             const embedMsg = new Discord.MessageEmbed()
