@@ -24,7 +24,7 @@ client.on('ready', () => {
             .addField("Patreon User", firstName)
             .addField('Pledged:', `$${ plegdeAmt }`)
             .setThumbnail('attachment://imin.png')
-        client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
+        client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
 
     });
 
@@ -50,7 +50,7 @@ client.on('ready', () => {
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
                 .setThumbnail('attachment://daily.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
+            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
         } else if (title.includes('BE')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
@@ -58,7 +58,7 @@ client.on('ready', () => {
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
                 .setThumbnail('attachment://episode.jpg')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file2] })
+            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file2] })
         } else if (title.includes('Behind')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
@@ -66,7 +66,7 @@ client.on('ready', () => {
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
                 .setThumbnail('attachment://balls.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file5] })
+            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file5] })
         } else if (title.includes('Commission')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
@@ -74,7 +74,7 @@ client.on('ready', () => {
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
                 .setThumbnail('attachment://commission.png')
-            client.channels.cache.get(process.env.TESTCOMMISSION_CHANNEL).send({ embeds: [embedMsg], files: [file4] })
+            client.channels.cache.get(process.env.COMMISSION_CHANNEL).send({ embeds: [embedMsg], files: [file4] })
         } else {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
@@ -82,7 +82,7 @@ client.on('ready', () => {
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
                 .setThumbnail('attachment://gravy.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file3] })
+            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file3] })
         }
     })
 })
