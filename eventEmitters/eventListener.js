@@ -14,11 +14,13 @@ client.on('ready', () => {
         const response = requestBody;
         console.log(response.data)
         const name = response.data.attributes.full_name;
+        const nameArray = name.split(' ')
+        const firstName = nameArray[0]
         const plegdeAmt = response.data.attributes.will_pay_amount_cents / 100;
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(`New Patreon Subscriber!`)
-            .addField("Patreon User", name)
+            .addField("Patreon User", firstName)
             .addField('Pledged:', `$${ plegdeAmt }`);
         client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
 

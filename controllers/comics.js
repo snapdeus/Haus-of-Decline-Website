@@ -79,10 +79,10 @@ module.exports.showComic = async (req, res) => {
         }
     }).populate('author');
     const totalComics = await Comic.countDocuments({ series: 0 })
-    console.log(totalComics)
+
     const totalPages = Math.ceil((totalComics + 1) / 15);
 
-    console.log(pageNumber, totalPages)
+
     if (pageNumber > totalPages) {
         res.redirect(`/comics/cod/${ totalPages }`)
     }
