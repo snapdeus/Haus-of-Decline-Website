@@ -11,6 +11,7 @@ client.on('ready', () => {
 
 
     eventEmitter.on('pubsub', function (requestBody) {
+        const file = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/imin.png');
         const response = requestBody;
         console.log(response.data)
         const name = response.data.attributes.full_name;
@@ -21,8 +22,9 @@ client.on('ready', () => {
             .setColor('#0099ff')
             .setTitle(`New Patreon Subscriber!`)
             .addField("Patreon User", firstName)
-            .addField('Pledged:', `$${ plegdeAmt }`);
-        client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
+            .addField('Pledged:', `$${ plegdeAmt }`)
+            .setThumbnail('attachment://imin.png')
+        client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
 
     });
 
@@ -36,6 +38,9 @@ client.on('ready', () => {
         const title = response.data.attributes.title;
         const url = response.data.attributes.url
         const file = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/oink.png');
+        const file2 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/balls.png');
+        const file3 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/gravy.png');
+        const file4 = new Discord.MessageAttachment('/home/snapdeus/webApp/gifs/resources/commission.png');
 
         if (title.includes('Daily')) {
             const embedMsg = new Discord.MessageEmbed()
@@ -51,32 +56,32 @@ client.on('ready', () => {
                 .setTitle(`New Bonus Episode! ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://oink.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
+                .setThumbnail('attachment://balls.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file2] })
         } else if (title.includes('Behind')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Behind the Scenes post!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://oink.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
+                .setThumbnail('attachment://gravy.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file3] })
         } else if (title.includes('Commission')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Commissioned Comic!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://oink.png')
-            client.channels.cache.get(process.env.TESTCOMMISSION_CHANNEL).send({ embeds: [embedMsg], files: [file] })
+                .setThumbnail('attachment://commission.png')
+            client.channels.cache.get(process.env.TESTCOMMISSION_CHANNEL).send({ embeds: [embedMsg], files: [file4] })
         } else {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Post on Patreon: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-                .setThumbnail('attachment://oink.png')
-            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file] })
+                .setThumbnail('attachment://gravy.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg], files: [file3] })
         }
     })
 })
