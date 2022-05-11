@@ -39,31 +39,35 @@ client.on('ready', () => {
         if (title.includes('Daily')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
-                .setTitle(`New Patreon Comic: ${ title }`)
+                .setTitle(`New Comic on Patreon!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         } else if (title.includes('BE')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Bonus Episode! ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         } else if (title.includes('Behind')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Behind the Scenes post!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         } else if (title.includes('Commission')) {
             const embedMsg = new Discord.MessageEmbed()
                 .setColor('#0099ff')
                 .setTitle(`New Commissioned Comic!: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-            client.channels.cache.get(process.env.COMMISSION_CHANNEL).send({ embeds: [embedMsg] })
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
+            client.channels.cache.get(process.env.TESTCOMMISSION_CHANNEL).send({ embeds: [embedMsg] })
         } else {
 
             const embedMsg = new Discord.MessageEmbed()
@@ -71,10 +75,11 @@ client.on('ready', () => {
                 .setTitle(`New Post on Patreon: ${ title }`)
                 .setDescription(`${ content }`)
                 .setURL(`https://www.patreon.com${ url }`)
-            client.channels.cache.get(process.env.GENERAL_CHANNEL).send({ embeds: [embedMsg] })
+                .setThumbnail('https://i.imgur.com/YsPMVOH.png')
+            client.channels.cache.get(process.env.TESTGENERAL_CHANNEL).send({ embeds: [embedMsg] })
         }
     })
 })
 
 
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.TESTBOT_TOKEN)
