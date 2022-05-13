@@ -18,6 +18,7 @@ const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
 const helmet = require('helmet')
 
+
 require('dotenv').config();
 
 const apiKey = process.env.TRANSISTOR_API_KEY;
@@ -32,6 +33,7 @@ const directoryRoutes = require('./routes/directory');
 const episodesRoutes = require('./routes/episodes');
 const webhookRoutes = require('./routes/webhooks')
 const searchRoutes = require('./routes/search')
+const patreonRoutes = require('./routes/patreon')
 
 const MongoStore = require('connect-mongo');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
@@ -239,9 +241,7 @@ app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
 app.use('/search', searchRoutes);
-
-
-
+app.use('/patreon', patreonRoutes)
 app.use('/webhooks', webhookRoutes);
 
 // app.post('/webhook', (req, res) => {
@@ -271,6 +271,7 @@ app.use('/webhooks', webhookRoutes);
 //         console.log(e);
 //     }
 // };
+
 
 
 

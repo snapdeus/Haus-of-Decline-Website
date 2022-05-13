@@ -8,7 +8,6 @@ module.exports.patreonWebhook = async (req, res) => {
     res.sendStatus(200)
 }
 
-
 module.exports.patreonPost = async (req, res) => {
     postEventEmitter.emit('newPost', req.body);
     res.sendStatus(200)
@@ -16,5 +15,10 @@ module.exports.patreonPost = async (req, res) => {
 
 module.exports.transistorWebhook = async (req, res) => {
     console.log(req.body);
+    res.sendStatus(200)
+}
+
+module.exports.privateComic = async (req, res) => {
+    eventEmitter.emit('privcom', req.body);
     res.sendStatus(200)
 }
