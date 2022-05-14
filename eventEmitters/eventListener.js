@@ -9,7 +9,7 @@ const { eventEmitter, postEventEmitter } = require('./eventEmitter');
 client.on('ready', () => {
 
     eventEmitter.on('privcom', function (requestBody) {
-        console.log(requestBody)
+        // console.log(requestBody)
         const response = requestBody
         let url = response.tags[0].replace(/'/g, "").replace(/"/g, '')
         if (!url.includes('http')) {
@@ -21,9 +21,10 @@ client.on('ready', () => {
 
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
-            .setTitle(`New Daily Comic`)
+            .setTitle(response.tags[1])
             .setImage(`${ response.url }`)
             .setURL(`${ url }`)
+            .setDescription(response.tags[2].slice(0, -1))
 
         client.channels.cache.get(process.env.PATREON_COMICS_CHANNEL).send({ embeds: [embedMsg] })
 

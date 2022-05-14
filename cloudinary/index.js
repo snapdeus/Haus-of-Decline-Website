@@ -15,7 +15,9 @@ const storage = new CloudinaryStorage({
         allowedFormats: ['jpeg', 'jpg'],
         // type: 'private',
         width: 350,
-        tags: (req, file) => JSON.stringify(req.body.tag)
+        tags: (req, file) => JSON.stringify(req.body.tag),
+
+
 
     }
 });
