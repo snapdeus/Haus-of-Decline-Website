@@ -17,7 +17,8 @@ client.on('ready', () => {
         } else if (!url.includes('.com')) {
             url = url + '.com'
         }
-        let description = '|| ' + response.tags[2].slice(0, -1) + ' ||'
+        let description = response.tags[2].slice(0, -1)
+
 
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
