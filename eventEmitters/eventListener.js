@@ -17,14 +17,14 @@ client.on('ready', () => {
         } else if (!url.includes('.com')) {
             url = url + '.com'
         }
-
+        let description = '|| ' + response.tags[2].slice(0, -1) + ' ||'
 
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(response.tags[1])
             .setImage(`${ response.url }`)
             .setURL(`${ url }`)
-            .setDescription(response.tags[2].slice(0, -1))
+            .setFooter({ text: `${ description }` })
 
         client.channels.cache.get(process.env.PATREON_COMICS_CHANNEL).send({ embeds: [embedMsg] })
 
