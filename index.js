@@ -17,6 +17,7 @@ const GayComic = require('./models/gayComics')
 const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
 const helmet = require('helmet')
+const subdomain = require('express-subdomain')
 
 
 require('dotenv').config();
@@ -34,6 +35,7 @@ const episodesRoutes = require('./routes/episodes');
 const webhookRoutes = require('./routes/webhooks')
 const searchRoutes = require('./routes/search')
 const patreonRoutes = require('./routes/patreon')
+const storeRoutes = require('./routes/store')
 
 const MongoStore = require('connect-mongo');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
@@ -217,6 +219,10 @@ const getLatestShow = async () => {
 };
 
 
+//FOR WHEN WE MAKE OUR OWN STORE
+// app.use(subdomain('store', storeRoutes));
+
+
 app.get('/', async (req, res) => {
     const gayComics = await GayComic.find({}).sort({ "filename": -1 })
 
@@ -243,6 +249,9 @@ app.use('/comics/directory', directoryRoutes);
 app.use('/search', searchRoutes);
 app.use('/patreon', patreonRoutes)
 app.use('/webhooks', webhookRoutes);
+
+
+
 
 // app.post('/webhook', (req, res) => {
 //     console.log(req.body);
