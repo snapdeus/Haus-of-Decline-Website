@@ -33,7 +33,7 @@
                 </div>
 
                 <nav class="mt-5" aria-label="Episode Page Navigation">
-                    <ul class="pagination justify-content-center hausFont">
+                    <ul class="pagination pagination-sm justify-content-center hausFont">
 
                         <% if (pageNumber===1) { %>
                             <li class="page-item disabled">
@@ -51,33 +51,63 @@
                             <li class="page-item">
                                 <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
                             </li>
-
-                            <% } else { %>
+                            <% }else if (pageNumber===2){ %>
                                 <li class="page-item">
                                     <a class="page-link" href="<%= pageNumber -1 %>" tabindex="-1">Previous</a>
                                 </li>
-
                                 <li class="page-item"><a class="page-link" href="<%= pageNumber -1 %>">
                                         <%= pageNumber -1 %>
                                     </a></li>
                                 <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
                                         <%= pageNumber %>
                                     </a></li>
-
-                                <% if (pageNumber !==12) { %>
-                                    <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
-                                            <%= pageNumber + 1 %>
-                                        </a></li>
+                                <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                        <%= pageNumber +1 %>
+                                    </a></li>
+                                <li class="page-item"><a class="page-link" href="<%= pageNumber + 2%>">
+                                        <%= pageNumber + 2 %>
+                                    </a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                </li>
+                                <% } else { %>
                                     <li class="page-item">
-                                        <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                        <a class="page-link" href="<%= pageNumber -1 %>" tabindex="-1">Previous</a>
                                     </li>
-                                    <% } else { %>
+                                    <li class="page-item"><a class="page-link" href="<%= pageNumber -2 %>">
+                                            <%= pageNumber -2 %>
+                                        </a></li>
+                                    <li class="page-item"><a class="page-link" href="<%= pageNumber -1 %>">
+                                            <%= pageNumber -1 %>
+                                        </a></li>
+                                    <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
+                                            <%= pageNumber %>
+                                        </a></li>
 
+                                    <% if (pageNumber===12 ) { %>
                                         <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Next</a>
+                                            <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
                                         </li>
-                                        <% } %>
-                                            <% } %>
+                                        <% } else if (pageNumber===11) { %>
+                                            <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                                    <%= pageNumber + 1 %>
+                                                </a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                            </li>
+
+                                            <% } else { %>
+                                                <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                                        <%= pageNumber + 1 %>
+                                                    </a></li>
+                                                <li class="page-item"><a class="page-link" href="<%= pageNumber +2 %>">
+                                                        <%= pageNumber + 2 %>
+                                                    </a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                                </li>
+                                                <% } %>
+                                                    <% } %>
                     </ul>
                 </nav>
 

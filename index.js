@@ -16,8 +16,10 @@ const Comic = require('./models/comics')
 const GayComic = require('./models/gayComics')
 const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
+const Episode = require('./models/episodes')
 const helmet = require('helmet')
 const subdomain = require('express-subdomain')
+const sanitizeHtml = require('sanitize-html');
 
 
 require('dotenv').config();
@@ -38,6 +40,7 @@ const patreonRoutes = require('./routes/patreon')
 const storeRoutes = require('./routes/store')
 
 const MongoStore = require('connect-mongo');
+const { find } = require('./models/user');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
     + 'localhost:27017/' + 'haus-db' + '?authSource=admin'
 
@@ -227,6 +230,24 @@ app.get('/', async (req, res) => {
     const gayComics = await GayComic.find({}).sort({ "filename": -1 })
 
     const episode = await getLatestShow();
+    // console.log(episode[0].id)
+    const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` })
+    if (!findEpisode) {
+        let description = sanitizeHtml(episode[0].attributes.description, {
+            allowedTags: [],
+            allowedAttributes: {},
+        })
+        let newEpisode = new Episode({
+            title: `${ episode[0].attributes.title }`,
+            description: `${ description }`,
+            summary: `${ episode[0].attributes.summary }`,
+            transistorID: `${ episode[0].id }`,
+            episodeNumber: `${ episode[0].attributes.number }`
+        })
+        await newEpisode.save()
+    }
+
+
 
     res.render('home', { gayComics, episode })
 });

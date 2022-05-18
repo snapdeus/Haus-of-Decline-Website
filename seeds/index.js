@@ -1,10 +1,17 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
+const axios = require('axios')
+const apiKey = process.env.TRANSISTOR_API_KEY;
+const config = { headers: { 'x-api-key': apiKey } }
+const sanitizeHtml = require('sanitize-html');
 const Comic = require('../models/comics');
 const comics = require('./comics')
 const gayComics = require('./gayComics')
 const GayComic = require('../models/gayComics');
+const Episode = require('../models/episodes')
 
-require('dotenv').config();
+
 const ALEX_ID = process.env.ALEX_ID;
 
 
@@ -22,6 +29,49 @@ db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
     console.log('Database connected');
 });
+
+
+const getShows = async () => {
+    try {
+        const url = `https://api.transistor.fm/v1/episodes?pagination[page]=1&pagination[per]=1000`
+        const res = await axios.get(url, config)
+        // console.log(res.data.data)
+        return res.data.data;
+    } catch (e) {
+        console.log(e);
+    }
+};
+
+// getShows();
+
+const seedDBwithEpisodes = async () => {
+    await Episode.deleteMany({})
+    const everyEpisode = await getShows();
+    for (let i = 0; i < everyEpisode.length; i++) {
+        let description = sanitizeHtml(everyEpisode[i].attributes.description, {
+            allowedTags: [],
+            allowedAttributes: {},
+        })
+
+        const episode = new Episode({
+            title: `${ everyEpisode[i].attributes.title }`,
+            description: `${ description }`,
+            summary: `${ everyEpisode[i].attributes.summary }`,
+            transistorID: `${ everyEpisode[i].id }`,
+            episodeNumber: `${ everyEpisode[i].attributes.number }`,
+            image_url: `${ everyEpisode[i].attributes.image_url }`,
+            date: `${ everyEpisode[i].attributes.formatted_published_at }`,
+            stringNumber: `${ everyEpisode[i].attributes.number.toString() }`,
+        })
+        await episode.save()
+    }
+}
+
+seedDBwithEpisodes().then(() => {
+    mongoose.connection.close();
+});
+
+
 
 const seedDB = async () => {
     await Comic.deleteMany({});
@@ -61,6 +111,6 @@ const seedDBwithGay = async () => {
 // })
 
 
-seedDBwithGay().then(() => {
-    mongoose.connection.close();
-})
+// seedDBwithGay().then(() => {
+//     mongoose.connection.close();
+// })

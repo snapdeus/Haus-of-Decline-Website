@@ -59,7 +59,7 @@
                 <% } %>
 
                     <nav class="mt-5" aria-label="Episode Page Navigation">
-                        <ul class="pagination  justify-content-center hausFont">
+                        <ul class="pagination pagination-sm justify-content-center hausFont">
                             <% if (metaData.currentPage===1) { %>
                                 <li class="page-item disabled">
                                     <a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -76,13 +76,11 @@
                                 <li class="page-item">
                                     <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
                                 </li>
-
-                                <% } else { %>
+                                <% }else if (metaData.currentPage===2){ %>
                                     <li class="page-item">
                                         <a class="page-link" href="<%= metaData.currentPage -1 %>"
                                             tabindex="-1">Previous</a>
                                     </li>
-
                                     <li class="page-item"><a class="page-link" href="<%= metaData.currentPage -1 %>">
                                             <%= metaData.currentPage -1 %>
                                         </a></li>
@@ -90,22 +88,62 @@
                                             href="<%= metaData.currentPage %>">
                                             <%= metaData.currentPage %>
                                         </a></li>
-
-                                    <% if (metaData.currentPage !==metaData.totalPages) { %>
-                                        <li class="page-item"><a class="page-link"
-                                                href="<%= metaData.currentPage +1 %>">
-                                                <%= metaData.currentPage + 1 %>
-                                            </a></li>
+                                    <li class="page-item"><a class="page-link" href="<%= metaData.currentPage +1 %>">
+                                            <%= metaData.currentPage +1 %>
+                                        </a></li>
+                                    <li class="page-item"><a class="page-link" href="<%= metaData.currentPage + 2%>">
+                                            <%= metaData.currentPage + 2 %>
+                                        </a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
+                                    </li>
+                                    <% } else { %>
                                         <li class="page-item">
-                                            <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
+                                            <a class="page-link" href="<%= metaData.currentPage -1 %>"
+                                                tabindex="-1">Previous</a>
                                         </li>
-                                        <% } else { %>
+                                        <li class="page-item"><a class="page-link"
+                                                href="<%= metaData.currentPage -2 %>">
+                                                <%= metaData.currentPage -2 %>
+                                            </a></li>
+                                        <li class="page-item"><a class="page-link"
+                                                href="<%= metaData.currentPage -1 %>">
+                                                <%= metaData.currentPage -1 %>
+                                            </a></li>
+                                        <li class="page-item active"><a class="page-link"
+                                                href="<%= metaData.currentPage %>">
+                                                <%= metaData.currentPage %>
+                                            </a></li>
 
+                                        <% if (metaData.currentPage===metaData.totalPages ) { %>
                                             <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1">Next</a>
+                                                <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
                                             </li>
-                                            <% } %>
-                                                <% } %>
+                                            <% } else if (metaData.currentPage===metaData.totalPages -1) { %>
+                                                <li class="page-item"><a class="page-link"
+                                                        href="<%= metaData.currentPage +1 %>">
+                                                        <%= metaData.currentPage + 1 %>
+                                                    </a></li>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="<%= metaData.currentPage +1 %>">Next</a>
+                                                </li>
+
+                                                <% } else { %>
+                                                    <li class="page-item"><a class="page-link"
+                                                            href="<%= metaData.currentPage +1 %>">
+                                                            <%= metaData.currentPage + 1 %>
+                                                        </a></li>
+                                                    <li class="page-item"><a class="page-link"
+                                                            href="<%= metaData.currentPage +2 %>">
+                                                            <%= metaData.currentPage + 2 %>
+                                                        </a></li>
+                                                    <li class="page-item">
+                                                        <a class="page-link"
+                                                            href="<%= metaData.currentPage +1 %>">Next</a>
+                                                    </li>
+                                                    <% } %>
+                                                        <% } %>
+
                         </ul>
                     </nav>
                     <nav aria-label="Episode Page Navigation">
