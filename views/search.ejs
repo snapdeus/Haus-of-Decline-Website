@@ -46,20 +46,21 @@
                                             <% if (i===0 || i % 3===0) { %>
                                                 <div class="row">
                                                     <% } %>
-                                                        <div class="col-lg-4 mb-3 col-xs-12">
-                                                            <a class="link" style="text-decoration: none;"
-                                                                href="/episodes/<%=episodes[i].pageNumber%>/<%=episodes[i].transistorID%>">
+                                                        <div class="col-lg-4 mb-3 col-xs-12 text-center">
+                                                            <div>
+                                                                <a class="link" style="text-decoration: none;"
+                                                                    href="/episodes/<%=episodes[i].pageNumber%>/<%=episodes[i].transistorID%>">
 
-                                                                <img loading="lazy"
-                                                                    class="specialBorder add-hover  epList"
-                                                                    src="<%= episodes[i].image_url %> ">
+                                                                    <img loading="lazy"
+                                                                        class=" specialBorder add-hover epList"
+                                                                        src="<%= episodes[i].image_url %> ">
 
-                                                                <p class="hausFont text-center">
-                                                                    #<%= episodes[i].episodeNumber %>
-                                                                        <%= episodes[i].title%>
-                                                                </p>
-                                                            </a>
-
+                                                                    <p class="hausFont text-center">
+                                                                        #<%= episodes[i].episodeNumber %>
+                                                                            <%= episodes[i].title%>
+                                                                    </p>
+                                                                </a>
+                                                            </div>
                                                         </div>
                                                         <% } %>
                                                 </div>
