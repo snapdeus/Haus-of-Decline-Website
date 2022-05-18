@@ -11,7 +11,7 @@ module.exports.index = async (req, res) => {
     const pageNumber = parseInt(req.params.page);
 
     if (!pageNumber) {
-        res.redirect("/comics/cod/1")
+        return res.redirect("/comics/cod/1")
     }
 
 
