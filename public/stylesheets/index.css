@@ -5,7 +5,21 @@ body, html {
     background-attachment: fixed;
 }
 
+.alert.alert-store {
+    background-color: #000;
+  }
 
+  .close {
+    opacity: 1;
+      text-shadow: none;
+      font-size: 17px;
+      color: rgb(255, 255, 255);
+  }
+  .close:hover {
+    opacity: 1;
+    
+    color: rgb(60, 255, 0);
+}
 ::placeholder {
     color: white;
     font-size: 1.5em;
@@ -29,6 +43,11 @@ body, html {
 }
 
 .specialBorder {
+    border-radius: 0;
+    background-color: #000;
+    border: 3px double #fff;
+}
+.specialBorderNoHover {
     border-radius: 0;
     background-color: #000;
     border: 3px double #fff;
@@ -73,6 +92,7 @@ body, html {
     color: transparent;
     animation: rainbow_animation 3s ease-in-out infinite;
     background-size: 400% 100%;
+    text-shadow: 1em 2em 1em rgb(255, 254, 214), 1px 1px 1px #fff8b9;
 }
 
 @keyframes rainbow_animation {
@@ -159,14 +179,15 @@ body, html {
 
 .link:hover {
     text-shadow: 0.05em 0.05em 0.1em rgba(254, 206, 255, 0.645), 1px 1px 1px #f8ceff9b;
+    text-decoration: underline;
 }
 
 .hausFontNoColor {
     font-family: "Share Tech Mono";
-    font-size: 3rem;
-    
+    font-size: 2rem;
     
 }
+
 
 .hausFont {
     font-family: "Share Tech Mono";
@@ -201,20 +222,54 @@ body, html {
 
 }
 
+#storeAd {
+    font-size: 1.7rem;
+}
 
-
-
-@media (min-width:700px) {
-    .blurb {
-        font-size: 1.1em;
+@media (max-width:1199px) {
+    .nav-link {
+        padding-top: 1.2em;
+    }
+    #storeAd {
+        font-size: 1.6rem;
     }
 }
+
 
 @media (max-width:769px) {
     .borderLine {
         padding-bottom: 1.2em;
     }
+    #storeAd {
+        font-size: 1.4rem;
+    }
+    
 }
+
+@media (max-width:524px) {
+    
+    #storeAd {
+        font-size: 1.2rem;
+    }
+    
+}
+
+@media (max-width:464px) {
+    
+    #storeAd {
+        font-size: 1.1rem;
+    }
+    
+}
+
+@media (max-width:434px) {
+    
+    #storeAd {
+        font-size: 1rem;
+    }
+    
+}
+
 
 @media (max-width:420px) {
     .blurb {
@@ -228,6 +283,26 @@ body, html {
     .borderLine {
         padding-bottom: 1.2em;
     }
+    #storeAd {
+        font-size: 1rem;
+    }
+    
+    
+}
+@media (max-width:374px) {
+    
+    #storeAd {
+        font-size: .9rem;
+    }
+    
+}
+
+@media (max-width:345px) {
+    
+    #storeAd {
+        font-size: .8rem;
+    }
+    
 }
 
 @media (max-width:320px) {
@@ -238,19 +313,27 @@ body, html {
     .listenAnd {
         font-size: 1.3em;
     }
+    #storeAd {
+        font-size: .8rem;
+    }
+    
 }
 
-@media (max-width:1199px) {
-    .nav-link {
-        padding-top: 1.2em;
-    }
-}
+
 
 .navbar-nav {
     font-family: 'Share Tech Mono', monospace;
     font-size: 1.3rem;
     border-bottom: solid whitesmoke 1px;
     border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
+}
+
+
+@media (min-width:700px) {
+    .blurb {
+        font-size: 1.1em;
+    }
+    
 }
 
 @media (min-width:1199px) {
