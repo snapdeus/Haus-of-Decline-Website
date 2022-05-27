@@ -35,9 +35,9 @@ module.exports.doSearch = async (req, res) => {
         const epNumber = episode.episodeNumber
 
         if (epNumber % 10 >= totalEpisodes % 10 || epNumber % 10 === 0) {
-            episode.pageNumber = totalPages - Math.ceil(epNumber / 10)
+            episode.pageNumber = totalEpisodePages - Math.ceil(epNumber / 10)
         } else if (epNumber % 10 < totalEpisodes % 10) {
-            episode.pageNumber = totalPages - (Math.ceil(epNumber / 10) - 1)
+            episode.pageNumber = totalEpisodePages - (Math.ceil(epNumber / 10) - 1)
         }
     }
 
