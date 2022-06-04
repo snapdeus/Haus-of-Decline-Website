@@ -39,7 +39,7 @@ client.on('ready', () => {
         const name = response.data.attributes.full_name;
         const nameArray = name.split(' ')
         const firstName = nameArray[0]
-        const plegdeAmt = response.data.attributes.will_pay_amount_cents / 100;
+        const plegdeAmt = response.data.attributes.currently_entitled_amount_cents / 100;
         const embedMsg = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle(`New Patreon Subscriber!`)
