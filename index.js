@@ -242,6 +242,7 @@ app.get('/', async (req, res) => {
             description: `${ description }`,
             summary: `${ episode[0].attributes.summary }`,
             transistorID: `${ episode[0].id }`,
+            image_url: `${ episode[0].image_url }`,
             episodeNumber: `${ episode[0].attributes.number }`
         })
         await newEpisode.save()
