@@ -1,5 +1,14 @@
 module.exports = [
-
+    {
+        path: '/uploads/185.GaySon.gif',
+        description: 'Gay Son',
+        title: 'Gay Son'
+    },
+    {
+        path: '/uploads/184.ClownBar.gif',
+        description: 'Clown Bar',
+        title: 'Clown Bar'
+    },
     {
         path: '/uploads/183.KamalaHarris2.gif',
         description: 'Kamala Harris',

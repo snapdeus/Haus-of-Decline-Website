@@ -67,9 +67,9 @@ const seedDBwithEpisodes = async () => {
     }
 }
 
-seedDBwithEpisodes().then(() => {
-    mongoose.connection.close();
-});
+// seedDBwithEpisodes().then(() => {
+//     mongoose.connection.close();
+// });
 
 
 
@@ -106,9 +106,9 @@ const seedDBwithGay = async () => {
 }
 
 
-// seedDB().then(() => {
-//     mongoose.connection.close();
-// })
+seedDB().then(() => {
+    mongoose.connection.close();
+})
 
 
 // seedDBwithGay().then(() => {
