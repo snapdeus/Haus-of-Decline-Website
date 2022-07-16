@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
         folder: 'comics',
         allowedFormats: ['jpeg', 'jpg'],
         // type: 'private',
-        width: 350,
+        width: 450,
         tags: (req, file) => JSON.stringify(req.body.tag),
 
 
