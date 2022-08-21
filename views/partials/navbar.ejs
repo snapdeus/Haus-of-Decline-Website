@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-xl navbar-dark fixed-top mb-5 " id="topkeep">
-    <a class="navbar-brand pt-2" href="/">HAUS</a>
+    <a class="navbar-brand " href="/">HAUS</a>
     <button class="navbar-toggler" id="navbarDropdown" type="button" data-toggle="collapse"
         data-target="#navbarSupportedContent">
         <span class="navbar-toggler-icon"></span>
@@ -26,7 +26,7 @@
             <% if(currentUser){ %>
                 <% if(currentUser.toObject().isAdmin){ %>
 
-                    <li class="nav-item pt-2 pb-1 active">
+                    <li class="nav-item  pb-1 active">
                         <a class="nav-link" href="/comics/gay/1/new">SUBMIT</a>
                     </li>
 
@@ -36,7 +36,7 @@
 
 
         <div class="navbar-nav ml-auto">
-            <form action="/search" method="GET" class="form-inline pt-2 my-2 my-lg-0">
+            <form action="/search" method="GET" class="form-inline my-2 my-lg-0">
                 <input class=" mr-2" id="searchBar" name="term" type="search" placeholder="Search" style="width:63%"
                     aria-label="Search">
                 <button type="submit" class="btn btn-outline-secondary">
@@ -50,7 +50,7 @@
 
             <% if(!currentUser) {%>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/login">Login</a>
+                    <a class="nav-link " href="/login">Login</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="/register">Register</a>
