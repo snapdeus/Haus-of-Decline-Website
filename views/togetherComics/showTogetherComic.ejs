@@ -1,0 +1,219 @@
+<% layout('layout/togethercomicsboilerplate') %>
+    <link rel="stylesheet" href="/stylesheets/showTogetherComic.css">
+    <link rel="stylesheet" href="/stylesheets/stars.css">
+
+
+    <div class="container mt-3 mb-3">
+        <div class="row">
+            <div class="mx-auto mb-3">
+                <h2 style='text-decoration: none;' class=" hausFontNoColor text-center">
+                    <a class="link  rainbow_text_animated" style=' text-decoration: none;'
+                        href="https://www.patreon.com/hausofdecline">Support
+                        us on Patreon!</a>
+                </h2>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-10 mx-auto mt-auto ">
+
+
+                <img loading="lazy" class="img-thumbnail specialBorder"
+                    src="/uploads/TogetherComics/<%= togetherComic.filename %>" alt="<%= togetherComic.description %>"
+                    title="<%= togetherComic.title %>">
+
+            </div>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+
+            <% if(currentUser && togetherComic.author.equals(currentUser._id)) {%>
+                <div class="col-md-3">
+                    <div class="card-body">
+                        <a class="card-link btn btn-info"
+                            href="/comics/together/<%= pageNumber %>/<%= togetherComic._id %>/edit">Edit</a>
+
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <form class='d-flex'
+                            action="/comics/together/<%= pageNumber %>/<%= togetherComic._id %>?_method=DELETE"
+                            method='POST'>
+                            <button class="btn btn-danger  ml-auto">DANGER Delete</button>
+                        </form>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row ">
+            <div class="col-12 text-center">
+                <div id="arrow_2" class="arrow-wrapper text-center ">
+
+                    <% if ((prevTogetherComic[0]) && togetherComics[0].ordinality===togetherComic.ordinality) {%>
+
+                        <a id="prevLink"
+                            style="text-decoration: none; margin-right: 20px;margin-top: 12px; color:white;"
+                            class="link" title="Previous"
+                            href="/comics/together/<%= pageNumber -1 %>/<%=prevTogetherComic[0]._id%>">
+                            <div>
+                                <span>PREV</span>
+                            </div>
+                        </a>
+
+
+                        <% } else if (prevTogetherComic[0]) { %>
+                            <a id="prevLink"
+                                style="text-decoration: none; color:white; margin-top: 12px; margin-right: 20px"
+                                class="link" title="Previous"
+                                href="/comics/together/<%= pageNumber %>/<%=prevTogetherComic[0]._id%>">
+                                <div>
+                                    <span>PREV</span>
+                                </div>
+                            </a>
+                            <% } %>
+                                <div>
+                                    <h2 class="hausFont text-center mt-3 px-4 title d-block">
+
+                                        #<%=togetherComic.ordinality%> "<%= togetherComic.title %>"
+                                    </h2>
+                                </div>
+                                <% if (nextTogetherComic[0] && togetherComics[togetherComics.length
+                                    -1].ordinality===togetherComic.ordinality) {%>
+
+                                    <a id="nextLink"
+                                        style="text-decoration: none; color:white; margin-top: 12px; margin-left: 20px"
+                                        class="link" title="Next"
+                                        href="/comics/together/<%= pageNumber +1%>/<%=nextTogetherComic[0]._id%>">
+                                        <div>
+                                            <span class="mr-1">NEXT</span>
+                                        </div>
+                                    </a>
+                                    <% } else if (nextTogetherComic[0]){ %>
+                                        <a id="nextLink"
+                                            style="text-decoration: none; color:white;margin-top: 12px; margin-left: 20px"
+                                            class='link' title="Next"
+                                            href="/comics/together/<%= pageNumber %>/<%=nextTogetherComic[0]._id%>">
+                                            <div>
+                                                <span class="mr-1">NEXT</span>
+                                            </div>
+                                        </a>
+                                        <% } %>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-center bottomSpacer mt-3">
+            <div class="descripNoPad mx-auto">
+                <button class="btn btn-dark">
+                    <a style='color:white; text-decoration: underline;' class='link'
+                        href="/comics/together/<%= pageNumber %> ">Together Comics Index
+                    </a>
+                </button>
+            </div>
+        </div>
+
+        <div class="row align-items-center mt-3 ">
+            <div class="col text-center">
+
+                <%- episode[0].attributes.embed_html_dark %>
+
+                    <div class="descrip"><a class="link" style="color: #FCFAE8; text-decoration: none;"
+                            href="/episodes/1/<%=episode[0].id%>">Our latest episode!</a>
+                    </div>
+            </div>
+
+        </div>
+
+        <div class="col-6">
+            <% if(currentUser) {%>
+                <h3 class="hausFont">Leave a together comment</h2>
+                    <form action="/comics/together/<%=togetherComic._id%>/togetherComments" method="POST"
+                        class='mb-3 validated-form' novalidate>
+
+                        <div class="mt-1">
+                            <fieldset class="starability-basic">
+                                <input type="radio" id="no-rate" class="input-no-rate" name="togetherComment[rating]"
+                                    value="1" checked aria-label="No rating." />
+                                <input type="radio" id="first-rate1" name="togetherComment[rating]" value="1" />
+                                <label for="first-rate1" title="Terrible">1 star</label>
+                                <input type="radio" id="first-rate2" name="togetherComment[rating]" value="2" />
+                                <label for="first-rate2" title="Not good">2 stars</label>
+                                <input type="radio" id="first-rate3" name="togetherComment[rating]" value="3" />
+                                <label for="first-rate3" title="Average">3 stars</label>
+                                <input type="radio" id="first-rate4" name="togetherComment[rating]" value="4" />
+                                <label for="first-rate4" title="Very good">4 stars</label>
+                                <input type="radio" id="first-rate5" name="togetherComment[rating]" value="5" />
+                                <label for="first-rate5" title="Amazing">5 stars</label>
+                            </fieldset>
+
+
+                        </div>
+                        <div class="mb-3">
+                            <label class='form-label hausFont' for="body">Comment Text</label>
+                            <textarea class='form-control commentBox' name="togetherComment[body]" id="body" cols="30"
+                                rows="3" required></textarea>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        <button class='btn btn-success pt-1 pb-1'>Submit</button>
+                    </form>
+                    <% } %>
+                        <h3 class="hausFont">Comments</h2>
+                            <% for (let togetherComment of togetherComic.togetherComments) { %>
+                                <div class="card bg-dark text-white mb-3" style="min-width:210px">
+                                    <div class="div  card-body">
+                                        <h5 class="card-title">
+                                            <%= togetherComment.author.username %>
+                                        </h5>
+                                        <p class="starability-result" data-rating="<%=togetherComment.rating %>">
+                                            Rated: <%= togetherComment.rating %> stars
+                                        </p>
+
+
+                                        <p class="card-text">
+                                            <%= togetherComment.body %>
+                                        </p>
+                                        <% if(currentUser && togetherComment.author.equals(currentUser._id)) { %>
+                                            <form
+                                                action="/comics/together/<%= togetherComic._id %>/togetherComments/<%= togetherComment._id %>?_method=DELETE"
+                                                method='POST'>
+                                                <button class="btn btn-sm btn-danger">Delete</button>
+                                            </form>
+                                            <% } %>
+                                    </div>
+                                </div>
+                                <% } %>
+        </div>
+
+
+
+    </div>
+
+    <script>
+        document.addEventListener("keyup", function (e) {
+            const key = e.which || e.keyCode;
+            switch (key) {
+                //left arrow
+                case 37:
+                    document.getElementById("prevLink").click();
+                    break;
+                //right arrow
+                case 39:
+                    document.getElementById("nextLink").click();
+                    break;
+            }
+        });
+
+    </script>

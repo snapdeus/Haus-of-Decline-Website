@@ -10,6 +10,8 @@ const comics = require('./comics')
 const gayComics = require('./gayComics')
 const GayComic = require('../models/gayComics');
 const Episode = require('../models/episodes')
+const togetherComics = require('./togetherComics')
+const TogetherComic = require('../models/togetherComics')
 
 
 const ALEX_ID = process.env.ALEX_ID;
@@ -105,12 +107,31 @@ const seedDBwithGay = async () => {
     }
 }
 
+const seedDBwithTogether = async () => {
+    await TogetherComic.deleteMany({});
+    for (let i = 0; i < togetherComics.length; i++) {
+        const togetherComic = new TogetherComic({
+            title: `${ togetherComics[i].title }`,
+            path: `${ togetherComics[i].path }`,
+            series: 2,
+            filename: `${ togetherComics[i].path.slice(24) }`,
+            author: '622b6e3138fdc4cef6097ca8',
+            ordinality: `${ parseInt(togetherComics[i].path.slice(24, 27)) }`
+        })
+        await togetherComic.save();
+    }
+}
 
-seedDB().then(() => {
-    mongoose.connection.close();
-})
+
+// seedDB().then(() => {
+//     mongoose.connection.close();
+// })
 
 
 // seedDBwithGay().then(() => {
 //     mongoose.connection.close();
 // })
+
+seedDBwithTogether().then(() => {
+    mongoose.connection.close();
+})

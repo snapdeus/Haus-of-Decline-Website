@@ -23,6 +23,19 @@ const extension = (joi) => ({
 
 const Joi = BaseJoi.extend(extension)
 
+
+module.exports.togetherComicSchema = Joi.object({
+    togetherComic: Joi.object({
+        title: Joi.string().required(),
+
+        // path: Joi.string().required(),
+        filename: Joi.string(),
+        series: Joi.number().required(),
+        ordinality: Joi.number().required(),
+    }).required(),
+
+})
+
 module.exports.gayComicSchema = Joi.object({
     gayComic: Joi.object({
         title: Joi.string().required(),
@@ -57,6 +70,14 @@ module.exports.commentSchema = Joi.object({
 
 module.exports.gayCommentSchema = Joi.object({
     gayComment: Joi.object({
+        rating: Joi.number().required().min(1).max(5),
+        body: Joi.string().required()
+    }).required()
+})
+
+
+module.exports.togetherCommentSchema = Joi.object({
+    togetherComment: Joi.object({
         rating: Joi.number().required().min(1).max(5),
         body: Joi.string().required()
     }).required()

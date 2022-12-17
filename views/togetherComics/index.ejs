@@ -1,0 +1,149 @@
+<% layout('layout/boilerplate') %>
+    <link rel="stylesheet" href="/stylesheets/togetherComicstyles.css">
+    <!-- <link rel="stylesheet" href="/js/fancybox-master/dist/jquery.fancybox.min.css"> -->
+    <div class="container">
+
+        <div class="row">
+            <div class="mx-auto mb-3">
+                <h2 style='text-decoration: none;' class="display hausFontNoColor text-center">
+                    <a class="link  rainbow_text_animated" style=' text-decoration: none;'
+                        href="https://www.patreon.com/hausofdecline">Support
+                        us on Patreon!</a>
+                </h2>
+            </div>
+        </div>
+
+
+
+        <% for (let i=0; i< togetherComics.length; i++) { %>
+            <% if (i !==0 && i % 3===0) { %>
+    </div>
+    <% } %>
+        <% if (i===0 || i % 3===0) { %>
+            <div class="row">
+                <% } %>
+                    <div class="col-lg-4  col-xs-12">
+                        <a class="link" style="text-decoration: none;"
+                            href="/comics/together/<%=pageNumber%>/<%=togetherComics[i]._id%> " data-fancybox="gallery"
+                            data-caption="<%= togetherComics[i].title %>">
+                            <img loading="lazy" class="img-thumbnail togetherIndexBorder"
+                                src="/uploads/TogetherComics/<%= togetherComics[i].filename %> "
+                                alt="<%= togetherComics[i].description %>" title="<%= togetherComics[i].title %> ">
+                            <p class="hausFont text-center">
+                                #<%= togetherComics[i].ordinality %>
+                                    <%= togetherComics[i].title%>
+                            </p>
+                        </a>
+                    </div>
+                    <% } %>
+            </div>
+
+            <nav class="mt-5" aria-label="Episode Page Navigation">
+                <ul class="pagination pagination-sm justify-content-center hausFont">
+
+                    <% if (pageNumber===1) { %>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
+                                <%= pageNumber %>
+                            </a></li>
+                        <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                <%= pageNumber +1 %>
+                            </a></li>
+                        <li class="page-item"><a class="page-link" href="<%= pageNumber + 2%>">
+                                <%= pageNumber + 2 %>
+                            </a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                        </li>
+                        <% }else if (pageNumber===2){ %>
+                            <li class="page-item">
+                                <a class="page-link" href="<%= pageNumber -1 %>" tabindex="-1">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="<%= pageNumber -1 %>">
+                                    <%= pageNumber -1 %>
+                                </a></li>
+                            <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
+                                    <%= pageNumber %>
+                                </a></li>
+                            <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                    <%= pageNumber +1 %>
+                                </a></li>
+                            <li class="page-item"><a class="page-link" href="<%= pageNumber + 2%>">
+                                    <%= pageNumber + 2 %>
+                                </a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                            </li>
+                            <% } else { %>
+                                <li class="page-item">
+                                    <a class="page-link" href="<%= pageNumber -1 %>" tabindex="-1">Previous</a>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="<%= pageNumber -2 %>">
+                                        <%= pageNumber -2 %>
+                                    </a></li>
+                                <li class="page-item"><a class="page-link" href="<%= pageNumber -1 %>">
+                                        <%= pageNumber -1 %>
+                                    </a></li>
+                                <li class="page-item active"><a class="page-link" href="<%= pageNumber %>">
+                                        <%= pageNumber %>
+                                    </a></li>
+
+                                <% if (pageNumber===totalPages ) { %>
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                    </li>
+                                    <% } else if (pageNumber===totalPages -1) { %>
+                                        <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                                <%= pageNumber + 1 %>
+                                            </a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                        </li>
+
+                                        <% } else { %>
+                                            <li class="page-item"><a class="page-link" href="<%= pageNumber +1 %>">
+                                                    <%= pageNumber + 1 %>
+                                                </a></li>
+                                            <li class="page-item"><a class="page-link" href="<%= pageNumber +2 %>">
+                                                    <%= pageNumber + 2 %>
+                                                </a></li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="<%= pageNumber +1 %>">Next</a>
+                                            </li>
+                                            <% } %>
+                                                <% } %>
+
+                </ul>
+
+
+
+
+
+            </nav>
+
+            <nav aria-label="Episode Page Navigation">
+                <ul class="pagination justify-content-center hausFont">
+                    <% if (pageNumber===1) { %>
+                        <li class="page-item ">
+                            <a id="firstLast" class="page-link disabled" href="#">First</a>
+                        </li>
+
+
+                        <% } else { %>
+                            <li class="page-item ">
+                                <a id="firstLast" class="page-link disable" href="/comics/together/1">First</a>
+                            </li>
+                            <% } %>
+                                <%if(pageNumber===totalPages) {%>
+                                    <li id="firstLast" class="page-item disabled">
+                                        <a class="page-link" href="<%= totalPages %> ">Last</a>
+                                    </li>
+                                    <% } else { %>
+                                        <li id="firstLast" class="page-item">
+                                            <a class="page-link" href="<%= totalPages %> ">Last</a>
+                                        </li>
+                                        <% } %>
+                </ul>
+            </nav>

@@ -1,0 +1,103 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+footer {
+    position: relative;
+    bottom: 0;
+    width: auto;
+    height: 40px;
+    /* Height of the footer */
+}
+
+span {
+    font-family: "Share Tech Mono";
+    font-size: larger;
+}
+
+hr {
+    width: 33%;
+    border-color: rgba(255, 255, 255, 0.2);
+    border-width: 2px 0;
+    border-style: solid;
+    margin: 3em 0;
+}
+
+.arrow-wrapper {
+    display: inline-flex;
+    align-items: center;
+}
+
+.block {
+    width: 300px;
+    height: 100px;
+    background: white;
+    margin: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-wrapper:hover h1 {
+    opacity: 1;
+}
+
+.commentBox {
+    background: #343a40;
+    min-width: 210px;
+}
+
+/* .link:hover {
+    text-shadow: 0.05em 0.1em 0.2em rgb(247, 255, 90), 2px 2px 2px black;
+    text-decoration: underline;
+} */
+
+
+
+@media (min-width:200px) {
+    .title {
+        margin-top: .5em;
+        font-size: 16px;
+        display: inline;
+    }
+
+    .summary {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:400px) {
+    .title {
+        margin-top: .5em;
+        font-size: 20px;
+        display: inline;
+    }
+
+    .summary {
+        font-size: 18px;
+    }
+}
+
+@media (min-width:700px) {
+    .title {
+        font-size: 26px;
+        display: inline;
+    }
+
+    .summary {
+        font-size: 20px;
+    }
+}
+
+@media (min-width:900px) {
+    .title {
+        font-size: 28px;
+        display: inline;
+    }
+
+    .summary {
+        font-size: 20px;
+    }
+}

@@ -1,7 +1,9 @@
-const { comicSchema, commentSchema, gayComicSchema, gayCommentSchema } = require('./schemas.js')
+const { comicSchema, commentSchema, gayComicSchema, gayCommentSchema, togetherComicSchema } = require('./schemas.js')
 const ExpressError = require('./utils/ExpressError');
 const Comic = require('./models/comics');
 const GayComic = require('./models/gayComics')
+const TogetherComic = require('./models/togetherComics')
+const TogetherComment = require('./models/togetherComment')
 const Comment = require('./models/comment')
 const GayComment = require('./models/gayComment')
 const request = require('request')
@@ -84,6 +86,19 @@ module.exports.isGayAuthor = async (req, res, next) => {
     next();
 }
 
+module.exports.isTogetherAuthor = async (req, res, next) => {
+    const { id } = req.params;
+    const togetherComic = await TogetherComic.findById(id);
+    // console.log(gayComic.author)
+    // console.log(req.user._id)
+    if (!togetherComic.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission.');
+        return res.redirect(`/comics/directory`)
+    }
+    next();
+}
+
+
 module.exports.validateComic = (req, res, next) => {
 
     const { error } = comicSchema.validate(req.body);
@@ -107,6 +122,20 @@ module.exports.validateGayComic = (req, res, next) => {
         next();
     }
 };
+
+module.exports.validateTogetherComic = (req, res, next) => {
+
+    const { error } = togetherComicSchema.validate(req.body);
+
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next();
+    }
+};
+
+
 
 module.exports.resizeComic = (req, res, next) => {
     const image = im.resize({
@@ -153,8 +182,28 @@ module.exports.isGayCommentAuthor = async (req, res, next) => {
     next();
 }
 
+module.exports.isTogetherCommentAuthor = async (req, res, next) => {
+    const { id, togetherCommentId } = req.params;
+    const togetherComment = await TogetherComment.findById(togetherCommentId);
+    if (!togetherComment.author.equals(req.user._id)) {
+        req.flash('error', 'You do not have permission.');
+        return res.redirect(`/comics/directory`)
+    }
+    next();
+}
+
 module.exports.validateGayComment = (req, res, next) => {
     const { error } = gayCommentSchema.validate(req.body);
+    if (error) {
+        const msg = error.details.map(el => el.message).join(',')
+        throw new ExpressError(msg, 400)
+    } else {
+        next()
+    }
+}
+
+module.exports.validateTogetherComment = (req, res, next) => {
+    const { error } = togetherCommentSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)

@@ -32,12 +32,14 @@ const comicRoutes = require('./routes/comics');
 const gayComicRoutes = require('./routes/gayComics');
 const gayCommentRoutes = require('./routes/gayComments');
 const commentRoutes = require('./routes/comments');
+const togetherCommentRoutes = require('./routes/togetherComments');
 const directoryRoutes = require('./routes/directory');
 const episodesRoutes = require('./routes/episodes');
 const webhookRoutes = require('./routes/webhooks')
 const searchRoutes = require('./routes/search')
 const patreonRoutes = require('./routes/patreon')
 const storeRoutes = require('./routes/store')
+const togetherComicRoutes = require('./routes/togetherComics')
 
 const MongoStore = require('connect-mongo');
 const { find } = require('./models/user');
@@ -264,8 +266,10 @@ app.get('/support', (req, res) => {
 app.use('/', userRoutes);
 app.use('/comics/cod', comicRoutes);
 app.use('/comics/gay', gayComicRoutes);
+app.use('/comics/together', togetherComicRoutes)
 app.use('/comics/cod/:id/comments', commentRoutes);
 app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
+app.use('/comics/together/:id/togetherComments', togetherCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
 app.use('/search', searchRoutes);
