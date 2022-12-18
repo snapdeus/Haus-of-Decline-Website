@@ -27,6 +27,7 @@ require('dotenv').config();
 const apiKey = process.env.TRANSISTOR_API_KEY;
 const config = { headers: { 'x-api-key': apiKey } }
 
+const submitRoutes = require('./routes/submit');
 const userRoutes = require('./routes/user');
 const comicRoutes = require('./routes/comics');
 const gayComicRoutes = require('./routes/gayComics');
@@ -171,7 +172,7 @@ const sessionConfig = {
     proxy: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
+        secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -259,12 +260,15 @@ app.get('/about', (req, res) => {
     res.render('about')
 });
 
+
+
 app.get('/support', (req, res) => {
     res.render('support')
 });
 
 app.use('/', userRoutes);
 app.use('/comics/cod', comicRoutes);
+app.use('/submit', submitRoutes);
 app.use('/comics/gay', gayComicRoutes);
 app.use('/comics/together', togetherComicRoutes)
 app.use('/comics/cod/:id/comments', commentRoutes);

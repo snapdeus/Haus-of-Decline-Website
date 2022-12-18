@@ -32,24 +32,24 @@
 
 
         <div class="row">
+            <%= console.log(gayComic) %>
+                <% if(currentUser && gayComic.author.equals(currentUser._id)) {%>
+                    <div class="col-md-3">
+                        <div class="card-body">
+                            <a class="card-link btn btn-info"
+                                href="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>/edit">Edit</a>
 
-            <% if(currentUser && gayComic.author.equals(currentUser._id)) {%>
-                <div class="col-md-3">
-                    <div class="card-body">
-                        <a class="card-link btn btn-info"
-                            href="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>/edit">Edit</a>
-
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-9">
-                    <div class="card-body">
-                        <form class='d-flex' action="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>?_method=DELETE"
-                            method='POST'>
-                            <button class="btn btn-danger  ml-auto">DANGER Delete</button>
-                        </form>
+                    <div class="col-md-9">
+                        <div class="card-body">
+                            <form class='d-flex'
+                                action="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>?_method=DELETE" method='POST'>
+                                <button class="btn btn-danger  ml-auto">DANGER Delete</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                <% } %>
+                    <% } %>
         </div>
 
     </div>

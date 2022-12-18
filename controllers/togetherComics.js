@@ -13,7 +13,7 @@ module.exports.index = async (req, res) => {
     if (!pageNumber) {
         return res.redirect("/comics/together/1")
     }
-    const togetherComic = await TogetherComic.findOne().sort({ "ordinality": 1 }).limit(1)
+    const togetherComic = await TogetherComic.findOne().sort({ "ordinality": -1 }).limit(1)
     //caution, total pages here is based on a uni-directional ordinality
     const totalPages = Math.ceil(togetherComic.ordinality / 15);
 
@@ -89,7 +89,7 @@ module.exports.showTogetherComic = async (req, res) => {
 
     const comicOrd = togetherComic.ordinality;
 
-    const totalTogetherComics = await TogetherComic.countDocuments({ series: 1 })
+    const totalTogetherComics = await TogetherComic.countDocuments({ series: 2 })
     // console.log(totalTogetherComics)
     const totalPages = Math.ceil((totalTogetherComics + 1) / 15);
 
@@ -99,8 +99,8 @@ module.exports.showTogetherComic = async (req, res) => {
     }
 
 
-    const nextTogetherComic = await TogetherComic.find({ ordinality: { $lt: comicOrd } }).sort({ ordinality: -1 }).limit(1);
-    const prevTogetherComic = await TogetherComic.find({ ordinality: { $gt: comicOrd } }).sort({ ordinality: 1 }).limit(1)
+    const prevTogetherComic = await TogetherComic.find({ ordinality: { $lt: comicOrd } }).sort({ ordinality: -1 }).limit(1);
+    const nextTogetherComic = await TogetherComic.find({ ordinality: { $gt: comicOrd } }).sort({ ordinality: 1 }).limit(1)
 
     if (!togetherComic) {
         req.flash('error', 'Cannot Find that togetherComic');
