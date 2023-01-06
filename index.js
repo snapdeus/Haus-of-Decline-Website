@@ -266,6 +266,15 @@ app.get('/support', (req, res) => {
     res.render('support')
 });
 
+app.get('/comics', (req, res) => {
+    res.redirect('/comics/directory')
+})
+
+app.get('/comix', (req, res) => {
+    res.redirect('/comics/directory')
+})
+
+
 app.use('/', userRoutes);
 app.use('/comics/cod', comicRoutes);
 app.use('/submit', submitRoutes);
