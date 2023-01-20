@@ -138,7 +138,8 @@ app.use(
                 "https://assets.transistor.fm",
                 "https://licensebuttons.net",
                 "https://i.creativecommons.org",
-                "https://www.google-analytics.com"
+                "https://www.google-analytics.com",
+                "https://overcast.fm/"
             ],
             fontSrc: ["'self'", ...fontSrcUrls],
         },

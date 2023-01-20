@@ -409,11 +409,11 @@ body, html {
     fill: #fff
 }
 
-.subscribeOptions a:focus svg path, .subscribeOptions a:focus svg rect, .subscribeOptions a:hover svg path, .subscribeOptions a:hover svg rect {
+.subscribeOptions a:focus svg path, .subscribeOptions a:focus svg rect, .subscribeOptions a:hover svg path, .subscribeOptions a:hover svg rect, .subscribeOptions a:hover svg circle {
     fill: #000
 }
 
-.subscribeOptions a svg path, .subscribeOptions a svg rect {
+.subscribeOptions a svg path, .subscribeOptions a svg rect, .subscribeOptions a:hover svg circle {
     transition: fill .25s
 }
 
