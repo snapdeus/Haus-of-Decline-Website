@@ -29,22 +29,7 @@
     border-color: white;
 }
 
-.navbar.scrolled {
-    background: rgb(0, 0, 0);
-    transition: background 500ms;
-}
 
-/* 
-.custom{
-    background:rgb(0, 0, 0);
-    opacity: .8;
-} */
-
-.navbar.activated {
-    background: rgb(0, 0, 0);
-    transition: background 500ms;
-    ;
-}
 
 body {
     background-color: #000 !important;
