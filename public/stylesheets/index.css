@@ -5,6 +5,10 @@ body, html {
     background-attachment: fixed;
 }
 
+.close-icon {
+    color:white !important;
+    font-size: 1.1em;
+}
 
 .navbar-toggler.collapsed .close-icon {
     display: none;
@@ -12,6 +16,7 @@ body, html {
 
  .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
     display: inline;
+    
  }
 
 .alert.alert-store {
