@@ -5,12 +5,12 @@ body, html {
     background-attachment: fixed;
 }
 
+
 .navbar-toggler.collapsed .close-icon {
     display: none;
  }
 
  .navbar-toggler:not(.collapsed) .navbar-toggler-icon {
-   
     display: inline;
  }
 
