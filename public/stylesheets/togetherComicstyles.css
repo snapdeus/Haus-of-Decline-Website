@@ -30,21 +30,16 @@
 }
 
 .navbar.scrolled {
-    background: rgb(0, 0, 0);
+    background-image: linear-gradient(black, rgba(0,10,1,.8));
     transition: background 500ms;
 }
-
-/* 
-.custom{
-    background:rgb(0, 0, 0);
-    opacity: .8;
-} */
 
 .navbar.activated {
-    background: rgb(0, 0, 0);
+    /* background: rgb(0, 0, 0); */
+    background-image: linear-gradient(black, rgba(0,10,1,.8));
     transition: background 500ms;
-    ;
 }
+
 
 body {
     background-color: #000 !important;
