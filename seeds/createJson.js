@@ -1,4 +1,4 @@
-for (let i = 121; i <= 156; i++) {
-    console.log("{" + `path: '/uploads/TogetherComics/${ i }.gif',` + `title: '${ i }.gif` + `}`
+for (let i = 157; i <= 240; i++) {
+    console.log("{" + `path: '/uploads/TogetherComics/${ i }.gif',` + `title: '${ i }.gif` + `},`
     )
 }
