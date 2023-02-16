@@ -16,7 +16,7 @@
 
         <div class="row">
 
-            <div class="col-lg-10 mx-auto mt-auto ">
+            <div class="col-xl-7 col-lg-6 col-md-7 mx-auto mt-auto ">
 
 
                 <img loading="lazy" class="img-thumbnail specialBorder"
@@ -32,24 +32,24 @@
 
 
         <div class="row">
-            <%= console.log(gayComic) %>
-                <% if(currentUser && gayComic.author.equals(currentUser._id)) {%>
-                    <div class="col-md-3">
-                        <div class="card-body">
-                            <a class="card-link btn btn-info"
-                                href="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>/edit">Edit</a>
 
-                        </div>
+            <% if(currentUser && gayComic.author.equals(currentUser._id)) {%>
+                <div class="col-md-3">
+                    <div class="card-body">
+                        <a class="card-link btn btn-info"
+                            href="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>/edit">Edit</a>
+
                     </div>
-                    <div class="col-md-9">
-                        <div class="card-body">
-                            <form class='d-flex'
-                                action="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>?_method=DELETE" method='POST'>
-                                <button class="btn btn-danger  ml-auto">DANGER Delete</button>
-                            </form>
-                        </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="card-body">
+                        <form class='d-flex' action="/comics/gay/<%= pageNumber %>/<%= gayComic._id %>?_method=DELETE"
+                            method='POST'>
+                            <button class="btn btn-danger  ml-auto">DANGER Delete</button>
+                        </form>
                     </div>
-                    <% } %>
+                </div>
+                <% } %>
         </div>
 
     </div>
