@@ -21,7 +21,7 @@ module.exports.index = async (req, res) => {
         .limit(limit * 1).skip((pageNumber - 1) * limit);
 
     res.render('comics/index', { comics, pageNumber })
-    req.flash('success', "FOUND IT FOUND")
+    // req.flash('success', "FOUND IT FOUND")
 };
 
 module.exports.renderNewForm = (req, res) => {
