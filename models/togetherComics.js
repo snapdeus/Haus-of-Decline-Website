@@ -42,8 +42,7 @@ const TogetherComicSchema = new Schema({
 //     })
 
 //enabled .ensureIndexes to add index the first time
-module.exports = mongoose.model('TogetherComics', TogetherComicSchema)
-
+module.exports = mongoose.model('TogetherComics', TogetherComicSchema);
     // .ensureIndexes(function (err) {
     //     if (err) return handleError(err);
     // });

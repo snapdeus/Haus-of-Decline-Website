@@ -56,5 +56,5 @@ module.exports.doSearch = async (req, res) => {
 
 
 
-    res.render('search', { gayComics, episodes })
+    res.render('search', { gayComics, episodes, searchTerms })
 }

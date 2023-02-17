@@ -110,3 +110,49 @@ pre {
         border: none;
     }
 }
+
+
+
+.shine {
+    position: relative;
+    overflow: hidden;
+    
+  }
+  .shine:hover{
+    box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(255, 255, 255, 0.426);
+  }
+  .shine::before {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(252, 255, 216, 0.3) 100%);
+    content: "";
+    display: block;
+    height: 100%;
+    left: -75%;
+    position: absolute;
+    top: 0;
+    transform: skewX(-25deg);
+    width: 50%;
+    z-index: 100;
+   
+  }
+  .shine::before, .shine:focus::before {
+   
+    -webkit-animation: shine 2s infinite;
+            animation: shine 2s infinite;
+            
+
+  }
+  @-webkit-keyframes shine {
+    100% {
+      left: 125%;
+      
+    }
+    
+  }
+  @keyframes shine {
+    100% {
+      left: 125%;
+     
+    }
+    
+  }
+  
