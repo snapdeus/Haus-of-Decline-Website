@@ -5,7 +5,7 @@
 
     <h3 class=" mt-2 hausFont text-center mt-3 mb-3" style="font-style:italic">Search Results:</h3>
 
-    <% if(searchTerms.includes('together') ) {%>
+    <% if(searchTerms.toLowerCase().includes('together') ) {%>
         <div class="row">
             <div class=" mx-auto col-xl-8 col-xs-12 ">
 
@@ -22,7 +22,7 @@
             </div>
         </div>
         <% } %>
-            <% if(searchTerms.toLowerCase.includes('gay comics') ) {%>
+            <% if(searchTerms.toLowerCase().includes('gay comics') ) {%>
                 <div class="row">
                     <div class="mx-auto col-xl-6 col-xs-12 ">
 
