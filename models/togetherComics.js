@@ -12,6 +12,7 @@ const TogetherComicSchema = new Schema({
     image: String,
     ordinality: Number,
     series: Number,
+    description: String,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -41,8 +42,8 @@ const TogetherComicSchema = new Schema({
 //     })
 
 //enabled .ensureIndexes to add index the first time
-module.exports = mongoose.model('TogetherComics', TogetherComicSchema);
+module.exports = mongoose.model('TogetherComics', TogetherComicSchema)
 
-//     .ensureIndexes(function (err) {
-//     if (err) return handleError(err);
-// });
+    // .ensureIndexes(function (err) {
+    //     if (err) return handleError(err);
+    // });

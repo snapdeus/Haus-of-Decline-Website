@@ -114,7 +114,18 @@ footer {
     justify-content: center;
     background-color: #000;
 }
-
+@media (max-width:500px){
+    .togetherComic {
+        padding-left: 0;
+        padding-right:0;
+    }
+}
+@media (max-width:992px) {
+    .sizer {
+        width: 670px;
+        height: 457.5px;
+    }
+}
 
 @media (min-width: 420px) {
     h1.title {
@@ -140,30 +151,6 @@ footer {
     }
 }
 
-@media (min-width:1199px) {
-    .navbar-nav {
-        border: none;
-    }
-}
-@media (min-width:1595px) {
-    .hausrise {
-        margin-top: 0;
-    }
-}
-@media (max-width:500px){
-    .togetherComic {
-        padding-left: 0;
-        padding-right:0;
-    }
-}
-
-@media (max-width:992px) {
-    .sizer {
-        width: 670px;
-        height: 457.5px;
-    }
-}
-
 @media (max-width:1199px) {
     .nav-link {
         padding-top: 1.2em;
@@ -177,6 +164,11 @@ footer {
     border-image: linear-gradient(90deg, rgb(0, 0, 0), rgb(255, 255, 255), rgb(0, 0, 0)) 1;
 }
 
+@media (min-width:1199px) {
+    .navbar-nav {
+        border: none;
+    }
+}
 
 
 
@@ -212,6 +204,11 @@ footer {
     margin-top: 3.5em;
 }
 
+@media (min-width:1595px) {
+    .hausrise {
+        margin-top: 0;
+    }
+}
 
 
 

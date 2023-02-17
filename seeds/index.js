@@ -114,6 +114,7 @@ const seedDBwithTogether = async () => {
             title: `${ togetherComics[i].title }`,
             path: `${ togetherComics[i].path }`,
             series: 2,
+            description: `${ togetherComics[i].description }`,
             filename: `${ togetherComics[i].path.slice(24) }`,
             author: '622b6e3138fdc4cef6097ca8',
             ordinality: `${ parseInt(togetherComics[i].path.slice(24, 27)) }`
