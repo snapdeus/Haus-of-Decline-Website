@@ -234,6 +234,7 @@ app.get('/', async (req, res) => {
     const gayComics = await GayComic.find({}).sort({ "filename": -1 })
 
     const episode = await getLatestShow();
+
     // console.log(episode[0].id)
     const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` })
     if (!findEpisode) {
@@ -246,7 +247,7 @@ app.get('/', async (req, res) => {
             description: `${ description }`,
             summary: `${ episode[0].attributes.summary }`,
             transistorID: `${ episode[0].id }`,
-            image_url: `${ episode[0].image_url }`,
+            image_url: `${ episode[0].attributes.image_url }`,
             episodeNumber: `${ episode[0].attributes.number }`
         })
         await newEpisode.save()
