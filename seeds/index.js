@@ -69,9 +69,9 @@ const seedDBwithEpisodes = async () => {
     }
 }
 
-// seedDBwithEpisodes().then(() => {
-//     mongoose.connection.close();
-// });
+seedDBwithEpisodes().then(() => {
+    mongoose.connection.close();
+});
 
 
 
@@ -133,6 +133,6 @@ const seedDBwithTogether = async () => {
 //     mongoose.connection.close();
 // })
 
-seedDBwithTogether().then(() => {
-    mongoose.connection.close();
-})
+// seedDBwithTogether().then(() => {
+//     mongoose.connection.close();
+// })
