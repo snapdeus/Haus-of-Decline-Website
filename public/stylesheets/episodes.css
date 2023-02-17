@@ -9,6 +9,17 @@
 
 
 
+.gayIndexBorder{
+    border-radius: 0;
+    background-color: #000;
+    border: 3px double #fff;
+}
+
+.gayIndexBorder:hover{
+    color: white;
+    box-shadow: 0.5em 0.5em 0.5em -0.4em rgba(255, 230, 137, 0.626);
+    transform: translatey(-0.2em);
+}
 
 
 .title {
