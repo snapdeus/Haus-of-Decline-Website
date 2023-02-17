@@ -6,73 +6,73 @@
 
     <div class="container">
         <h2 class=" mt-2 hausFont text-center mt-3 mb-3" style="font-style:italic">Search Results:</h2>
+        <%= console.log(searchTerms) %>
+            <% if(searchTerms==='together' ) {%>
 
-        <% if(searchTerms==='together' ) {%>
 
+                <div class="row">
+                    <div class=" mx-auto col-xl-8 col-xs-12 ">
 
-            <div class="row">
-                <div class=" mx-auto col-xl-8 col-xs-12 ">
+                        <h3 class="hausFont mt-5 ">
 
-                    <h3 class="hausFont mt-5 ">
+                            <a href="/comics/together/1">
+                                <div class="d-block w-75 shine mx-auto">
+                                    <img src="/gifs/resources/togetherDirectoryIcon.gif"
+                                        class=" img-thumbnail specialBorder shine" alt="Together">
 
-                        <a href="/comics/together/1">
-                            <div class="d-block w-75 shine mx-auto">
-                                <img src="/gifs/resources/togetherDirectoryIcon.gif"
-                                    class=" img-thumbnail specialBorder shine" alt="Together">
-
-                            </div>
-                        </a>
-                    </h3>
-                </div>
-            </div>
-
-            <% } %>
-                <% if(searchTerms.toLowerCase()==='gay comics' ) {%>
-                    <div class="row">
-                        <div class="col-lg-6 mx-auto col-xs-12 ">
-
-                            <h3 class="hausFont mt-5"><a href="/comics/gay/1"><img
-                                        src="/gifs/resources/gaycomicsicon.jpg"
-                                        class="d-block w-50 img-thumbnail specialBorder" alt="Gay Comics"></a> </h3>
-                        </div>
+                                </div>
+                            </a>
+                        </h3>
                     </div>
-                    <% } %>
+                </div>
+
+                <% } %>
+                    <% if(searchTerms.toLowerCase()==='gay comics' ) {%>
+                        <div class="row">
+                            <div class="col-lg-6 mx-auto col-xs-12 ">
+
+                                <h3 class="hausFont mt-5"><a href="/comics/gay/1"><img
+                                            src="/gifs/resources/gaycomicsicon.jpg"
+                                            class="d-block w-50 img-thumbnail specialBorder" alt="Gay Comics"></a> </h3>
+                            </div>
+                        </div>
+                        <% } %>
 
 
-                        <% if(gayComics.length===0 && episodes.length===0) { %>
-                            <h3 class=" mt-2 hausFont text-center">No Results</h3>
+                            <% if(gayComics.length===0 && episodes.length===0) { %>
+                                <h3 class=" mt-2 hausFont text-center">No Results</h3>
 
-                            <% } %>
+                                <% } %>
 
-                                <% if(gayComics.length!==0) { %>
-                                    <h2 class="hausFont text-center mb-3 mt-3">COMICS</h2>
-                                    <% } %>
-                                        <% for (let i=0; i< gayComics.length; i++) { %>
-                                            <% if (i !==0 && i % 3===0) { %>
+                                    <% if(gayComics.length!==0) { %>
+                                        <h2 class="hausFont text-center mb-3 mt-3">COMICS</h2>
+                                        <% } %>
+                                            <% for (let i=0; i< gayComics.length; i++) { %>
+                                                <% if (i !==0 && i % 3===0) { %>
 
-                                                <% } %>
-                                                    <% if (i===0 || i % 3===0) { %>
-                                                        <div class="row">
-                                                            <% } %>
-                                                                <div class="col-lg-4 mx-auto col-xs-12">
-                                                                    <a class="link" style="text-decoration: none;"
-                                                                        href="/comics/gay/<%=gayComics[i].pageNumber%>/<%=gayComics[i]._id%>">
-
-                                                                        <img loading="lazy"
-                                                                            class="img-thumbnail gayIndexBorder"
-                                                                            src="/uploads/GayComics/<%= gayComics[i].filename %> "
-                                                                            alt="<%= gayComics[i].description %>"
-                                                                            title="<%= gayComics[i].title %> ">
-
-                                                                        <p class="hausFont text-center">
-                                                                            #<%= gayComics[i].ordinality %>
-                                                                                <%= gayComics[i].title%>
-                                                                        </p>
-                                                                    </a>
-
-                                                                </div>
+                                                    <% } %>
+                                                        <% if (i===0 || i % 3===0) { %>
+                                                            <div class="row">
                                                                 <% } %>
-                                                        </div>
+                                                                    <div class="col-lg-4 mx-auto col-xs-12">
+                                                                        <a class="link" style="text-decoration: none;"
+                                                                            href="/comics/gay/<%=gayComics[i].pageNumber%>/<%=gayComics[i]._id%>">
+
+                                                                            <img loading="lazy"
+                                                                                class="img-thumbnail gayIndexBorder"
+                                                                                src="/uploads/GayComics/<%= gayComics[i].filename %> "
+                                                                                alt="<%= gayComics[i].description %>"
+                                                                                title="<%= gayComics[i].title %> ">
+
+                                                                            <p class="hausFont text-center">
+                                                                                #<%= gayComics[i].ordinality %>
+                                                                                    <%= gayComics[i].title%>
+                                                                            </p>
+                                                                        </a>
+
+                                                                    </div>
+                                                                    <% } %>
+                                                            </div>
     </div>
     <% if(episodes.length!==0) { %>
         <div class="container mx-auto">
