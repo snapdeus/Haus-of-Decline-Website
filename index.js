@@ -292,42 +292,6 @@ app.use('/patreon', patreonRoutes)
 app.use('/webhooks', webhookRoutes);
 
 
-
-
-// app.post('/webhook', (req, res) => {
-//     console.log(req.body);
-//     res.sendStatus(200)
-// })
-
-//EPISODES SECTION
-
-
-// const getNumOfEps = async () => {
-//     try {
-//         const res = await axios.get('https://api.transistor.fm/v1/episodes', config)
-//         return res.data.data[0].attributes.number;
-//     } catch (e) {
-//         console.log(e);
-//     }
-// };
-
-// const getShows = async () => {
-//     try {
-//         const url = `https://api.transistor.fm/v1/episodes?pagination[page]=1&pagination[per]=` + `${ await getNumOfEps() }`
-//         const res = await axios.get(url, config)
-//         console.log(res.data.data)
-//         return res.data.data;
-//     } catch (e) {
-//         console.log(e);
-//     }
-// };
-
-
-
-
-
-
-
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found!', 404))
 })
