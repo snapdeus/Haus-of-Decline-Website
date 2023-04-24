@@ -235,7 +235,7 @@ app.get('/', async (req, res) => {
 
     const episode = await getLatestShow();
 
-    console.log(episode);
+
     // const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` });
     // if (!findEpisode) {
     //     let description = sanitizeHtml(episode[0].attributes.description, {
@@ -302,6 +302,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 });
 
-app.listen(3000, '127.0.0.1', () => {
+app.listen(3000, 'localhost', () => {
     console.log('Serving on Port 3000');
 });
