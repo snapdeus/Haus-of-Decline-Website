@@ -233,23 +233,22 @@ app.get('/', async (req, res) => {
 
     const episode = await getLatestShow();
 
-    console.log(episode);
-    // const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` });
-    // if (!findEpisode) {
-    //     let description = sanitizeHtml(episode[0].attributes.description, {
-    //         allowedTags: [],
-    //         allowedAttributes: {},
-    //     });
-    //     let newEpisode = new Episode({
-    //         title: `${ episode[0].attributes.title }`,
-    //         description: `${ description }`,
-    //         summary: `${ episode[0].attributes.summary }`,
-    //         transistorID: `${ episode[0].id }`,
-    //         image_url: `${ episode[0].attributes.image_url }`,
-    //         episodeNumber: `${ episode[0].attributes.number }`
-    //     });
-    //     await newEpisode.save();
-    // }
+    const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` });
+    if (!findEpisode) {
+        let description = sanitizeHtml(episode[0].attributes.description, {
+            allowedTags: [],
+            allowedAttributes: {},
+        });
+        let newEpisode = new Episode({
+            title: `${ episode[0].attributes.title }`,
+            description: `${ description }`,
+            summary: `${ episode[0].attributes.summary }`,
+            transistorID: `${ episode[0].id }`,
+            image_url: `${ episode[0].attributes.image_url }`,
+            episodeNumber: `${ episode[0].attributes.number }`
+        });
+        await newEpisode.save();
+    }
 
 
 
