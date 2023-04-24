@@ -302,6 +302,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render('error', { err });
 });
 
-app.listen(3000, 'localhost', () => {
+app.listen(3000, '127.0.0.1', () => {
     console.log('Serving on Port 3000');
 });
