@@ -233,7 +233,7 @@ app.get('/', async (req, res) => {
 
     const episode = await getLatestShow();
 
-    // console.log(episode[0].id)
+    console.log(episode);
     const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` });
     if (!findEpisode) {
         let description = sanitizeHtml(episode[0].attributes.description, {
