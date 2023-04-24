@@ -55,8 +55,6 @@ mongoose.connect('mongodb://localhost:27017/haus-db?authSource=admin', {
     autoIndex: false
 });
 
-
-
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
@@ -235,7 +233,7 @@ app.get('/', async (req, res) => {
 
     const episode = await getLatestShow();
 
-
+    console.log(episode);
     // const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` });
     // if (!findEpisode) {
     //     let description = sanitizeHtml(episode[0].attributes.description, {
