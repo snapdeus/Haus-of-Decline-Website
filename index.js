@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const axios = require('axios')
+const axios = require('axios');
 const ejsMate = require('ejs-mate');
 const session = require('express-session');
 const flash = require('connect-flash');
@@ -10,20 +10,20 @@ const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const mongoSanitize = require('express-mongo-sanitize')
+const mongoSanitize = require('express-mongo-sanitize');
 const User = require('./models/user');
-const Comic = require('./models/comics')
-const GayComic = require('./models/gayComics')
-const Episode = require('./models/episodes')
-const helmet = require('helmet')
-const subdomain = require('express-subdomain')
+const Comic = require('./models/comics');
+const GayComic = require('./models/gayComics');
+const Episode = require('./models/episodes');
+const helmet = require('helmet');
+const subdomain = require('express-subdomain');
 const sanitizeHtml = require('sanitize-html');
 
 
 require('dotenv').config();
 
 const apiKey = process.env.TRANSISTOR_API_KEY;
-const config = { headers: { 'x-api-key': apiKey } }
+const config = { headers: { 'x-api-key': apiKey } };
 
 const submitRoutes = require('./routes/submit');
 const userRoutes = require('./routes/user');
@@ -34,20 +34,20 @@ const commentRoutes = require('./routes/comments');
 const togetherCommentRoutes = require('./routes/togetherComments');
 const directoryRoutes = require('./routes/directory');
 const episodesRoutes = require('./routes/episodes');
-const webhookRoutes = require('./routes/webhooks')
-const searchRoutes = require('./routes/search')
-const patreonRoutes = require('./routes/patreon')
-const storeRoutes = require('./routes/store')
-const togetherComicRoutes = require('./routes/togetherComics')
+const webhookRoutes = require('./routes/webhooks');
+const searchRoutes = require('./routes/search');
+const patreonRoutes = require('./routes/patreon');
+const storeRoutes = require('./routes/store');
+const togetherComicRoutes = require('./routes/togetherComics');
 
 const MongoStore = require('connect-mongo');
 const { find } = require('./models/user');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
-    + '127.0.0.1:27017/' + 'haus-db' + '?authSource=admin'
+    + 'localhost:27017/' + 'haus-db' + '?authSource=admin';
 
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/haus-db?authSource=admin', {
+mongoose.connect('mongodb://localhost:27017/haus-db?authSource=admin', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     user: process.env.MONGO_USER,
@@ -74,7 +74,7 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/uploads', express.static('uploads'));
 app.use(helmet());
-app.use(express.json())
+app.use(express.json());
 
 const scriptSrcUrls = [
     "https://stackpath.bootstrapcdn.com",
@@ -146,7 +146,7 @@ app.use(
 // mongo sanitize before defining routes
 app.use(mongoSanitize({
     replaceWith: '_'
-}))
+}));
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
 const store = MongoStore.create({
@@ -157,8 +157,8 @@ const store = MongoStore.create({
     }
 });
 store.on("error", function (e) {
-    console.log("SESSION STORE ERROR", e)
-})
+    console.log("SESSION STORE ERROR", e);
+});
 
 
 
@@ -175,7 +175,7 @@ const sessionConfig = {
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
-}
+};
 
 app.use(session(sessionConfig));
 app.use(flash());
@@ -203,7 +203,7 @@ app.use((req, res, next) => {
 
     res.locals.error = req.flash('error');
     next();
-})
+});
 
 
 
@@ -214,8 +214,8 @@ app.use((req, res, next) => {
 
 const getLatestShow = async () => {
     try {
-        const url = `https://api.transistor.fm/v1/episodes?pagination[page]=1&pagination[per]=1`
-        const res = await axios.get(url, config)
+        const url = `https://api.transistor.fm/v1/episodes?pagination[page]=1&pagination[per]=1`;
+        const res = await axios.get(url, config);
         return res.data.data;
     } catch (e) {
         console.log(e);
@@ -229,17 +229,17 @@ const getLatestShow = async () => {
 
 
 app.get('/', async (req, res) => {
-    const gayComics = await GayComic.find({}).sort({ "filename": -1 })
+    const gayComics = await GayComic.find({}).sort({ "filename": -1 });
 
     const episode = await getLatestShow();
 
     // console.log(episode[0].id)
-    const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` })
+    const findEpisode = await Episode.findOne({ transistorID: `${ episode[0].id }` });
     if (!findEpisode) {
         let description = sanitizeHtml(episode[0].attributes.description, {
             allowedTags: [],
             allowedAttributes: {},
-        })
+        });
         let newEpisode = new Episode({
             title: `${ episode[0].attributes.title }`,
             description: `${ description }`,
@@ -247,59 +247,59 @@ app.get('/', async (req, res) => {
             transistorID: `${ episode[0].id }`,
             image_url: `${ episode[0].attributes.image_url }`,
             episodeNumber: `${ episode[0].attributes.number }`
-        })
-        await newEpisode.save()
+        });
+        await newEpisode.save();
     }
 
 
 
-    res.render('home', { gayComics, episode })
+    res.render('home', { gayComics, episode });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about')
+    res.render('about');
 });
 
 
 
 app.get('/support', (req, res) => {
-    res.render('support')
+    res.render('support');
 });
 
 app.get('/comics', (req, res) => {
-    res.redirect('/comics/directory')
-})
+    res.redirect('/comics/directory');
+});
 
 app.get('/comix', (req, res) => {
-    res.redirect('/comics/directory')
-})
+    res.redirect('/comics/directory');
+});
 
 
 app.use('/', userRoutes);
 app.use('/comics/cod', comicRoutes);
 app.use('/submit', submitRoutes);
 app.use('/comics/gay', gayComicRoutes);
-app.use('/comics/together', togetherComicRoutes)
+app.use('/comics/together', togetherComicRoutes);
 app.use('/comics/cod/:id/comments', commentRoutes);
 app.use('/comics/gay/:id/gayComments', gayCommentRoutes);
 app.use('/comics/together/:id/togetherComments', togetherCommentRoutes);
 app.use('/episodes', episodesRoutes);
 app.use('/comics/directory', directoryRoutes);
 app.use('/search', searchRoutes);
-app.use('/patreon', patreonRoutes)
+app.use('/patreon', patreonRoutes);
 app.use('/webhooks', webhookRoutes);
 
 
 app.all('*', (req, res, next) => {
-    next(new ExpressError('Page Not Found!', 404))
-})
+    next(new ExpressError('Page Not Found!', 404));
+});
 
 app.use((err, req, res, next) => {
     const { statusCode = 500 } = err;
-    if (!err.message) err.message = 'Oh No, Something Went Wrong!'
-    res.status(statusCode).render('error', { err })
-})
+    if (!err.message) err.message = 'Oh No, Something Went Wrong!';
+    res.status(statusCode).render('error', { err });
+});
 
 app.listen(3000, '127.0.0.1', () => {
-    console.log('Serving on Port 3000')
+    console.log('Serving on Port 3000');
 });
