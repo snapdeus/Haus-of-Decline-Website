@@ -43,17 +43,19 @@ const togetherComicRoutes = require('./routes/togetherComics');
 const MongoStore = require('connect-mongo');
 const { find } = require('./models/user');
 const dbUrl = 'mongodb://' + process.env.MONGO_USER + ':' + process.env.MONGO_PW + '@'
-    + 'localhost:27017/' + 'haus-db' + '?authSource=admin';
+    + '127.0.0.1:27017/' + 'haus-db' + '?authSource=admin';
 
 
 
-mongoose.connect('mongodb://localhost:27017/haus-db?authSource=admin', {
+mongoose.connect('mongodb://127.0.0.1:27017/haus-db?authSource=admin', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     user: process.env.MONGO_USER,
     pass: process.env.MONGO_PW,
     autoIndex: false
 });
+
+
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
