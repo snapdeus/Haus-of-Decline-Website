@@ -36,7 +36,15 @@ const config = { headers: { 'x-api-key': apiKey } };
 //         console.log(e);
 //     }
 // }
+function removeObjectWithId(arr, id) {
+    const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
 
+    if (objWithIdIndex > -1) {
+        arr.splice(objWithIdIndex, 1);
+    }
+
+    return arr;
+}
 module.exports.index = async (req, res) => {
     const pageNumber = req.params.page;
     if (!pageNumber) {
@@ -58,7 +66,9 @@ module.exports.index = async (req, res) => {
     const allData = await getShows();
 
     const epList = allData.data;
-    epList.splice(1, 1);
+    //THIS ONE LINE INSERTED BECAUSE OF THE TEST EPISODE DEBACLE
+    removeObjectWithId(epList, '1304138');
+
     const metaData = allData.meta;
     res.render('episodes/index', { epList, metaData, pageNumber });
 };
@@ -89,5 +99,14 @@ module.exports.showEpisode = async (req, res) => {
 
     res.render('episodes/showEpisode', { episode, pageNumber });
 
-}
+};
 
+// 1304138;
+
+// 10944;
+
+// curl https://api.transistor.fm/v1/episodes/1304138 -G \
+//   -H "x-api-key: Y1FfLmM2MzlIi5NTb0qJDw" \
+//   -d "include[]=show" \
+//   -d "fields[show][]=title" \
+//   -d "fields[show][]=summary"
