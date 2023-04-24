@@ -36,15 +36,17 @@ const config = { headers: { 'x-api-key': apiKey } };
 //         console.log(e);
 //     }
 // }
-function removeObjectWithId(arr, id) {
-    const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
 
-    if (objWithIdIndex > -1) {
-        arr.splice(objWithIdIndex, 1);
-    }
+//BELOW FIX NO LONGER NEEDED
+// function removeObjectWithId(arr, id) {
+//     const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
 
-    return arr;
-}
+//     if (objWithIdIndex > -1) {
+//         arr.splice(objWithIdIndex, 1);
+//     }
+
+//     return arr;
+// }
 module.exports.index = async (req, res) => {
     const pageNumber = req.params.page;
     if (!pageNumber) {
@@ -66,8 +68,6 @@ module.exports.index = async (req, res) => {
     const allData = await getShows();
 
     const epList = allData.data;
-    //THIS ONE LINE INSERTED BECAUSE OF THE TEST EPISODE DEBACLE
-    removeObjectWithId(epList, '1304138');
 
     const metaData = allData.meta;
     res.render('episodes/index', { epList, metaData, pageNumber });
