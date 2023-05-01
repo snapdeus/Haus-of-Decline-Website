@@ -170,8 +170,8 @@ const sessionConfig = {
     saveUninitialized: true,
     proxy: true,
     cookie: {
-        httpOnly: true,
-        secure: true,
+        // httpOnly: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
@@ -252,7 +252,7 @@ app.get('/', async (req, res) => {
 
 
 
-    res.render('home', { gayComics, episode });
+    return res.render('home', { gayComics, episode });
 });
 
 app.get('/about', (req, res) => {

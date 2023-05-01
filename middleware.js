@@ -36,7 +36,7 @@ module.exports.captchaMidLogin = (req, res, next) => {
     const captcha = req.body['g-recaptcha-response'];
 
     if (captcha) {
-        var secretKey = process.env.CAPTCHA;
+        var secretKey = process.env.TEST_CAPTCHA;
         var verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${ secretKey }&response=${ captcha }&remoteip=${ req.connection.remoteAddress }`;
 
         axios.get(verifyURL)

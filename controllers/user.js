@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 module.exports.renderRegister = (req, res) => {
     res.render('users/register');
-}
+};
 
 module.exports.registerUser = async (req, res, next) => {
     try {
@@ -13,8 +13,8 @@ module.exports.registerUser = async (req, res, next) => {
         req.login(registeredUser, err => {
             if (err) return next(err);
             req.flash('success', 'Welcome To Haus of Decline!');
-            res.redirect('/');
-        })
+            return res.redirect('/');
+        });
 
     } catch (e) {
         if (e.message.includes('index: email_1 dup key')) {
@@ -23,24 +23,26 @@ module.exports.registerUser = async (req, res, next) => {
             req.flash('error', e.message);
 
         }
-        res.redirect('register')
+        return res.redirect('register');
     }
-}
+};
 
 module.exports.renderLogin = (req, res) => {
     res.render('users/login');
-}
+};
 
 module.exports.login = (req, res) => {
-    // console.log(req.body)
+
     req.flash('success', 'Welcome back!');
     const redirectUrl = req.session.returnTo || '/';
     delete req.session.returnTo;
-    res.redirect(redirectUrl)
-}
+    return res.redirect(redirectUrl);
+};
 
-module.exports.logout = (req, res) => {
-    req.logout();
+module.exports.logout = (req, res, next) => {
+    req.logout(function (err) {
+        if (err) { return next(err); }
+    });
     req.flash('success', 'Goodbye!');
-    res.redirect('/');
-}
+    return res.redirect('/');
+};
