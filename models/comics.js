@@ -39,7 +39,7 @@ ComicSchema.index({
     });
 
 
-module.exports = mongoose.model('Comics', ComicSchema)
-    .ensureIndexes(function (err) {
-        if (err) return handleError(err);
-    });
+module.exports = mongoose.model('Comics', ComicSchema);
+    // .ensureIndexes(function (err) {
+    //     if (err) return handleError(err);
+    // });
