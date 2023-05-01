@@ -33,13 +33,14 @@
                 <% } %>
 
 
-                    <% if(gayComics.length===0 && episodes.length===0) { %>
+                    <% if(gayComics.length===0 && episodes.length===0 && comics.length===0) { %>
                         <h3 class=" mt-2 hausFont text-center">No Results</h3>
 
                         <% } %>
+
                             <div class="container">
                                 <% if(gayComics.length!==0) { %>
-                                    <h3 class="hausFont text-center mb-3 mt-3">COMICS</h3>
+                                    <h3 class="hausFont text-center mb-3 mt-3">GAY COMICS</h3>
                                     <% } %>
                                         <% for (let i=0; i< gayComics.length; i++) { %>
                                             <% if (i !==0 && i % 3===0) { %>
@@ -66,34 +67,65 @@
                                             </div>
                                             <% } %>
                                     </div>
-                                    <% if(episodes.length!==0) { %>
-                                        <h3 class="hausFont text-center mt-3 mb-3">EPISODES</h3>
-                                        <% } %>
-                                            <% for (let i=0; i< episodes.length; i++) { %>
-                                                <% if (i !==0 && i % 3===0) { %>
+
+                                    <div class="container">
+                                        <% if(comics.length!==0) { %>
+                                            <h3 class="hausFont text-center mb-3 mt-3">COMICS OF DECLINE</h3>
+                                            <% } %>
+                                                <% for (let i=0; i< comics.length; i++) { %>
+                                                    <% if (i !==0 && i % 3===0) { %>
+                                    </div>
+                                    <% } %>
+                                        <% if (i===0 || i % 3===0) { %>
+                                            <div class="row">
+                                                <% } %>
+                                                    <div class="col-lg-4 mx-auto col-xs-12">
+                                                        <a class="link" style="text-decoration: none;"
+                                                            href="/comics/gay/<%=comics[i].pageNumber%>/<%=comics[i]._id%>">
+
+                                                            <img loading="lazy" class="img-thumbnail gayIndexBorder"
+                                                                src="/uploads/<%= comics[i].filename %> "
+                                                                alt="<%= comics[i].description %>"
+                                                                title="<%= comics[i].title %> ">
+
+                                                            <p class="hausFont text-center">
+                                                                #<%= comics[i].ordinality %>
+                                                                    <%= comics[i].title%>
+                                                            </p>
+                                                        </a>
+
                                                     </div>
                                                     <% } %>
-                                                        <% if (i===0 || i % 3===0) { %>
-                                                            <div class="row">
-                                                                <% } %>
-                                                                    <div
-                                                                        class="mx-auto col-lg-4 mb-3 col-xs-12 text-center">
-                                                                        <div>
-                                                                            <a class="link"
-                                                                                style="text-decoration: none;"
-                                                                                href="/episodes/<%=episodes[i].pageNumber%>/<%=episodes[i].transistorID%>">
+                                            </div>
+                                            <% if(episodes.length!==0) { %>
+                                                <h3 class="hausFont text-center mt-3 mb-3">EPISODES</h3>
+                                                <% } %>
+                                                    <% for (let i=0; i< episodes.length; i++) { %>
+                                                        <% if (i !==0 && i % 3===0) { %>
+                                                            </div>
+                                                            <% } %>
+                                                                <% if (i===0 || i % 3===0) { %>
+                                                                    <div class="row">
+                                                                        <% } %>
+                                                                            <div
+                                                                                class="mx-auto col-lg-4 mb-3 col-xs-12 text-center">
+                                                                                <div>
+                                                                                    <a class="link"
+                                                                                        style="text-decoration: none;"
+                                                                                        href="/episodes/<%=episodes[i].pageNumber%>/<%=episodes[i].transistorID%>">
 
-                                                                                <img loading="lazy"
-                                                                                    class=" specialBorder add-hover epList"
-                                                                                    src="<%= episodes[i].image_url %> ">
+                                                                                        <img loading="lazy"
+                                                                                            class=" specialBorder add-hover epList"
+                                                                                            src="<%= episodes[i].image_url %> ">
 
-                                                                                <p class="hausFont text-center">
-                                                                                    #<%= episodes[i].episodeNumber %>
-                                                                                        <%= episodes[i].title%>
-                                                                                </p>
-                                                                            </a>
-                                                                        </div>
+                                                                                        <p class="hausFont text-center">
+                                                                                            #<%= episodes[i].episodeNumber
+                                                                                                %>
+                                                                                                <%= episodes[i].title%>
+                                                                                        </p>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                            <% } %>
                                                                     </div>
-                                                                    <% } %>
-                                                            </div>
-                                                            </div>
+                                                                    </div>
